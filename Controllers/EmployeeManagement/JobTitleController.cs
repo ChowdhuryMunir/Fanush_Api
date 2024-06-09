@@ -1,4 +1,5 @@
 ﻿using Fanush.DAL.Interfaces;
+using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace Fanush.Controllers.EmployeeManagement
     [ApiController]
     public class JobTitleController : ControllerBase
     {
-        private readonly IGenericRepository<JobTitle> _repository;
+        private readonly IJobTitleRepository _repository;
 
-        public JobTitleController(IGenericRepository<JobTitle> repository)
+        public JobTitleController(IJobTitleRepository repository)
         {
             _repository = repository;
         }
@@ -23,7 +24,7 @@ namespace Fanush.Controllers.EmployeeManagement
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<JobTitle>> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
             var jobtitle = await _repository.Get(id);
             if (jobtitle == null)
@@ -39,13 +40,6 @@ namespace Fanush.Controllers.EmployeeManagement
             var createdJobTitle = await _repository.Post(jobtitle);
             return CreatedAtAction(nameof(Get), new { id = jobtitle.JobTitleId }, createdJobTitle);
         }
-
-        //[HttpPost]
-        //public async Task<ActionResult> Post(Department department)
-        //{
-        //    var createdDepartment = await _repository.Post(department);
-        //    return CreatedAtAction(nameof(Get), new { id = department.DepartmentId }, createdDepartment);
-        //}
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] JobTitle jobtitle)

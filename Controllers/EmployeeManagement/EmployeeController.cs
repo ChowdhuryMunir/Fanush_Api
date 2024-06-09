@@ -1,4 +1,5 @@
 ﻿using Fanush.DAL.Interfaces;
+using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace Fanush.Controllers.EmployeeController
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly IGenericRepository<Employee> _repository;
+        private readonly IEmployeeRepository _repository;
 
-        public EmployeeController(IGenericRepository<Employee> repository)
+        public EmployeeController(IEmployeeRepository repository)
         {
             _repository = repository;
         }
@@ -24,7 +25,7 @@ namespace Fanush.Controllers.EmployeeController
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Employee>> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
             var employee = await _repository.Get(id);
             if (employee == null)

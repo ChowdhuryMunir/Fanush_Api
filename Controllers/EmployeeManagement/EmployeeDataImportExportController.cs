@@ -1,4 +1,5 @@
 ﻿using Fanush.DAL.Interfaces;
+using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace Fanush.Controllers.EmployeeManagement
     [ApiController]
     public class EmployeeDataImportExportController : ControllerBase
     {
-        private readonly IGenericRepository<EmployeeDataImportExport> _repository;
+        private readonly IEmployeeDataImportExportRepository _repository;
 
-        public EmployeeDataImportExportController(IGenericRepository<EmployeeDataImportExport> repository)
+        public EmployeeDataImportExportController(IEmployeeDataImportExportRepository repository)
         {
             _repository = repository;
         }
@@ -24,7 +25,7 @@ namespace Fanush.Controllers.EmployeeManagement
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeDataImportExport>> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
             var employeedataimportexport = await _repository.Get(id);
             if (employeedataimportexport == null)
