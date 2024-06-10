@@ -1,33 +1,77 @@
 ﻿using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fanush.DAL.Repositories.EmployeeRepositories
 {
     public class EmployeeDataImportExportRepository : IEmployeeDataImportExportRepository
     {
-        public Task<object> Delete(int id)
+        private readonly FanushDbContext _context;
+
+        public EmployeeDataImportExportRepository(FanushDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<object> Delete(int id)
+        {
+            var entity = await _context.EmployeeDataImportExports.FindAsync(id);
+            if (entity == null)
+            {
+                return null; 
+            }
+
+            _context.EmployeeDataImportExports.Remove(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<IEnumerable<EmployeeDataImportExport>> Get()
+        public async Task<IEnumerable<EmployeeDataImportExport>> Get()
         {
-            throw new NotImplementedException();
+            return await _context.EmployeeDataImportExports.ToListAsync();
         }
 
-        public Task<EmployeeDataImportExport> Get(int id)
+        public async Task<EmployeeDataImportExport> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _context.EmployeeDataImportExports.FindAsync(id);
         }
 
-        public Task<object> Post(EmployeeDataImportExport entity)
+        public async Task<object> Post(EmployeeDataImportExport entity)
         {
-            throw new NotImplementedException();
+            _context.EmployeeDataImportExports.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<object> Put(int id, EmployeeDataImportExport entity)
+        public async Task<object> Put(int id, EmployeeDataImportExport entity)
         {
-            throw new NotImplementedException();
+            if (id != entity.ImportExportId)
+            {
+                return null; // or throw an exception if required
+            }
+
+            _context.Entry(entity).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeDataImportExportExists(id))
+                {
+                    return null; // or throw an exception if required
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return entity;
+        }
+        private bool EmployeeDataImportExportExists(int id)
+        {
+            return _context.EmployeeDataImportExports.Any(e => e.ImportExportId == id);
         }
     }
 }
