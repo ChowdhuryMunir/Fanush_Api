@@ -7,45 +7,33 @@ namespace Fanush.Models.EmployeeManagement
         [Key]
         public int EmployeeId { get; set; }
 
-        //[Required(ErrorMessage = "Employee name is required.")]
-        //[StringLength(100, ErrorMessage = "Employee name must be between 2 and 100 characters.", MinimumLength = 2)]
-        public string EmployeeName { get; set; }
+        public string? EmployeeName { get; set; }
 
-        //[Required(ErrorMessage = "Contact number is required.")]
-        //[RegularExpression(@"^\d{10}$", ErrorMessage = "Invalid contact number.")]
-        public string ContactNumber { get; set; }
 
-        //[Required(ErrorMessage = "Email address is required.")]
-        //[EmailAddress(ErrorMessage = "Invalid email address.")]
-        public string Email { get; set; }
+        public string? ContactNumber { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        //[Display(Name = "Date of Birth")]
-        public DateTime DateOfBirth { get; set; }
 
-        //[Required(ErrorMessage = "Emergency contact is required.")]
-        public string EmergencyContact { get; set; }
+        public string? Email { get; set; }
 
-        //[Required(ErrorMessage = "Gender is required.")]
-        public string Gender { get; set; }
 
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}", ApplyFormatInEditMode = true)]
-        //[Display(Name = "Date Joined")]
-        public DateTime DateJoined { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
-       // Relational Data
-        //[Required(ErrorMessage = "Department is required.")]
-        public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public string? EmergencyContact { get; set; }
 
-        //[Required(ErrorMessage = "Job title is required.")]
-        public int JobTitleId { get; set; }
+        public string? Gender { get; set; }
 
-        public JobTitle JobTitle { get; set; }
 
-        public virtual List<EmployeeLifecycle> EmployeeLifecycle { get; set; }  = new List<EmployeeLifecycle>();
+        public DateTime? DateJoined { get; set; }
+
+
+        public int? DepartmentId { get; set; }
+        public Department? Department { get; set; }
+
+        public int? JobTitleId { get; set; }
+
+        public JobTitle? JobTitle { get; set; }
+
+        public virtual List<EmployeeLifecycle>? EmployeeLifecycle { get; set; }  = new List<EmployeeLifecycle>();
         public bool IsActive { get; set; }
     }
 }
