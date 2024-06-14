@@ -1,1 +1,1 @@
-# Fanush
+# Fanush is project which main Functionalities are Human Resource Management And Payroll System 
