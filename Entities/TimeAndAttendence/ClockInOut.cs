@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.TimeAndAttendence
 {
@@ -9,6 +10,8 @@ namespace Fanush.Entities.TimeAndAttendence
 
         [Required(ErrorMessage = "Employee ID is required.")]
         public int EmployeeId { get; set; }
+         
+        public Employee Employee { get; set; }
 
         [Required(ErrorMessage = "Timestamp is required.")]
         [Display(Name = "Timestamp")]
@@ -25,19 +28,24 @@ namespace Fanush.Entities.TimeAndAttendence
         [Display(Name = "Notes")]
         public string Notes { get; set; }
 
-        [Display(Name = "Shift ID")]
-        public int ShiftId { get; set; }
-
-        [Display(Name = "Shift Start Time")]
         [DataType(DataType.Time)]
-        public TimeSpan ShiftStartTime { get; set; }
+        public DateTime ClockInTime { get; set; }
 
-        [Display(Name = "Shift End Time")]
         [DataType(DataType.Time)]
-        public TimeSpan ShiftEndTime { get; set; }
+        public DateTime ClockOutTime { get; set; }
 
-        [Display(Name = "Shift Duration")]
-        public TimeSpan ShiftDuration { get; set; }
+        [Display(Name = "Worked Hours")]
+        public TimeSpan Duration
+        {
+            get
+            {
+                if (ClockOutTime > ClockInTime)
+                {
+                    return ClockOutTime - ClockInTime;
+                }
+                return TimeSpan.Zero; // Return TimeSpan.Zero if the times are invalid
+            }
+        }
 
         [Display(Name = "Late Arrival")]
         public bool IsLateArrival { get; set; }
@@ -48,15 +56,6 @@ namespace Fanush.Entities.TimeAndAttendence
         [Display(Name = "Is Workday")]
         public bool IsWorkday { get; set; }
 
-        [Display(Name = "Worked Hours")]
-        public decimal WorkedHours { get; set; }
-
-        [Display(Name = "Break Hours")]
-        public decimal BreakHours { get; set; }
-
-        [Display(Name = "Total Hours")]
-        public decimal TotalHours { get; set; }
-
         [Display(Name = "Overtime Hours")]
         public decimal OvertimeHours { get; set; }
 
@@ -66,26 +65,8 @@ namespace Fanush.Entities.TimeAndAttendence
         [Display(Name = "Approved By")]
         public string ApprovedBy { get; set; }
 
-        [Display(Name = "Approval Status")]
-        public string ApprovalStatus { get; set; }
-
-        [Display(Name = "Approval Comments")]
-        public string ApprovalComments { get; set; }
-
         [Display(Name = "Is Active")]
         public bool IsActive { get; set; }
-
-        // Additional properties
-        [Display(Name = "Shift Type")]
-        public string ShiftType { get; set; } // Type of shift (e.g., day shift, night shift)
-
-        [Display(Name = "Break Start Time")]
-        [DataType(DataType.Time)]
-        public TimeSpan BreakStartTime { get; set; } // Start time of the break
-
-        [Display(Name = "Break End Time")]
-        [DataType(DataType.Time)]
-        public TimeSpan BreakEndTime { get; set; } // End time of the break
 
         [Display(Name = "Late Arrival Reason")]
         public string LateArrivalReason { get; set; } // Reason for late arrival

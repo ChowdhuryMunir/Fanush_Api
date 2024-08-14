@@ -22,13 +22,11 @@ namespace Fanush.Entities.RecruitmentManagement
         [Required(ErrorMessage = "Interviewer is required.")]
         public string Interviewer { get; set; }
 
-        [Display(Name = "Applicant")]
-        [Required(ErrorMessage = "Applicant is required.")]
-        public string Applicant { get; set; }
+        //navigation property 
+        public int ApplicantId { get; set; }
+        public Applicant Applicant { get; set; }
 
-        [Display(Name = "Interview Type")]
-        [Required(ErrorMessage = "Interview type is required.")]
-        public string InterviewType { get; set; }
+        public enum InterviewType { PreliminaryTest, Written, OralTest }  
 
         [Display(Name = "Duration (minutes)")]
         [Range(1, int.MaxValue, ErrorMessage = "Duration must be a positive integer.")]
@@ -44,13 +42,7 @@ namespace Fanush.Entities.RecruitmentManagement
         [Display(Name = "Follow-Up")]
         public string FollowUp { get; set; } // Follow-up actions required after the interview
 
-        [Display(Name = "Feedback Requested")]
-        public bool IsFeedbackRequested { get; set; } // Indicates if feedback is requested from the interviewer
 
-        [Display(Name = "Additional Rounds")]
-        public int AdditionalRounds { get; set; } // Number of additional interview rounds scheduled
     }
-
-
 }
 

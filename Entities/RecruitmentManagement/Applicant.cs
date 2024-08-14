@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fanush.Entities.RecruitmentManagement
 {
@@ -8,26 +9,23 @@ namespace Fanush.Entities.RecruitmentManagement
         public int ApplicantId { get; set; }
 
         [Required(ErrorMessage = "Name is required.")]
-        public string Name { get; set; }
+        public string ApplicantName { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress(ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Resume is required.")]
-        [Url(ErrorMessage = "Invalid URL format for resume.")]
         public string ResumeUrl { get; set; }
 
-        [Required(ErrorMessage = "Status is required.")]
-        public string Status { get; set; }
+        [NotMapped]
+        public IFormFile ResumeFile { get; set; }
 
-        [Required(ErrorMessage = "Is Active status is required.")]
-        public bool IsActive { get; set; }
+        
+        public enum Status { Approved, Pending, Rejected }
 
         [Display(Name = "Applied Date")]
-        [DataType(DataType.DateTime)]
-        [Required(ErrorMessage = "Applied date is required.")]
-        public DateTime AppliedDate { get; set; }
+        public DateTime AppliedDate { get; set; } = DateTime.UtcNow;
 
         [Display(Name = "Phone Number")]
         [Phone(ErrorMessage = "Invalid phone number.")]
@@ -35,7 +33,7 @@ namespace Fanush.Entities.RecruitmentManagement
 
         [Display(Name = "LinkedIn Profile")]
         [Url(ErrorMessage = "Invalid URL format for LinkedIn profile.")]
-        public string LinkedInProfileUrl { get; set; }
+        public string LinkedinProfileUrl { get; set; }
 
         // Additional properties
         [Display(Name = "Address")]
@@ -43,9 +41,6 @@ namespace Fanush.Entities.RecruitmentManagement
 
         [Display(Name = "City")]
         public string City { get; set; } // Applicant's city
-
-        [Display(Name = "State")]
-        public string State { get; set; } // Applicant's state
 
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; } // Applicant's zip code
@@ -56,14 +51,37 @@ namespace Fanush.Entities.RecruitmentManagement
         [Display(Name = "Expected Salary")]
         public decimal ExpectedSalary { get; set; } // Applicant's expected salary
 
-        [Display(Name = "Work Experience")]
-        public string WorkExperience { get; set; } // Applicant's work experience
+        public class WorkExperience
+        {
+            public string Company { get; set; }
+            public string Position { get; set; }
+            public string Duration { get; set; } 
 
-        [Display(Name = "Education")]
-        public string Education { get; set; } // Applicant's education
+            public WorkExperience(string company, string position, string duration)
+            {
+                Company = company;
+                Position = position;
+                Duration = duration;
+            }
+        }
 
-        [Display(Name = "Certifications")]
-        public string Certifications { get; set; } // Applicant's certifications
+        public class Education
+        {
+            public string Degree { get; set; }
+            public string Institution { get; set; }
+            public string PassingYear { get; set; }
+            public decimal Result { get; set; }
+
+            public Education(string degree, string institution, string passingYear, decimal result)
+            {
+                Degree = degree;
+                Institution = institution;
+                PassingYear = passingYear;
+                Result = result;
+
+            }
+        }
+
 
         [Display(Name = "Languages")]
         public string Languages { get; set; } // Languages known by the applicant
@@ -73,6 +91,10 @@ namespace Fanush.Entities.RecruitmentManagement
 
         [Display(Name = "References")]
         public string References { get; set; } // References provided by the applicant
+
+
+
+        public ICollection<Interview> ApplicantInterviews { get; set; }
     }
 }
 

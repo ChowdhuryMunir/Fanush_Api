@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.BuilderProperties;
+﻿using Fanush.Entities.TimeAndAttendence;
+using Microsoft.Owin.BuilderProperties;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
@@ -47,6 +48,9 @@ namespace Fanush.Models.EmployeeManagement
 
         // Relationships
         public ICollection<EmployeeLifecycle> EmployeeLifecycles { get; set; }
+        public ICollection<ClockInOut> ClockInOuts { get; set; } = new List<ClockInOut>();
+
+        public ICollection<Leave> leaves { get; set; } = new List<Leave>();
        // public ICollection<AcademicInfo> AcademicInfos { get; set; }
     }
 

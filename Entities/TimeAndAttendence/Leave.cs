@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.TimeAndAttendence
 {
@@ -9,6 +10,8 @@ namespace Fanush.Entities.TimeAndAttendence
 
         [Required(ErrorMessage = "Employee ID is required.")]
         public int EmployeeId { get; set; }
+
+        public Employee Employee { get; set; }  
 
         [Required(ErrorMessage = "Leave Type is required.")]
         [StringLength(20, ErrorMessage = "Leave Type must be at most 20 characters.")]
@@ -55,10 +58,5 @@ namespace Fanush.Entities.TimeAndAttendence
         [Display(Name = "Leave Category")]
         public string LeaveCategory { get; set; } // Category of leave (e.g., sick leave, vacation leave)
 
-        [Display(Name = "Leave Hours")]
-        public decimal LeaveHours { get; set; } // Number of hours for the leave
-
-        [Display(Name = "Attachment")]
-        public string AttachmentUrl { get; set; } // URL of any attachment related to the leave request
     }
 }

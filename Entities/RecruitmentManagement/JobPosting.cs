@@ -7,63 +7,36 @@ namespace Fanush.Entities.RecruitmentManagement
         [Key]
         public int JobPostingId { get; set; }
 
-        [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Description is required.")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "IsInternal is required.")]
+
         public bool IsInternal { get; set; }
 
-        [Required(ErrorMessage = "IsActive is required.")]
         public bool IsActive { get; set; }
 
         [Display(Name = "Posting Date")]
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Posting date is required.")]
         public DateTime PostingDate { get; set; }
 
         [Display(Name = "Application Deadline")]
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Application deadline is required.")]
         public DateTime ApplicationDeadline { get; set; }
 
         [Display(Name = "Start Date")]
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Start date is required.")]
         public DateTime StartDate { get; set; }
 
         // Location
-        [Required(ErrorMessage = "City is required.")]
         public string City { get; set; }
-
-        [Required(ErrorMessage = "State is required.")]
-        public string State { get; set; }
-
-        [Required(ErrorMessage = "Country is required.")]
-        public string Country { get; set; }
-
-        // Company
-        [Required(ErrorMessage = "Company name is required.")]
-        public string CompanyName { get; set; }
-
-        [Url(ErrorMessage = "Invalid URL format.")]
-        [Display(Name = "Company Logo")]
-        public string CompanyLogo { get; set; }
-
-        [Url(ErrorMessage = "Invalid URL format.")]
-        [Display(Name = "Company Website")]
-        public string CompanyWebsite { get; set; }
 
         // Contact Information
         [EmailAddress(ErrorMessage = "Invalid email address.")]
-        [Required(ErrorMessage = "Contact email is required.")]
         [Display(Name = "Contact Email")]
         public string ContactEmail { get; set; }
 
         [Phone(ErrorMessage = "Invalid phone number.")]
-        [Required(ErrorMessage = "Contact phone number is required.")]
         [Display(Name = "Contact Phone")]
         public string ContactPhone { get; set; }
 

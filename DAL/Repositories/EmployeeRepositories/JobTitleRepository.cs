@@ -1,18 +1,32 @@
 ﻿using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fanush.DAL.Repositories.EmployeeRepositories
 {
     public class JobTitleRepository : IJobTitleRepository
     {
-        public Task<object> Delete(int id)
+        private readonly FanushDbContext _context;
+
+        public JobTitleRepository(FanushDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<object> Delete(int id)
+        {
+            var jobTitle = await _context.JobTitles.FindAsync(id);
+            if (jobTitle != null)
+            {
+                _context.JobTitles.Remove(jobTitle);
+                await _context.SaveChangesAsync();
+                return jobTitle;
+            }
+            return null;
         }
 
-        public Task<IEnumerable<JobTitle>> Get()
+        public async Task<IEnumerable<JobTitle>> Get()
         {
-            throw new NotImplementedException();
+            return await _context.JobTitles.ToListAsync();
         }
 
         public Task<JobTitle> Get(int id)

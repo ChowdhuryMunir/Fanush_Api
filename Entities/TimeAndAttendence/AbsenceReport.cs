@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.TimeAndAttendence
 {
@@ -6,9 +7,8 @@ namespace Fanush.Entities.TimeAndAttendence
     {
         [Key]
         public int AbsenceReportId { get; set; }
-
-        [Required(ErrorMessage = "Employee ID is required.")]
         public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
         [Required(ErrorMessage = "Start Date is required.")]
         [Display(Name = "Start Date")]
