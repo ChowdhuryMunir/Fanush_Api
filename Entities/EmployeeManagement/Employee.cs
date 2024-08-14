@@ -23,7 +23,10 @@ namespace Fanush.Models.EmployeeManagement
         public string NationalId { get; set; }
         public string PassportNumber { get; set; }
         public DateTime DateOfJoining { get; set; }
-        public string JobTitle { get; set; }
+
+        //Navigation Property
+        public int JobTitleId { get; set; }
+        public JobTitle JobTitle { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
 
@@ -41,17 +44,16 @@ namespace Fanush.Models.EmployeeManagement
 
         // Lifecycle and audit properties
         public bool IsActive { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         public string CreatedBy { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; } = DateTime.UtcNow;
         public string UpdatedBy { get; set; }
 
         // Relationships
         public ICollection<EmployeeLifecycle> EmployeeLifecycles { get; set; }
         public ICollection<ClockInOut> ClockInOuts { get; set; } = new List<ClockInOut>();
-
         public ICollection<Leave> leaves { get; set; } = new List<Leave>();
-       // public ICollection<AcademicInfo> AcademicInfos { get; set; }
+       
     }
 
 }

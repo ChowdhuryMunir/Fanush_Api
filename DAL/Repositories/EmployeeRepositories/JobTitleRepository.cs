@@ -29,19 +29,25 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             return await _context.JobTitles.ToListAsync();
         }
 
-        public Task<JobTitle> Get(int id)
+        public async Task<JobTitle> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<JobTitle>().FindAsync(id);
         }
 
-        public Task<object> Post(JobTitle entity)
+        public async Task<object> Post(JobTitle entity)
         {
-            throw new NotImplementedException();
+            _context.JobTitles.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<object> Put(int id, JobTitle entity)
+        public async Task<object> Put(int id, JobTitle entity)
         {
-            throw new NotImplementedException();
+            var jobTitles = _context.JobTitles.Find(id);
+            jobTitles.JobTitleName = entity.JobTitleName;
+            jobTitles.IsActive = entity.IsActive;
+            await _context.SaveChangesAsync();
+            return entity;
         }
     }
 }

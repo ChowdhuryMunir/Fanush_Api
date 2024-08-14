@@ -1,33 +1,89 @@
 ﻿using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.EntityFrameworkCore;
 
 namespace Fanush.DAL.Repositories.EmployeeRepositories
 {
     public class EmployeeLifecycleRepository : IEmployeeLifecycleRepository
     {
-        public Task<object> Delete(int id)
+        private readonly FanushDbContext _context;
+
+        public EmployeeLifecycleRepository(FanushDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<object> Delete(int id)
+        {
+            var employeeLifeCycle = await _context.EmployeeLifecycles.FindAsync(id);
+            if (employeeLifeCycle != null)
+            {
+                _context.EmployeeLifecycles.Remove(employeeLifeCycle);
+                await _context.SaveChangesAsync();
+                return employeeLifeCycle;
+            }
+            return null;
         }
 
-        public Task<IEnumerable<EmployeeLifecycle>> Get()
+        public async Task<IEnumerable<EmployeeLifecycle>> Get()
         {
-            throw new NotImplementedException();
+            return await _context.EmployeeLifecycles.ToListAsync();
         }
 
-        public Task<EmployeeLifecycle> Get(int id)
+        public async Task<EmployeeLifecycle> Get(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<EmployeeLifecycle>().FindAsync(id);
         }
 
-        public Task<object> Post(EmployeeLifecycle entity)
+        public async Task<object> Post(EmployeeLifecycle entity)
         {
-            throw new NotImplementedException();
+            _context.EmployeeLifecycles.Add(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public Task<object> Put(int id, EmployeeLifecycle entity)
+        public  async Task<object> Put(int id, EmployeeLifecycle entity)
         {
-            throw new NotImplementedException();
+            if (id != entity.LifecycleId)
+            {
+                throw new ArgumentException("Mismatched id in route parameter and entity body.");
+            }
+
+            var existingEmployeeCycle = await _context.EmployeeLifecycles.FindAsync(id);
+
+            if (existingEmployeeCycle == null)
+            {
+                return NotFound("Nothing");
+            }
+
+            // Update properties of existingEmployee with values from entity
+            existingEmployeeCycle.IsActive = entity.IsActive;
+            existingEmployeeCycle.ActionType = entity.ActionType;
+            existingEmployeeCycle.ActionDate = entity.ActionDate;
+           
+
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                return existingEmployeeCycle;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new Exception("Failed to update employee Life Cycle. Concurrency issue occurred.");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to update employee Life Cycle: {ex.Message}");
+
+            }
+
+        }
+
+
+        private object NotFound(string a)
+        {
+            return a = "Nothing";
         }
     }
 }
