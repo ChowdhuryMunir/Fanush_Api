@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin.BuilderProperties;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Net;
 
 namespace Fanush.Models.EmployeeManagement
@@ -12,8 +13,9 @@ namespace Fanush.Models.EmployeeManagement
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
 
-        public Address PresentAddress { get; set; }
-        public Address PermanentAddress { get; set; }
+        public string PresentAddress { get; set; }
+       
+        public string PermanentAddress { get; set; }
 
         public string PhoneNumber { get; set; }
         public string Email { get; set; }

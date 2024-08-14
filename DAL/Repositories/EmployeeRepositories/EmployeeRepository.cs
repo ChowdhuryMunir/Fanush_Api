@@ -57,15 +57,15 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             }
 
             // Update properties of existingEmployee with values from entity
-            existingEmployee.EmployeeName = entity.EmployeeName;
-            existingEmployee.ContactNumber = entity.ContactNumber;
+            existingEmployee.FirstName = entity.FirstName;
+            existingEmployee.LastName = entity.LastName;
             existingEmployee.Email = entity.Email;
             existingEmployee.DateOfBirth = entity.DateOfBirth;
-            existingEmployee.EmergencyContact = entity.EmergencyContact;
+            existingEmployee.EmergencyContactNumber = entity.EmergencyContactNumber;
             existingEmployee.Gender = entity.Gender;
-            existingEmployee.DateJoined = entity.DateJoined;
+            existingEmployee.DateOfJoining = entity.DateOfJoining;
             existingEmployee.DepartmentId = entity.DepartmentId;
-            existingEmployee.JobTitleId = entity.JobTitleId;
+            existingEmployee.JobTitle = entity.JobTitle;
             existingEmployee.IsActive = entity.IsActive;
 
             try
