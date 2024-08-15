@@ -1,6 +1,8 @@
 ﻿using Fanush.DAL.Interfaces;
 using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +10,8 @@ namespace Fanush.Controllers.EmployeeManagement
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
+    [AllowAnonymous]
     public class EmployeeLifecycleController : ControllerBase
     {
         private readonly IEmployeeLifecycleRepository _repository;

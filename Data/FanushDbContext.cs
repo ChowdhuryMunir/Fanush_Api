@@ -1,4 +1,5 @@
-﻿using Fanush.Models.EmployeeManagement;
+﻿using Fanush.Entities.RecruitmentManagement;
+using Fanush.Models.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fanush.DAL
@@ -6,11 +7,23 @@ namespace Fanush.DAL
     public class FanushDbContext : DbContext
     {
         public FanushDbContext(DbContextOptions<FanushDbContext> options) : base(options) { }
+
+        #region EmployeeManagement
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<JobTitle> JobTitles { get; set; }
         public DbSet<EmployeeLifecycle> EmployeeLifecycles { get; set; }
         public DbSet<EmployeeDataImportExport> EmployeeDataImportExports { get; set; }
+
+        #endregion EmployeeManagement
+
+        #region RecruitManagement
+        public DbSet<Interview> Interviews { get; set; }
+        public DbSet<JobPosting> JobPostings { get; set; }
+        public DbSet <Applicant> Applicants { get; set; }
+
+        #endregion RecruitManagement
+
 
         #region Seed
         protected override void OnModelCreating(ModelBuilder modelBuilder)

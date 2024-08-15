@@ -1,13 +1,18 @@
 ﻿using Fanush.DAL.Interfaces;
 using Fanush.DAL.Interfaces.EmployeeInterface;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace Fanush.Controllers.EmployeeController
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
+    [AllowAnonymous]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository _repository;
