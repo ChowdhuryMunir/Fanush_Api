@@ -1,4 +1,5 @@
-﻿using Fanush.Entities.TimeAndAttendence;
+﻿using Fanush.Entities.PerformenceManagement;
+using Fanush.Entities.TimeAndAttendence;
 using Microsoft.Owin.BuilderProperties;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,7 +16,7 @@ namespace Fanush.Models.EmployeeManagement
         public string Gender { get; set; }
 
         public string PresentAddress { get; set; }
-       
+
         public string PermanentAddress { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -30,7 +31,7 @@ namespace Fanush.Models.EmployeeManagement
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
 
-        
+
 
         // Additional properties
         public string EmergencyContactNumber { get; set; }
@@ -52,11 +53,21 @@ namespace Fanush.Models.EmployeeManagement
         public string UpdatedBy { get; set; }
 
         // Relationships
-       
+
         public virtual List<EmployeeLifecycle>? EmployeeLifecycles { get; set; }
+        // Time And Attendence
         public virtual List<ClockInOut>? ClockInOuts { get; set; } = new List<ClockInOut>();
-        public virtual List<Leave>? leaves { get; set; } = new List<Leave>();
-       
+        public virtual List<AbsenceReport>? AbsenceReports { get; set; } = new List<AbsenceReport>();
+        public virtual List<Leave>? Leaves { get; set; } = new List<Leave>();
+        public virtual List<Overtime>? Overtimes { get; set; } = new List<Overtime>();
+        public virtual List<PayrollIntegration>? PayrollIntegrations { get; set; } = new List<PayrollIntegration>();
+        // Time And Attendence
+        public virtual List<Goal>? Goals { get; set; } = new List<Goal>();
+        public virtual List<PerformanceReview>? PerformanceReviews { get; set; } = new List<PerformanceReview>();
+        public virtual List<DevelopmentPlan>? DevelopmentPlans { get; set; } = new List<DevelopmentPlan>();
+        public virtual List<PerformanceReport>? PerformanceReports { get; set; } = new List<PerformanceReport>();
+
+
     }
 
 }

@@ -1,23 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.PerformenceManagement
 {
     public class DevelopmentPlan
     {
+        [Key]
+        public int DevelopmentPlanId { get; set; }
+
         [Required(ErrorMessage = "EmployeeId is required.")]
         public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
         [Required(ErrorMessage = "GoalId is required.")]
         public int GoalId { get; set; }
 
-        [Required(ErrorMessage = "ActionPlan is required.")]
-        public string ActionPlan { get; set; }
+        public Goal Goal { get; set; }
+        public string Description { get; set; }
 
         [Required(ErrorMessage = "TargetCompletionDate is required.")]
         public DateTime TargetCompletionDate { get; set; }
 
-        [Required(ErrorMessage = "Status is required.")]
-        public string Status { get; set; }
+        public enum Statuses { Approved, Pending, Rejected }
+
+        public Statuses Status { get; set; }
 
         [Required(ErrorMessage = "Progress is required.")]
         [Range(0, 100, ErrorMessage = "Progress must be between 0 and 100.")]
@@ -27,8 +33,6 @@ namespace Fanush.Entities.PerformenceManagement
         public bool IsActive { get; set; }
 
         // Additional properties for real-time HR management
-        [Display(Name = "Milestones")]
-        public string Milestones { get; set; } // Milestones achieved or to be achieved
 
         [Display(Name = "Feedback")]
         public string Feedback { get; set; } // Feedback received during the development process

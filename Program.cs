@@ -5,6 +5,8 @@ using Fanush.DAL.Repositories;
 using Fanush.DAL;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.EntityFrameworkCore;
+using Fanush.DAL.Interfaces.TimeAndAttendeceInterface;
+using Fanush.DAL.Repositories.TimeAndAttendanceRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,11 @@ builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeDataImportExportRepository, EmployeeDataImportExportRepository>();
 builder.Services.AddScoped<IEmployeeLifecycleRepository, EmployeeLifecycleRepository>();
 builder.Services.AddScoped<IJobTitleRepository, JobTitleRepository>();
+
+//
+builder.Services.AddScoped<IAbsenceReportRepository, AbsenceReportRepository>();
+builder.Services.AddScoped<IClockInOutRepository, ClockInOutRepository>();
+
 
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
    .AddNegotiate();

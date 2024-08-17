@@ -26,7 +26,7 @@ namespace Fanush.Entities.TimeAndAttendence
         public string Location { get; set; }
 
         [Display(Name = "Notes")]
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
         [DataType(DataType.Time)]
         public DateTime ClockInTime { get; set; }
@@ -72,6 +72,6 @@ namespace Fanush.Entities.TimeAndAttendence
         public string LateArrivalReason { get; set; } // Reason for late arrival
 
         [Display(Name = "Early Departure Reason")]
-        public string EarlyDepartureReason { get; set; } // Reason for early departure
+        public string? EarlyDepartureReason { get; set; } // Reason for early departure
     }
 }

@@ -1,32 +1,49 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fanush.Entities.PerformenceManagement
 {
     public class PerformanceReport
     {
+        [Key]
+
+        public int PerformanceReportId { get; set; }
+
         [Required(ErrorMessage = "EmployeeId is required.")]
         public int EmployeeId { get; set; }
+        public Employee Employee { get; set; }
 
-        [Required(ErrorMessage = "StartDate is required.")]
-        public DateTime StartDate { get; set; }
+        [Required]
+        public int EvaluatorId { get; set; } // Foreign key linking to the Evaluator (could also be an Employee or User)
 
-        [Required(ErrorMessage = "EndDate is required.")]
-        public DateTime EndDate { get; set; }
+        [Required]
+        public DateTime EvaluationDate { get; set; } // Date when the evaluation was completed
 
-        [Required(ErrorMessage = "ReportData is required.")]
-        public string ReportData { get; set; }
+        public int? PerformanceScore { get; set; } // Numerical or categorical score representing overall performance
 
-        [Required(ErrorMessage = "IsActive is required.")]
-        public bool IsActive { get; set; }
+        public string? GoalsMet { get; set; } // Count or summary of objectives met
 
-        // Additional properties for real-time HR management
-        [Display(Name = "Performance Metrics")]
-        public string PerformanceMetrics { get; set; } // Performance metrics tracked during the period
+        public string Strengths { get; set; } // Description of the employee's strengths
 
-        [Display(Name = "Ratings")]
-        public string Ratings { get; set; } // Ratings given for different aspects of performance
+        public string AreasForImprovement { get; set; } // Description of areas needing improvement
 
-        [Display(Name = "Comments")]
-        public string Comments { get; set; } // Comments or feedback provided in the performance report
+        public string Achievements { get; set; } // Notable accomplishments
+
+        public string DevelopmentPlan { get; set; } // Summary of planned development activities
+
+        public string Comments { get; set; } // Additional comments from the evaluator
+
+        public string OverallRating { get; set; } // Aggregate rating or performance classification
+
+        public DateTime? ReviewPeriodStart { get; set; } // Start date of the performance review period
+
+        public DateTime? ReviewPeriodEnd { get; set; } // End date of the performance review period
+
+        public string Status { get; set; } // Current status of the performance report
+
+        public string ActionItems { get; set; } // Specific action items resulting from the evaluation, like set up, follow up meeting etc.
+
+
     }
 }

@@ -40,6 +40,6 @@ namespace Fanush.Entities.TimeAndAttendence
         public bool IsHalfDay { get; set; } // New property for half day absence
 
         [Display(Name = "Half Day Type")]
-        public string HalfDayType { get; set; } // New property for half day type (morning/afternoon)
+        public string? HalfDayType { get; set; } // New property for half day type (morning/afternoon)
     }
 }

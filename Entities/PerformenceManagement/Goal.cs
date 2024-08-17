@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Fanush.Models.EmployeeManagement;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.PerformenceManagement
 {
     public class Goal
     {
+        [Key]
+        public int GoalId { get; set; }
+
         [Required(ErrorMessage = "Title is required.")]
         public string Title { get; set; }
 
@@ -16,14 +20,13 @@ namespace Fanush.Entities.PerformenceManagement
         [Required(ErrorMessage = "EndDate is required.")]
         public DateTime EndDate { get; set; }
 
+        [Display(Name = "AssignedToUserId")]
         [Required(ErrorMessage = "AssignedToUserId is required.")]
-        public int AssignedToUserId { get; set; }
+        public int EmployeeId { get; set; }
 
-        [Required(ErrorMessage = "IsTeamGoal is required.")]
-        public bool IsTeamGoal { get; set; }
-
-        [Required(ErrorMessage = "Status is required.")]
-        public string Status { get; set; }
+        public Employee Employee { get; set; }
+        public enum Statuses { Approved, Pending, Rejected }
+        public Statuses Status { get; set; }
 
         [Required(ErrorMessage = "Progress is required.")]
         [Range(0, 100, ErrorMessage = "Progress must be between 0 and 100.")]
@@ -50,10 +53,8 @@ namespace Fanush.Entities.PerformenceManagement
         [Display(Name = "Comments")]
         public string Comments { get; set; } // Comments or notes related to the goal
 
-        [Display(Name = "Department")]
-        public string Department { get; set; } // Department associated with the goal
 
-        [Display(Name = "Priority")]
-        public string Priority { get; set; } // Priority level of the goal (e.g., high, medium, low)
+        public virtual List<DevelopmentPlan>? DevelopmentPlans { get; set; } = new List<DevelopmentPlan>();
+
     }
 }

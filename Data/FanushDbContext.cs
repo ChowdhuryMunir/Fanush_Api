@@ -1,4 +1,5 @@
-﻿using Fanush.Entities.RecruitmentManagement;
+﻿using Fanush.Entities.PerformenceManagement;
+using Fanush.Entities.RecruitmentManagement;
 using Fanush.Entities.TimeAndAttendence;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
@@ -15,18 +16,12 @@ namespace Fanush.DAL
         public DbSet<JobTitle> JobTitles { get; set; }
         public DbSet<EmployeeLifecycle> EmployeeLifecycles { get; set; }
         public DbSet<EmployeeDataImportExport> EmployeeDataImportExports { get; set; }
-
         #endregion EmployeeManagement
 
         #region RecruitManagement
         public DbSet<Interview> Interviews { get; set; }
         public DbSet<JobPosting> JobPostings { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
-
-        
-
-
-
         #endregion RecruitManagement
 
         #region TimeAndAttendence
@@ -35,8 +30,14 @@ namespace Fanush.DAL
         public DbSet<Leave> Leaves { get; set; }
         public DbSet<Overtime> Overtimes { get; set; }
         public DbSet<PayrollIntegration> PayrollIntegrations { get; set; }
-
         #endregion TimeAndAttendence
+
+        #region PerformenceManagement
+        public DbSet<DevelopmentPlan> DevelopmentPlans { get; set; }
+        public DbSet<Goal> Goals { get; set; }
+        public DbSet<PerformanceReport> PerformanceReports { get; set; }
+        public DbSet<PerformanceReview> PerformanceReviews { get; set; }
+        #endregion PerformenceManagement
 
         #region Seed
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -401,6 +402,357 @@ namespace Fanush.DAL
                 new EmployeeDataImportExport { ImportExportId = 9, Type = "Import", FileName = "employees_data_sheet.xlsx", FilePath = "/uploads/employees_data_sheet.xlsx", ImportExportDate = new DateTime(2022, 5, 9), IsActive = true },
                 new EmployeeDataImportExport { ImportExportId = 10, Type = "Export", FileName = "employees_info_backup.xlsx", FilePath = "/exports/employees_info_backup.xlsx", ImportExportDate = new DateTime(2022, 5, 10), IsActive = true }
             );
+
+            // Seed data for AbsenceReport
+            modelBuilder.Entity<AbsenceReport>().HasData(
+            new AbsenceReport
+            {
+                AbsenceReportId = 1,
+                EmployeeId = 1,
+                StartDate = new DateTime(2024, 8, 1),
+                EndDate = new DateTime(2024, 8, 3),
+                Reason = "Medical Leave",
+                Approver = "John Doe",
+                Status = "Approved",
+                IsPaid = true,
+                ApprovedDate = new DateTime(2024, 8, 2, 10, 0, 0),
+                IsHalfDay = false,
+                HalfDayType = null
+            },
+             new AbsenceReport
+             {
+                 AbsenceReportId = 2,
+                 EmployeeId = 2,
+                 StartDate = new DateTime(2024, 8, 10),
+                 EndDate = new DateTime(2024, 8, 10),
+                 Reason = "Personal Leave",
+                 Approver = "Jane Smith",
+                 Status = "Pending",
+                 IsPaid = false,
+                 ApprovedDate = null,
+                 IsHalfDay = true,
+                 HalfDayType = "Morning"
+             },
+             new AbsenceReport
+             {
+                 AbsenceReportId = 3,
+                 EmployeeId = 3,
+                 StartDate = new DateTime(2024, 8, 15),
+                 EndDate = new DateTime(2024, 8, 16),
+                 Reason = "Vacation",
+                 Approver = "Emily Brown",
+                 Status = "Approved",
+                 IsPaid = true,
+                 ApprovedDate = new DateTime(2024, 8, 14, 14, 30, 0),
+                 IsHalfDay = false,
+                 HalfDayType = null
+             },
+            new AbsenceReport
+            {
+                AbsenceReportId = 4,
+                EmployeeId = 4,
+                StartDate = new DateTime(2024, 8, 20),
+                EndDate = new DateTime(2024, 8, 20),
+                Reason = "Medical Appointment",
+                Approver = "Chris Evans",
+                Status = "Approved",
+                IsPaid = true,
+                ApprovedDate = new DateTime(2024, 8, 19, 9, 0, 0),
+                IsHalfDay = true,
+                HalfDayType = "Afternoon"
+            },
+             new AbsenceReport
+             {
+                 AbsenceReportId = 5,
+                 EmployeeId = 5,
+                 StartDate = new DateTime(2024, 8, 22),
+                 EndDate = new DateTime(2024, 8, 23),
+                 Reason = "Family Emergency",
+                 Approver = "Anna Taylor",
+                 Status = "Pending",
+                 IsPaid = false,
+                 ApprovedDate = null,
+                 IsHalfDay = false,
+                 HalfDayType = null
+             },
+             new AbsenceReport
+             {
+                 AbsenceReportId = 6,
+                 EmployeeId = 6,
+                 StartDate = new DateTime(2024, 8, 25),
+                 EndDate = new DateTime(2024, 8, 25),
+                 Reason = "Childcare",
+                 Approver = "Robert Downey",
+                 Status = "Approved",
+                 IsPaid = true,
+                 ApprovedDate = new DateTime(2024, 8, 24, 16, 0, 0),
+                 IsHalfDay = true,
+                 HalfDayType = "Morning"
+             },
+            new AbsenceReport
+            {
+                AbsenceReportId = 7,
+                EmployeeId = 7,
+                StartDate = new DateTime(2024, 8, 28),
+                EndDate = new DateTime(2024, 8, 28),
+                Reason = "Study Leave",
+                Approver = "Scarlett Johansson",
+                Status = "Approved",
+                IsPaid = false,
+                ApprovedDate = new DateTime(2024, 8, 27, 11, 30, 0),
+                IsHalfDay = true,
+                HalfDayType = "Afternoon"
+            },
+             new AbsenceReport
+             {
+                 AbsenceReportId = 8,
+                 EmployeeId = 8,
+                 StartDate = new DateTime(2024, 9, 1),
+                 EndDate = new DateTime(2024, 9, 5),
+                 Reason = "Holiday",
+                 Approver = "Mark Ruffalo",
+                 Status = "Approved",
+                 IsPaid = true,
+                 ApprovedDate = new DateTime(2024, 8, 30, 15, 0, 0),
+                 IsHalfDay = false,
+                 HalfDayType = null
+             },
+            new AbsenceReport
+            {
+                AbsenceReportId = 9,
+                EmployeeId = 9,
+                StartDate = new DateTime(2024, 9, 6),
+                EndDate = new DateTime(2024, 9, 6),
+                Reason = "Sick Leave",
+                Approver = "Natalie Portman",
+                Status = "Pending",
+                IsPaid = false,
+                ApprovedDate = null,
+                IsHalfDay = true,
+                HalfDayType = "Morning"
+            },
+              new AbsenceReport
+              {
+                  AbsenceReportId = 10,
+                  EmployeeId = 10,
+                  StartDate = new DateTime(2024, 9, 10),
+                  EndDate = new DateTime(2024, 9, 12),
+                  Reason = "Workshop Attendance",
+                  Approver = "Chris Hemsworth",
+                  Status = "Approved",
+                  IsPaid = true,
+                  ApprovedDate = new DateTime(2024, 9, 9, 10, 15, 0),
+                  IsHalfDay = false,
+                  HalfDayType = null
+              }
+
+              );
+
+            // Seed data for ClockInOut
+            modelBuilder.Entity<ClockInOut>().HasData(
+    new ClockInOut
+    {
+        ClockInOutId = 1,
+        EmployeeId = 1,
+        Timestamp = new DateTime(2024, 8, 1, 8, 0, 0),
+        Action = "ClockIn",
+        Location = "Office A",
+        Notes = "Normal day",
+        ClockInTime = new DateTime(2024, 8, 1, 8, 0, 0),
+        ClockOutTime = new DateTime(2024, 8, 1, 17, 0, 0),
+        IsLateArrival = false,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0m,
+        IsOvertime = false,
+        ApprovedBy = "John Doe",
+        IsActive = true,
+        LateArrivalReason = "",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 2,
+        EmployeeId = 2,
+        Timestamp = new DateTime(2024, 8, 2, 8, 30, 0),
+        Action = "ClockIn",
+        Location = "Office B",
+        Notes = "Late arrival due to traffic",
+        ClockInTime = new DateTime(2024, 8, 2, 8, 30, 0),
+        ClockOutTime = new DateTime(2024, 8, 2, 17, 30, 0),
+        IsLateArrival = true,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.5m,
+        IsOvertime = true,
+        ApprovedBy = "Jane Smith",
+        IsActive = true,
+        LateArrivalReason = "Traffic",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 3,
+        EmployeeId = 3,
+        Timestamp = new DateTime(2024, 8, 3, 7, 45, 0),
+        Action = "ClockIn",
+        Location = "Remote",
+        Notes = "Working from home",
+        ClockInTime = new DateTime(2024, 8, 3, 7, 45, 0),
+        ClockOutTime = new DateTime(2024, 8, 3, 16, 45, 0),
+        IsLateArrival = false,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0m,
+        IsOvertime = false,
+        ApprovedBy = "Emily Johnson",
+        IsActive = true,
+        LateArrivalReason = "",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 4,
+        EmployeeId = 4,
+        Timestamp = new DateTime(2024, 8, 4, 8, 15, 0),
+        Action = "ClockIn",
+        Location = "Office C",
+        Notes = "Late due to doctor's appointment",
+        ClockInTime = new DateTime(2024, 8, 4, 8, 15, 0),
+        ClockOutTime = new DateTime(2024, 8, 4, 17, 15, 0),
+        IsLateArrival = true,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.25m,
+        IsOvertime = true,
+        ApprovedBy = "Michael Brown",
+        IsActive = true,
+        LateArrivalReason = "Doctor's appointment",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 5,
+        EmployeeId = 5,
+        Timestamp = new DateTime(2024, 8, 5, 7, 55, 0),
+        Action = "ClockIn",
+        Location = "Office A",
+        Notes = "Arrived early",
+        ClockInTime = new DateTime(2024, 8, 5, 7, 55, 0),
+        ClockOutTime = new DateTime(2024, 8, 5, 17, 5, 0),
+        IsLateArrival = false,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.17m,
+        IsOvertime = true,
+        ApprovedBy = "David Wilson",
+        IsActive = true,
+        LateArrivalReason = "",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 6,
+        EmployeeId = 6,
+        Timestamp = new DateTime(2024, 8, 6, 8, 5, 0),
+        Action = "ClockIn",
+        Location = "Remote",
+        Notes = "Late due to family emergency",
+        ClockInTime = new DateTime(2024, 8, 6, 8, 5, 0),
+        ClockOutTime = new DateTime(2024, 8, 6, 16, 5, 0),
+        IsLateArrival = true,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0m,
+        IsOvertime = false,
+        ApprovedBy = "John Doe",
+        IsActive = true,
+        LateArrivalReason = "Family emergency",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 7,
+        EmployeeId = 7,
+        Timestamp = new DateTime(2024, 8, 7, 8, 10, 0),
+        Action = "ClockIn",
+        Location = "Office B",
+        Notes = "Slight delay due to transport issues",
+        ClockInTime = new DateTime(2024, 8, 7, 8, 10, 0),
+        ClockOutTime = new DateTime(2024, 8, 7, 17, 10, 0),
+        IsLateArrival = true,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.17m,
+        IsOvertime = true,
+        ApprovedBy = "Jane Smith",
+        IsActive = true,
+        LateArrivalReason = "Transport issues",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 8,
+        EmployeeId = 8,
+        Timestamp = new DateTime(2024, 8, 8, 8, 0, 0),
+        Action = "ClockIn",
+        Location = "Office C",
+        Notes = "Normal clock-in",
+        ClockInTime = new DateTime(2024, 8, 8, 8, 0, 0),
+        ClockOutTime = new DateTime(2024, 8, 8, 17, 0, 0),
+        IsLateArrival = false,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0m,
+        IsOvertime = false,
+        ApprovedBy = "Emily Johnson",
+        IsActive = true,
+        LateArrivalReason = "",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 9,
+        EmployeeId = 9,
+        Timestamp = new DateTime(2024, 8, 9, 7, 50, 0),
+        Action = "ClockIn",
+        Location = "Remote",
+        Notes = "Early clock-in",
+        ClockInTime = new DateTime(2024, 8, 9, 7, 50, 0),
+        ClockOutTime = new DateTime(2024, 8, 9, 16, 50, 0),
+        IsLateArrival = false,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.17m,
+        IsOvertime = true,
+        ApprovedBy = "Michael Brown",
+        IsActive = true,
+        LateArrivalReason = "",
+        EarlyDepartureReason = null
+    },
+    new ClockInOut
+    {
+        ClockInOutId = 10,
+        EmployeeId = 10,
+        Timestamp = new DateTime(2024, 8, 10, 8, 20, 0),
+        Action = "ClockIn",
+        Location = "Office A",
+        Notes = "Late due to personal reasons",
+        ClockInTime = new DateTime(2024, 8, 10, 8, 20, 0),
+        ClockOutTime = new DateTime(2024, 8, 10, 17, 20, 0),
+        IsLateArrival = true,
+        IsEarlyDeparture = false,
+        IsWorkday = true,
+        OvertimeHours = 0.17m,
+        IsOvertime = true,
+        ApprovedBy = "David Wilson",
+        IsActive = true,
+        LateArrivalReason = "Personal reasons",
+        EarlyDepartureReason = null
+    }
+);
+
+
 
             modelBuilder.Entity<Applicant>(entity =>
             {
