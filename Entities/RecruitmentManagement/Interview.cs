@@ -26,7 +26,10 @@ namespace Fanush.Entities.RecruitmentManagement
         public int ApplicantId { get; set; }
         public Applicant Applicant { get; set; }
 
-        public enum InterviewType { PreliminaryTest, Written, OralTest }  
+        public enum InterviewTypes { PreliminaryTest, Written, OralTest }
+
+        [Required]
+        public InterviewTypes InterviewType { get; set; }
 
         [Display(Name = "Duration (minutes)")]
         [Range(1, int.MaxValue, ErrorMessage = "Duration must be a positive integer.")]

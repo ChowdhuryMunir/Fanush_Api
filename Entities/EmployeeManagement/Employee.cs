@@ -26,9 +26,11 @@ namespace Fanush.Models.EmployeeManagement
 
         //Navigation Property
         public int JobTitleId { get; set; }
-        public JobTitle JobTitle { get; set; }
+        public JobTitle? JobTitle { get; set; }
         public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public Department? Department { get; set; }
+
+        
 
         // Additional properties
         public string EmergencyContactNumber { get; set; }
@@ -50,9 +52,10 @@ namespace Fanush.Models.EmployeeManagement
         public string UpdatedBy { get; set; }
 
         // Relationships
-        public ICollection<EmployeeLifecycle> EmployeeLifecycles { get; set; }
-        public ICollection<ClockInOut> ClockInOuts { get; set; } = new List<ClockInOut>();
-        public ICollection<Leave> leaves { get; set; } = new List<Leave>();
+       
+        public virtual List<EmployeeLifecycle>? EmployeeLifecycles { get; set; }
+        public virtual List<ClockInOut>? ClockInOuts { get; set; } = new List<ClockInOut>();
+        public virtual List<Leave>? leaves { get; set; } = new List<Leave>();
        
     }
 

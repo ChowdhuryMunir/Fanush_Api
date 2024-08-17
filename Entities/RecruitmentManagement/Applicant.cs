@@ -21,8 +21,10 @@ namespace Fanush.Entities.RecruitmentManagement
         [NotMapped]
         public IFormFile ResumeFile { get; set; }
 
-        
-        public enum Status { Approved, Pending, Rejected }
+
+        public enum Statuses { Approved, Pending, Rejected }
+
+        public Statuses Status { get; set; }
 
         [Display(Name = "Applied Date")]
         public DateTime AppliedDate { get; set; } = DateTime.UtcNow;
@@ -51,13 +53,13 @@ namespace Fanush.Entities.RecruitmentManagement
         [Display(Name = "Expected Salary")]
         public decimal ExpectedSalary { get; set; } // Applicant's expected salary
 
-        public class WorkExperience
+        public class WorkExperiences
         {
             public string Company { get; set; }
             public string Position { get; set; }
-            public string Duration { get; set; } 
+            public string Duration { get; set; }
 
-            public WorkExperience(string company, string position, string duration)
+            public WorkExperiences(string company, string position, string duration)
             {
                 Company = company;
                 Position = position;
@@ -65,14 +67,16 @@ namespace Fanush.Entities.RecruitmentManagement
             }
         }
 
-        public class Education
+        public WorkExperiences WorkExperience { get; set; }
+
+        public class Educations
         {
             public string Degree { get; set; }
             public string Institution { get; set; }
             public string PassingYear { get; set; }
             public decimal Result { get; set; }
 
-            public Education(string degree, string institution, string passingYear, decimal result)
+            public Educations(string degree, string institution, string passingYear, decimal result)
             {
                 Degree = degree;
                 Institution = institution;
@@ -81,6 +85,8 @@ namespace Fanush.Entities.RecruitmentManagement
 
             }
         }
+
+        public Educations Education { get; set; }
 
 
         [Display(Name = "Languages")]

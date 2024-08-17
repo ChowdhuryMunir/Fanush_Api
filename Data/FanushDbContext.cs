@@ -1,4 +1,5 @@
 ﻿using Fanush.Entities.RecruitmentManagement;
+using Fanush.Entities.TimeAndAttendence;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,10 +21,22 @@ namespace Fanush.DAL
         #region RecruitManagement
         public DbSet<Interview> Interviews { get; set; }
         public DbSet<JobPosting> JobPostings { get; set; }
-        public DbSet <Applicant> Applicants { get; set; }
+        public DbSet<Applicant> Applicants { get; set; }
+
+        
+
+
 
         #endregion RecruitManagement
 
+        #region TimeAndAttendence
+        public DbSet<ClockInOut> ClockInOuts { get; set; }
+        public DbSet<AbsenceReport> AbsenceReports { get; set; }
+        public DbSet<Leave> Leaves { get; set; }
+        public DbSet<Overtime> Overtimes { get; set; }
+        public DbSet<PayrollIntegration> PayrollIntegrations { get; set; }
+
+        #endregion TimeAndAttendence
 
         #region Seed
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -389,8 +402,25 @@ namespace Fanush.DAL
                 new EmployeeDataImportExport { ImportExportId = 10, Type = "Export", FileName = "employees_info_backup.xlsx", FilePath = "/exports/employees_info_backup.xlsx", ImportExportDate = new DateTime(2022, 5, 10), IsActive = true }
             );
 
+            modelBuilder.Entity<Applicant>(entity =>
+            {
+                // Configuring the Status enum as a string in the database
+                entity.Property(e => e.Status)
+                      .HasConversion<string>();
+
+                // Configuring WorkExperiences and Educations as complex types if necessary
+                entity.OwnsOne(a => a.WorkExperience);
+                entity.OwnsOne(a => a.Education);
+            });
+
+
+
             base.OnModelCreating(modelBuilder);
         }
         #endregion Seed
+
+
+
+
     }
 }

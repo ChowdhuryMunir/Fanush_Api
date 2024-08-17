@@ -4,6 +4,7 @@ using Fanush.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fanush.Migrations
 {
     [DbContext(typeof(FanushDbContext))]
-    partial class FanushDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240816105212_chng")]
+    partial class chng
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,10 +83,6 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -117,9 +116,6 @@ namespace Fanush.Migrations
                     b.Property<string>("FollowUp")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("InterviewType")
-                        .HasColumnType("int");
 
                     b.Property<string>("Interviewer")
                         .IsRequired()
@@ -230,55 +226,6 @@ namespace Fanush.Migrations
                     b.ToTable("JobPostings");
                 });
 
-            modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.AbsenceReport", b =>
-                {
-                    b.Property<int>("AbsenceReportId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AbsenceReportId"));
-
-                    b.Property<DateTime?>("ApprovedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Approver")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("HalfDayType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsHalfDay")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsPaid")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AbsenceReportId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("AbsenceReports");
-                });
-
             modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.ClockInOut", b =>
                 {
                     b.Property<int>("ClockInOutId")
@@ -346,7 +293,7 @@ namespace Fanush.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("ClockInOuts");
+                    b.ToTable("ClockInOut");
                 });
 
             modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.Leave", b =>
@@ -409,137 +356,7 @@ namespace Fanush.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Leaves");
-                });
-
-            modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.Overtime", b =>
-                {
-                    b.Property<int>("OvertimeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OvertimeId"));
-
-                    b.Property<DateTime?>("ApprovalDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ApprovalStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ApprovedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AttachmentUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Department")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Hours")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastModifiedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("OvertimeType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Project")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("OvertimeId");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("Overtimes");
-                });
-
-            modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.PayrollIntegration", b =>
-                {
-                    b.Property<int>("PayrollIntegrationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PayrollIntegrationId"));
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("Deductions")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("GrossPay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("IntegrationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("IntegrationType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("NetPay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("PayFrequency")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("PayPeriodEndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("PayPeriodStartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PayrollSystemId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("TaxAmount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("TransactionId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PayrollIntegrationId");
-
-                    b.ToTable("PayrollIntegrations");
+                    b.ToTable("Leave");
                 });
 
             modelBuilder.Entity("Fanush.Models.EmployeeManagement.Department", b =>
@@ -742,7 +559,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8832),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1558),
                             DateOfBirth = new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
@@ -765,14 +582,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/john_doe.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8833)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1559)
                         },
                         new
                         {
                             EmployeeId = 2,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8838),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1566),
                             DateOfBirth = new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
@@ -795,14 +612,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/jane_smith.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8839)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1566)
                         },
                         new
                         {
                             EmployeeId = 3,
                             BloodGroup = "B+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8845),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1571),
                             DateOfBirth = new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 3,
@@ -825,14 +642,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/michael_johnson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8846)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1572)
                         },
                         new
                         {
                             EmployeeId = 4,
                             BloodGroup = "AB-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8854),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1576),
                             DateOfBirth = new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 4,
@@ -855,14 +672,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/emily_brown.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8855)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1577)
                         },
                         new
                         {
                             EmployeeId = 5,
                             BloodGroup = "O-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8860),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1581),
                             DateOfBirth = new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 5,
@@ -885,14 +702,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/david_wilson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8862)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1581)
                         },
                         new
                         {
                             EmployeeId = 6,
                             BloodGroup = "A-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8866),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1586),
                             DateOfBirth = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 6,
@@ -915,14 +732,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/sophia_martinez.jpg",
                             Religion = "Catholic",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8867)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1587)
                         },
                         new
                         {
                             EmployeeId = 7,
                             BloodGroup = "B-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8871),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1592),
                             DateOfBirth = new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 7,
@@ -945,14 +762,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/daniel_taylor.jpg",
                             Religion = "Jewish",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8872)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1592)
                         },
                         new
                         {
                             EmployeeId = 8,
                             BloodGroup = "AB+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8876),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1596),
                             DateOfBirth = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 8,
@@ -975,14 +792,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/olivia_anderson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8876)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1597)
                         },
                         new
                         {
                             EmployeeId = 9,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8880),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1601),
                             DateOfBirth = new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 9,
@@ -1005,14 +822,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ethan_thomas.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8880)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1602)
                         },
                         new
                         {
                             EmployeeId = 10,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8886),
+                            CreatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1606),
                             DateOfBirth = new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 10,
@@ -1035,7 +852,7 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ava_white.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 16, 20, 32, 24, 512, DateTimeKind.Utc).AddTicks(8887)
+                            UpdatedOn = new DateTime(2024, 8, 16, 10, 52, 11, 976, DateTimeKind.Utc).AddTicks(1606)
                         });
                 });
 
@@ -1349,68 +1166,6 @@ namespace Fanush.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Applicant", b =>
-                {
-                    b.OwnsOne("Fanush.Entities.RecruitmentManagement.Applicant+Educations", "Education", b1 =>
-                        {
-                            b1.Property<int>("ApplicantId")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Degree")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Institution")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("PassingYear")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<decimal>("Result")
-                                .HasColumnType("decimal(18,2)");
-
-                            b1.HasKey("ApplicantId");
-
-                            b1.ToTable("Applicants");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ApplicantId");
-                        });
-
-                    b.OwnsOne("Fanush.Entities.RecruitmentManagement.Applicant+WorkExperiences", "WorkExperience", b1 =>
-                        {
-                            b1.Property<int>("ApplicantId")
-                                .HasColumnType("int");
-
-                            b1.Property<string>("Company")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Duration")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.Property<string>("Position")
-                                .IsRequired()
-                                .HasColumnType("nvarchar(max)");
-
-                            b1.HasKey("ApplicantId");
-
-                            b1.ToTable("Applicants");
-
-                            b1.WithOwner()
-                                .HasForeignKey("ApplicantId");
-                        });
-
-                    b.Navigation("Education")
-                        .IsRequired();
-
-                    b.Navigation("WorkExperience")
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Interview", b =>
                 {
                     b.HasOne("Fanush.Entities.RecruitmentManagement.Applicant", "Applicant")
@@ -1420,17 +1175,6 @@ namespace Fanush.Migrations
                         .IsRequired();
 
                     b.Navigation("Applicant");
-                });
-
-            modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.AbsenceReport", b =>
-                {
-                    b.HasOne("Fanush.Models.EmployeeManagement.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.ClockInOut", b =>
@@ -1448,17 +1192,6 @@ namespace Fanush.Migrations
                 {
                     b.HasOne("Fanush.Models.EmployeeManagement.Employee", "Employee")
                         .WithMany("leaves")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.Overtime", b =>
-                {
-                    b.HasOne("Fanush.Models.EmployeeManagement.Employee", "Employee")
-                        .WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

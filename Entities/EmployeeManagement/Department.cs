@@ -10,6 +10,6 @@ namespace Fanush.Models.EmployeeManagement
         public string? DepartmentName { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<Employee>? Employees { get; set; }
+        public virtual List<Employee>? Employees { get; set; }
     }
 }

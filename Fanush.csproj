@@ -21,12 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Controllers\PerformenceManagement\" />
-    <Folder Include="Controllers\TimeAndAttendence\" />
-    <Folder Include="Controllers\RecruitmentManagement\" />
     <Folder Include="DAL\Interfaces\PayrollInterface\" />
     <Folder Include="DAL\Interfaces\PerformenceInterface\" />
-    <Folder Include="DAL\Interfaces\TimeAndAttendeceInterface\" />
-    <Folder Include="DAL\Repositories\TimeAndAttendeceRepositories\" />
     <Folder Include="DAL\Repositories\PayrollRepositories\" />
     <Folder Include="DAL\Repositories\PerformenceRepositories\" />
     <Folder Include="Entities\PayrollManagement\" />

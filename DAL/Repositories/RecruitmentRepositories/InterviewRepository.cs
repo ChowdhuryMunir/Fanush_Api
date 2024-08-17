@@ -65,7 +65,7 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
             existingInterviews.IsActive = entity.IsActive;
             existingInterviews.DateTime = entity.DateTime;
             existingInterviews.ApplicantId = entity.ApplicantId;
-            //existingInterviews.InterviewType = entity.InterviewType;
+            existingInterviews.InterviewType = entity.InterviewType;
             existingInterviews.DurationMinutes = entity.DurationMinutes;
             existingInterviews.Feedback = entity.Feedback;
             existingInterviews.Outcome = entity.Outcome;
