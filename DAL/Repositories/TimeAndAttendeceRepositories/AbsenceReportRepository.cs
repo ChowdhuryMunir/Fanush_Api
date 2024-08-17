@@ -1,5 +1,6 @@
 ﻿using Fanush.DAL.Interfaces.TimeAndAttendeceInterface;
 using Fanush.Entities.TimeAndAttendence;
+using Fanush.Models.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
 
 namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
@@ -15,12 +16,12 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
 
         public async Task<IEnumerable<AbsenceReport>> Get()
         {
-            return await _context.AbsenceReports.Include(a => a.Employee).ToListAsync();
+            return await _context.AbsenceReports.ToListAsync();
         }
 
         public async Task<AbsenceReport> Get(int id)
         {
-            return await _context.AbsenceReports.Include(a => a.Employee).FirstOrDefaultAsync(a => a.AbsenceReportId == id);
+            return await _context.Set<AbsenceReport>().FindAsync(id);
         }
 
         public async Task<object> Post(AbsenceReport entity)

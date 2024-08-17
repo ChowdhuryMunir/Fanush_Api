@@ -12,11 +12,6 @@ namespace Fanush.Entities.PerformenceManagement
         [Required(ErrorMessage = "EmployeeId is required.")]
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
-
-        [Required(ErrorMessage = "GoalId is required.")]
-        public int GoalId { get; set; }
-
-        public Goal Goal { get; set; }
         public string Description { get; set; }
 
         [Required(ErrorMessage = "TargetCompletionDate is required.")]

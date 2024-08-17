@@ -20,7 +20,7 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
 
         public async Task<PayrollIntegration> Get(int id)
         {
-            return await _context.PayrollIntegrations.FirstOrDefaultAsync(p => p.PayrollIntegrationId == id);
+            return await _context.Set<PayrollIntegration>().FindAsync(id);
         }
 
         public async Task<object> Post(PayrollIntegration entity)

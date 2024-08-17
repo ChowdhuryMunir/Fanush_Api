@@ -15,12 +15,12 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
 
         public async Task<IEnumerable<Leave>> Get()
         {
-            return await _context.Leaves.Include(l => l.Employee).ToListAsync();
+            return await _context.Leaves.ToListAsync();
         }
 
         public async Task<Leave> Get(int id)
         {
-            return await _context.Leaves.Include(l => l.Employee).FirstOrDefaultAsync(l => l.LeaveId == id);
+            return await _context.Set<Leave>().FindAsync(id);
         }
 
         public async Task<object> Post(Leave entity)

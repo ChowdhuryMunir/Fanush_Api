@@ -15,12 +15,12 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
 
         public async Task<IEnumerable<Overtime>> Get()
         {
-            return await _context.Overtimes.Include(o => o.Employee).ToListAsync();
+            return await _context.Overtimes.ToListAsync();
         }
 
         public async Task<Overtime> Get(int id)
         {
-            return await _context.Overtimes.Include(o => o.Employee).FirstOrDefaultAsync(o => o.OvertimeId == id);
+            return await _context.Set<Overtime>().FindAsync(id);
         }
 
         public async Task<object> Post(Overtime entity)

@@ -15,12 +15,12 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
 
         public async Task<IEnumerable<ClockInOut>> Get()
         {
-            return await _context.ClockInOuts.Include(c => c.Employee).ToListAsync();
+            return await _context.ClockInOuts.ToListAsync();
         }
 
         public async Task<ClockInOut> Get(int id)
         {
-            return await _context.ClockInOuts.Include(c => c.Employee).FirstOrDefaultAsync(c => c.ClockInOutId == id);
+            return await _context.Set<ClockInOut>().FindAsync(id);
         }
 
         public async Task<object> Post(ClockInOut entity)
