@@ -1,5 +1,6 @@
 ﻿using Fanush.Models.EmployeeManagement;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Fanush.Entities.PerformenceManagement
 {
@@ -25,8 +26,9 @@ namespace Fanush.Entities.PerformenceManagement
         public int EmployeeId { get; set; }
 
         public Employee Employee { get; set; }
-        public enum Statuses { Approved, Pending, Rejected }
-        public Statuses Status { get; set; }
+        public enum GoalStatuses { Approved, Pending, Rejected }
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public GoalStatuses GoalStatus { get; set; }
 
         [Required(ErrorMessage = "Progress is required.")]
         [Range(0, 100, ErrorMessage = "Progress must be between 0 and 100.")]

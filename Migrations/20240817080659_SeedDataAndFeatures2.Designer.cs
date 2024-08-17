@@ -4,6 +4,7 @@ using Fanush.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fanush.Migrations
 {
     [DbContext(typeof(FanushDbContext))]
-    partial class FanushDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240817080659_SeedDataAndFeatures2")]
+    partial class SeedDataAndFeatures2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +40,6 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DevelopmentPlanStatus")
-                        .HasColumnType("int");
-
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -59,6 +59,9 @@ namespace Fanush.Migrations
                     b.Property<string>("Resources")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("TargetCompletionDate")
                         .HasColumnType("datetime2");
@@ -100,9 +103,6 @@ namespace Fanush.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("GoalStatus")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -114,6 +114,9 @@ namespace Fanush.Migrations
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -1282,7 +1285,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6503),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3342),
                             DateOfBirth = new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
@@ -1305,14 +1308,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/john_doe.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6503)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3343)
                         },
                         new
                         {
                             EmployeeId = 2,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6510),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3350),
                             DateOfBirth = new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
@@ -1335,14 +1338,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/jane_smith.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6510)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3351)
                         },
                         new
                         {
                             EmployeeId = 3,
                             BloodGroup = "B+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6589),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3358),
                             DateOfBirth = new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 3,
@@ -1365,14 +1368,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/michael_johnson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6590)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3359)
                         },
                         new
                         {
                             EmployeeId = 4,
                             BloodGroup = "AB-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6596),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3364),
                             DateOfBirth = new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 4,
@@ -1395,14 +1398,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/emily_brown.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6597)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3365)
                         },
                         new
                         {
                             EmployeeId = 5,
                             BloodGroup = "O-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6602),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3370),
                             DateOfBirth = new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 5,
@@ -1425,14 +1428,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/david_wilson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6603)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3370)
                         },
                         new
                         {
                             EmployeeId = 6,
                             BloodGroup = "A-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6609),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3376),
                             DateOfBirth = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 6,
@@ -1455,14 +1458,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/sophia_martinez.jpg",
                             Religion = "Catholic",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6610)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3377)
                         },
                         new
                         {
                             EmployeeId = 7,
                             BloodGroup = "B-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6615),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3382),
                             DateOfBirth = new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 7,
@@ -1485,14 +1488,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/daniel_taylor.jpg",
                             Religion = "Jewish",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6615)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3383)
                         },
                         new
                         {
                             EmployeeId = 8,
                             BloodGroup = "AB+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6621),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3388),
                             DateOfBirth = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 8,
@@ -1515,14 +1518,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/olivia_anderson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6621)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3388)
                         },
                         new
                         {
                             EmployeeId = 9,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6626),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3451),
                             DateOfBirth = new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 9,
@@ -1545,14 +1548,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ethan_thomas.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6627)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3451)
                         },
                         new
                         {
                             EmployeeId = 10,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6633),
+                            CreatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3457),
                             DateOfBirth = new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 10,
@@ -1575,7 +1578,7 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ava_white.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 8, 21, 54, 451, DateTimeKind.Utc).AddTicks(6633)
+                            UpdatedOn = new DateTime(2024, 8, 17, 8, 6, 57, 626, DateTimeKind.Utc).AddTicks(3457)
                         });
                 });
 
