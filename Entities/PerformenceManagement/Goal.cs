@@ -56,7 +56,6 @@ namespace Fanush.Entities.PerformenceManagement
         public string Comments { get; set; } // Comments or notes related to the goal
 
 
-        public virtual List<DevelopmentPlan>? DevelopmentPlans { get; set; } = new List<DevelopmentPlan>();
 
     }
 }

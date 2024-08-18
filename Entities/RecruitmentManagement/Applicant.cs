@@ -53,40 +53,6 @@ namespace Fanush.Entities.RecruitmentManagement
         [Display(Name = "Expected Salary")]
         public decimal ExpectedSalary { get; set; } // Applicant's expected salary
 
-        public class WorkExperiences
-        {
-            public string Company { get; set; }
-            public string Position { get; set; }
-            public string Duration { get; set; }
-
-            public WorkExperiences(string company, string position, string duration)
-            {
-                Company = company;
-                Position = position;
-                Duration = duration;
-            }
-        }
-
-        public WorkExperiences WorkExperience { get; set; }
-
-        public class Educations
-        {
-            public string Degree { get; set; }
-            public string Institution { get; set; }
-            public string PassingYear { get; set; }
-            public decimal Result { get; set; }
-
-            public Educations(string degree, string institution, string passingYear, decimal result)
-            {
-                Degree = degree;
-                Institution = institution;
-                PassingYear = passingYear;
-                Result = result;
-
-            }
-        }
-
-        public Educations Education { get; set; }
 
 
         [Display(Name = "Languages")]
@@ -100,7 +66,10 @@ namespace Fanush.Entities.RecruitmentManagement
 
 
 
-        public ICollection<Interview> ApplicantInterviews { get; set; }
+        public virtual List<Interview>? Interviews { get; set; } = new List<Interview>();
+        public virtual List<Education>? Educations { get; set; } = new List<Education>();
+        public virtual List<WorkExperience>? WorkExperiences { get; set; } = new List<WorkExperience>();
+
     }
 }
 

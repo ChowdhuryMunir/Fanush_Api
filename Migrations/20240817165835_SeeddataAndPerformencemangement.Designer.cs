@@ -4,6 +4,7 @@ using Fanush.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fanush.Migrations
 {
     [DbContext(typeof(FanushDbContext))]
-    partial class FanushDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240817165835_SeeddataAndPerformencemangement")]
+    partial class SeeddataAndPerformencemangement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,7 +260,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5161),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2797),
                             Progress = 40,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Complete Project Alpha",
@@ -273,7 +276,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5180),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2802),
                             Progress = 50,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Increase Sales by 20%",
@@ -289,7 +292,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5183),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2805),
                             Progress = 30,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Launch New Marketing Campaign",
@@ -305,7 +308,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 2,
                             IsActive = false,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5185),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2807),
                             Progress = 10,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Customer Support",
@@ -321,7 +324,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5188),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2809),
                             Progress = 60,
                             StartDate = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Develop New Product Feature",
@@ -337,7 +340,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5191),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2811),
                             Progress = 20,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Reduce Operational Costs",
@@ -353,7 +356,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5194),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2813),
                             Progress = 50,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Improve Team Collaboration",
@@ -369,7 +372,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5196),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2815),
                             Progress = 60,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Optimize Supply Chain",
@@ -385,7 +388,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5199),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2817),
                             Progress = 30,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Implement New CRM System",
@@ -401,7 +404,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5201),
+                            LastUpdatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2820),
                             Progress = 70,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Data Security",
@@ -715,7 +718,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             Feedback = "Great job overall, keep up the good work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5388),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2910),
                             ReviewType = "Annual",
                             ReviewerId = 1
                         },
@@ -726,7 +729,7 @@ namespace Fanush.Migrations
                             EmployeeId = 2,
                             Feedback = "Good progress but needs improvement in communication.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5392),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2912),
                             ReviewType = "Quarterly",
                             ReviewerId = 2
                         },
@@ -737,7 +740,7 @@ namespace Fanush.Migrations
                             EmployeeId = 3,
                             Feedback = "Requires more focus on client interactions.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5393),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2913),
                             ReviewType = "Annual",
                             ReviewerId = 3
                         },
@@ -748,7 +751,7 @@ namespace Fanush.Migrations
                             EmployeeId = 4,
                             Feedback = "Excellent leadership skills demonstrated.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5395),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2915),
                             ReviewType = "Quarterly",
                             ReviewerId = 4
                         },
@@ -759,7 +762,7 @@ namespace Fanush.Migrations
                             EmployeeId = 5,
                             Feedback = "Good analytical skills, needs improvement in client relations.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5397),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2916),
                             ReviewType = "Annual",
                             ReviewerId = 5
                         },
@@ -770,7 +773,7 @@ namespace Fanush.Migrations
                             EmployeeId = 6,
                             Feedback = "Strong teamwork but needs better project management.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5399),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2918),
                             ReviewType = "Quarterly",
                             ReviewerId = 6
                         },
@@ -781,7 +784,7 @@ namespace Fanush.Migrations
                             EmployeeId = 7,
                             Feedback = "Creative thinking is a strength, work on organizational skills.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5400),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2919),
                             ReviewType = "Annual",
                             ReviewerId = 7
                         },
@@ -792,7 +795,7 @@ namespace Fanush.Migrations
                             EmployeeId = 8,
                             Feedback = "Excellent technical expertise, communication skills need work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5407),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2921),
                             ReviewType = "Quarterly",
                             ReviewerId = 8
                         },
@@ -803,7 +806,7 @@ namespace Fanush.Migrations
                             EmployeeId = 9,
                             Feedback = "Dependable employee, needs improvement in time management.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5408),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2925),
                             ReviewType = "Annual",
                             ReviewerId = 9
                         },
@@ -814,7 +817,7 @@ namespace Fanush.Migrations
                             EmployeeId = 10,
                             Feedback = "Great attention to detail, work on team collaboration.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5410),
+                            ReviewDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(2927),
                             ReviewType = "Quarterly",
                             ReviewerId = 10
                         });
@@ -844,6 +847,10 @@ namespace Fanush.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EducationJson")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -882,6 +889,10 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("WorkExperienceJson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -899,6 +910,7 @@ namespace Fanush.Migrations
                             AppliedDate = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "New York",
                             Country = "USA",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University A\",\"PassingYear\":\"2020\",\"Result\":3.5},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University B\",\"PassingYear\":\"2022\",\"Result\":3.8}]",
                             Email = "john.doe@example.com",
                             ExpectedSalary = 70000m,
                             Languages = "English, Spanish",
@@ -908,303 +920,197 @@ namespace Fanush.Migrations
                             ResumeUrl = "https://example.com/resume/johndoe.pdf",
                             Skills = "C#, .NET, SQL",
                             Status = "Approved",
+                            WorkExperienceJson = "[{\"Company\":\"Company X\",\"Position\":\"Software Engineer\",\"Duration\":\"2 years\"},{\"Company\":\"Company Y\",\"Position\":\"Senior Developer\",\"Duration\":\"3 years\"}]",
                             ZipCode = "10001"
                         },
                         new
                         {
                             ApplicantId = 2,
-                            Address = "456 Oak St",
-                            ApplicantName = "Alice Johnson",
-                            AppliedDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "San Francisco",
-                            Country = "USA",
-                            Email = "alice.johnson@example.com",
-                            ExpectedSalary = 80000m,
-                            Languages = "English, Mandarin",
-                            LinkedinProfileUrl = "https://linkedin.com/in/alicejohnson",
-                            PhoneNumber = "234-567-8901",
-                            References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/alicejohnson.pdf",
-                            Skills = "JavaScript, React, Node.js",
-                            Status = "Pending",
-                            ZipCode = "94101"
-                        },
-                        new
-                        {
-                            ApplicantId = 3,
-                            Address = "789 Pine St",
-                            ApplicantName = "Robert Smith",
-                            AppliedDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Address = "456 Elm St",
+                            ApplicantName = "Jane Smith",
+                            AppliedDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Los Angeles",
                             Country = "USA",
-                            Email = "robert.smith@example.com",
-                            ExpectedSalary = 90000m,
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University C\",\"PassingYear\":\"2019\",\"Result\":3.7},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University D\",\"PassingYear\":\"2021\",\"Result\":3.9}]",
+                            Email = "jane.smith@example.com",
+                            ExpectedSalary = 80000m,
                             Languages = "English, French",
-                            LinkedinProfileUrl = "https://linkedin.com/in/robertsmith",
-                            PhoneNumber = "345-678-9012",
+                            LinkedinProfileUrl = "https://linkedin.com/in/janesmith",
+                            PhoneNumber = "234-567-8901",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/robertsmith.pdf",
-                            Skills = "Python, Django, Flask",
-                            Status = "Approved",
+                            ResumeUrl = "https://example.com/resume/janesmith.pdf",
+                            Skills = "JavaScript, React, Node.js",
+                            Status = "Pending",
+                            WorkExperienceJson = "[{\"Company\":\"Company A\",\"Position\":\"Front-End Developer\",\"Duration\":\"1 year\"},{\"Company\":\"Company B\",\"Position\":\"Full-Stack Developer\",\"Duration\":\"2 years\"}]",
                             ZipCode = "90001"
                         },
                         new
                         {
-                            ApplicantId = 4,
-                            Address = "101 Maple St",
-                            ApplicantName = "Emily Davis",
-                            AppliedDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApplicantId = 3,
+                            Address = "789 Oak St",
+                            ApplicantName = "Alice Johnson",
+                            AppliedDate = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Chicago",
                             Country = "USA",
-                            Email = "emily.davis@example.com",
-                            ExpectedSalary = 85000m,
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University E\",\"PassingYear\":\"2018\",\"Result\":3.6},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University F\",\"PassingYear\":\"2020\",\"Result\":3.8}]",
+                            Email = "alice.johnson@example.com",
+                            ExpectedSalary = 75000m,
                             Languages = "English, German",
-                            LinkedinProfileUrl = "https://linkedin.com/in/emilydavis",
-                            PhoneNumber = "456-789-0123",
+                            LinkedinProfileUrl = "https://linkedin.com/in/alicejohnson",
+                            PhoneNumber = "345-678-9012",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/emilydavis.pdf",
-                            Skills = "Java, Spring, Hibernate",
+                            ResumeUrl = "https://example.com/resume/alicejohnson.pdf",
+                            Skills = "Python, Django, PostgreSQL",
                             Status = "Rejected",
+                            WorkExperienceJson = "[{\"Company\":\"Company M\",\"Position\":\"Data Scientist\",\"Duration\":\"3 years\"},{\"Company\":\"Company N\",\"Position\":\"Machine Learning Engineer\",\"Duration\":\"2 years\"}]",
                             ZipCode = "60601"
                         },
                         new
                         {
-                            ApplicantId = 5,
-                            Address = "202 Cedar St",
-                            ApplicantName = "Michael Brown",
-                            AppliedDate = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApplicantId = 4,
+                            Address = "321 Pine St",
+                            ApplicantName = "Bob Brown",
+                            AppliedDate = new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Houston",
                             Country = "USA",
-                            Email = "michael.brown@example.com",
-                            ExpectedSalary = 75000m,
-                            Languages = "English, Japanese",
-                            LinkedinProfileUrl = "https://linkedin.com/in/michaelbrown",
-                            PhoneNumber = "567-890-1234",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University G\",\"PassingYear\":\"2017\",\"Result\":3.4},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University H\",\"PassingYear\":\"2019\",\"Result\":3.7}]",
+                            Email = "bob.brown@example.com",
+                            ExpectedSalary = 85000m,
+                            Languages = "English, Mandarin",
+                            LinkedinProfileUrl = "https://linkedin.com/in/bobbrown",
+                            PhoneNumber = "456-789-0123",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/michaelbrown.pdf",
-                            Skills = "C++, Unreal Engine, Game Development",
-                            Status = "Pending",
+                            ResumeUrl = "https://example.com/resume/bobbrown.pdf",
+                            Skills = "C++, Unreal Engine",
+                            Status = "Approved",
+                            WorkExperienceJson = "[{\"Company\":\"Company Q\",\"Position\":\"Game Developer\",\"Duration\":\"4 years\"},{\"Company\":\"Company R\",\"Position\":\"Lead Developer\",\"Duration\":\"1 year\"}]",
                             ZipCode = "77001"
                         },
                         new
                         {
-                            ApplicantId = 6,
-                            Address = "303 Spruce St",
-                            ApplicantName = "Sophia Martinez",
-                            AppliedDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApplicantId = 5,
+                            Address = "654 Maple St",
+                            ApplicantName = "Eve White",
+                            AppliedDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Phoenix",
                             Country = "USA",
-                            Email = "sophia.martinez@example.com",
-                            ExpectedSalary = 78000m,
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University I\",\"PassingYear\":\"2016\",\"Result\":3.5},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University J\",\"PassingYear\":\"2018\",\"Result\":3.6}]",
+                            Email = "eve.white@example.com",
+                            ExpectedSalary = 70000m,
                             Languages = "English, Italian",
-                            LinkedinProfileUrl = "https://linkedin.com/in/sophiamartinez",
-                            PhoneNumber = "678-901-2345",
+                            LinkedinProfileUrl = "https://linkedin.com/in/evewhite",
+                            PhoneNumber = "567-890-1234",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/sophiamartinez.pdf",
-                            Skills = "Ruby on Rails, PostgreSQL, DevOps",
-                            Status = "Approved",
+                            ResumeUrl = "https://example.com/resume/evewhite.pdf",
+                            Skills = "PHP, Laravel",
+                            Status = "Pending",
+                            WorkExperienceJson = "[{\"Company\":\"Company X\",\"Position\":\"Backend Developer\",\"Duration\":\"3 years\"},{\"Company\":\"Company Y\",\"Position\":\"Web Developer\",\"Duration\":\"2 years\"}]",
                             ZipCode = "85001"
                         },
                         new
                         {
-                            ApplicantId = 7,
-                            Address = "404 Birch St",
-                            ApplicantName = "David Lee",
-                            AppliedDate = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Miami",
+                            ApplicantId = 6,
+                            Address = "987 Birch St",
+                            ApplicantName = "Mike Green",
+                            AppliedDate = new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "Philadelphia",
                             Country = "USA",
-                            Email = "david.lee@example.com",
-                            ExpectedSalary = 82000m,
-                            Languages = "English, Korean",
-                            LinkedinProfileUrl = "https://linkedin.com/in/davidlee",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University K\",\"PassingYear\":\"2015\",\"Result\":3.4},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University L\",\"PassingYear\":\"2017\",\"Result\":3.6}]",
+                            Email = "mike.green@example.com",
+                            ExpectedSalary = 72000m,
+                            Languages = "English, Portuguese",
+                            LinkedinProfileUrl = "https://linkedin.com/in/mikegreen",
+                            PhoneNumber = "678-901-2345",
+                            References = "Available upon request",
+                            ResumeUrl = "https://example.com/resume/mikegreen.pdf",
+                            Skills = "Java, Spring Boot",
+                            Status = "Rejected",
+                            WorkExperienceJson = "[{\"Company\":\"Company Z\",\"Position\":\"Java Developer\",\"Duration\":\"2 years\"},{\"Company\":\"Company W\",\"Position\":\"Senior Java Developer\",\"Duration\":\"3 years\"}]",
+                            ZipCode = "19101"
+                        },
+                        new
+                        {
+                            ApplicantId = 7,
+                            Address = "543 Cedar St",
+                            ApplicantName = "Sophia Black",
+                            AppliedDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "San Antonio",
+                            Country = "USA",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University M\",\"PassingYear\":\"2014\",\"Result\":3.8},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University N\",\"PassingYear\":\"2016\",\"Result\":3.9}]",
+                            Email = "sophia.black@example.com",
+                            ExpectedSalary = 83000m,
+                            Languages = "English, Japanese",
+                            LinkedinProfileUrl = "https://linkedin.com/in/sophiablack",
                             PhoneNumber = "789-012-3456",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/davidlee.pdf",
-                            Skills = "Go, Kubernetes, Microservices",
-                            Status = "Rejected",
-                            ZipCode = "33101"
+                            ResumeUrl = "https://example.com/resume/sophiablack.pdf",
+                            Skills = "Swift, iOS Development",
+                            Status = "Approved",
+                            WorkExperienceJson = "[{\"Company\":\"Company R\",\"Position\":\"iOS Developer\",\"Duration\":\"3 years\"},{\"Company\":\"Company S\",\"Position\":\"Lead iOS Developer\",\"Duration\":\"2 years\"}]",
+                            ZipCode = "78201"
                         },
                         new
                         {
                             ApplicantId = 8,
-                            Address = "505 Ash St",
-                            ApplicantName = "Olivia Wilson",
-                            AppliedDate = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Seattle",
+                            Address = "876 Spruce St",
+                            ApplicantName = "Liam Davis",
+                            AppliedDate = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "San Diego",
                             Country = "USA",
-                            Email = "olivia.wilson@example.com",
-                            ExpectedSalary = 77000m,
-                            Languages = "English, Spanish",
-                            LinkedinProfileUrl = "https://linkedin.com/in/oliviawilson",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University O\",\"PassingYear\":\"2013\",\"Result\":3.5},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University P\",\"PassingYear\":\"2015\",\"Result\":3.7}]",
+                            Email = "liam.davis@example.com",
+                            ExpectedSalary = 76000m,
+                            Languages = "English, Korean",
+                            LinkedinProfileUrl = "https://linkedin.com/in/liamdavis",
                             PhoneNumber = "890-123-4567",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/oliviawilson.pdf",
-                            Skills = "Swift, iOS Development, UI/UX Design",
+                            ResumeUrl = "https://example.com/resume/liamdavis.pdf",
+                            Skills = "Go, Kubernetes",
                             Status = "Pending",
-                            ZipCode = "98101"
+                            WorkExperienceJson = "[{\"Company\":\"Company T\",\"Position\":\"Go Developer\",\"Duration\":\"2 years\"},{\"Company\":\"Company U\",\"Position\":\"Cloud Engineer\",\"Duration\":\"3 years\"}]",
+                            ZipCode = "92101"
                         },
                         new
                         {
                             ApplicantId = 9,
-                            Address = "606 Poplar St",
-                            ApplicantName = "William Taylor",
-                            AppliedDate = new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            City = "Boston",
-                            Country = "USA",
-                            Email = "william.taylor@example.com",
-                            ExpectedSalary = 90000m,
-                            Languages = "English, Portuguese",
-                            LinkedinProfileUrl = "https://linkedin.com/in/williamtaylor",
-                            PhoneNumber = "901-234-5678",
-                            References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/williamtaylor.pdf",
-                            Skills = "JavaScript, Angular, Node.js",
-                            Status = "Approved",
-                            ZipCode = "02101"
-                        },
-                        new
-                        {
-                            ApplicantId = 10,
-                            Address = "707 Willow St",
-                            ApplicantName = "Charlotte Harris",
-                            AppliedDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Address = "543 Willow St",
+                            ApplicantName = "Emma Wilson",
+                            AppliedDate = new DateTime(2024, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "Dallas",
                             Country = "USA",
-                            Email = "charlotte.harris@example.com",
-                            ExpectedSalary = 84000m,
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University Q\",\"PassingYear\":\"2012\",\"Result\":3.6},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University R\",\"PassingYear\":\"2014\",\"Result\":3.7}]",
+                            Email = "emma.wilson@example.com",
+                            ExpectedSalary = 78000m,
+                            Languages = "English, Dutch",
+                            LinkedinProfileUrl = "https://linkedin.com/in/emmawilson",
+                            PhoneNumber = "901-234-5678",
+                            References = "Available upon request",
+                            ResumeUrl = "https://example.com/resume/emmawilson.pdf",
+                            Skills = "Ruby, Rails",
+                            Status = "Approved",
+                            WorkExperienceJson = "[{\"Company\":\"Company V\",\"Position\":\"Ruby Developer\",\"Duration\":\"3 years\"},{\"Company\":\"Company W\",\"Position\":\"Senior Ruby Developer\",\"Duration\":\"2 years\"}]",
+                            ZipCode = "75201"
+                        },
+                        new
+                        {
+                            ApplicantId = 10,
+                            Address = "321 Fir St",
+                            ApplicantName = "Oliver Martinez",
+                            AppliedDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            City = "San Jose",
+                            Country = "USA",
+                            EducationJson = "[{\"Degree\":\"Bachelor\\u0027s Degree\",\"Institution\":\"University S\",\"PassingYear\":\"2011\",\"Result\":3.5},{\"Degree\":\"Master\\u0027s Degree\",\"Institution\":\"University T\",\"PassingYear\":\"2013\",\"Result\":3.6}]",
+                            Email = "oliver.martinez@example.com",
+                            ExpectedSalary = 71000m,
                             Languages = "English, Russian",
-                            LinkedinProfileUrl = "https://linkedin.com/in/charlotteharris",
+                            LinkedinProfileUrl = "https://linkedin.com/in/olivermartinez",
                             PhoneNumber = "012-345-6789",
                             References = "Available upon request",
-                            ResumeUrl = "https://example.com/resume/charlotteharris.pdf",
-                            Skills = "PHP, Laravel, MySQL",
-                            Status = "Pending",
-                            ZipCode = "75201"
-                        });
-                });
-
-            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Education", b =>
-                {
-                    b.Property<int>("EducationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EducationId"));
-
-                    b.Property<int?>("ApplicantId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Degree")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Institution")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PassingYear")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Result")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("EducationId");
-
-                    b.HasIndex("ApplicantId");
-
-                    b.ToTable("Educations");
-
-                    b.HasData(
-                        new
-                        {
-                            EducationId = 1,
-                            ApplicantId = 1,
-                            Degree = "Bachelor's Degree",
-                            Institution = "University A",
-                            PassingYear = "2020",
-                            Result = 3.5m
-                        },
-                        new
-                        {
-                            EducationId = 2,
-                            ApplicantId = 2,
-                            Degree = "Master's Degree",
-                            Institution = "University B",
-                            PassingYear = "2022",
-                            Result = 3.8m
-                        },
-                        new
-                        {
-                            EducationId = 3,
-                            ApplicantId = 3,
-                            Degree = "PhD",
-                            Institution = "University C",
-                            PassingYear = "2024",
-                            Result = 4.0m
-                        },
-                        new
-                        {
-                            EducationId = 4,
-                            ApplicantId = 4,
-                            Degree = "Associate's Degree",
-                            Institution = "College D",
-                            PassingYear = "2018",
-                            Result = 3.2m
-                        },
-                        new
-                        {
-                            EducationId = 5,
-                            ApplicantId = 5,
-                            Degree = "Diploma",
-                            Institution = "Institute E",
-                            PassingYear = "2019",
-                            Result = 3.0m
-                        },
-                        new
-                        {
-                            EducationId = 6,
-                            ApplicantId = 6,
-                            Degree = "Bachelor's Degree",
-                            Institution = "University F",
-                            PassingYear = "2021",
-                            Result = 3.6m
-                        },
-                        new
-                        {
-                            EducationId = 7,
-                            ApplicantId = 7,
-                            Degree = "Master's Degree",
-                            Institution = "University G",
-                            PassingYear = "2023",
-                            Result = 3.9m
-                        },
-                        new
-                        {
-                            EducationId = 8,
-                            ApplicantId = 8,
-                            Degree = "Certificate",
-                            Institution = "Training Center H",
-                            PassingYear = "2022",
-                            Result = 3.8m
-                        },
-                        new
-                        {
-                            EducationId = 9,
-                            ApplicantId = 9,
-                            Degree = "High School",
-                            Institution = "School I",
-                            PassingYear = "2017",
-                            Result = 3.1m
-                        },
-                        new
-                        {
-                            EducationId = 10,
-                            ApplicantId = 10,
-                            Degree = "Bachelor's Degree",
-                            Institution = "University J",
-                            PassingYear = "2020",
-                            Result = 3.7m
+                            ResumeUrl = "https://example.com/resume/olivermartinez.pdf",
+                            Skills = "C#, ASP.NET Core",
+                            Status = "Rejected",
+                            WorkExperienceJson = "[{\"Company\":\"Company D\",\"Position\":\"ASP.NET Developer\",\"Duration\":\"3 years\"},{\"Company\":\"Company E\",\"Position\":\"Senior ASP.NET Developer\",\"Duration\":\"1 year\"}]",
+                            ZipCode = "95101"
                         });
                 });
 
@@ -1729,118 +1635,6 @@ namespace Fanush.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.WorkExperience", b =>
-                {
-                    b.Property<int>("WorkExperienceId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("WorkExperienceId"));
-
-                    b.Property<int?>("ApplicantId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Company")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Duration")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("WorkExperienceId");
-
-                    b.HasIndex("ApplicantId");
-
-                    b.ToTable("WorkExperiences");
-
-                    b.HasData(
-                        new
-                        {
-                            WorkExperienceId = 1,
-                            ApplicantId = 1,
-                            Company = "TechCorp",
-                            Duration = "2 years",
-                            Position = "Software Engineer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 2,
-                            ApplicantId = 2,
-                            Company = "WebSolutions",
-                            Duration = "3 years",
-                            Position = "Frontend Developer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 3,
-                            ApplicantId = 3,
-                            Company = "DataWorks",
-                            Duration = "4 years",
-                            Position = "Data Scientist"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 4,
-                            ApplicantId = 4,
-                            Company = "FinanceTech",
-                            Duration = "1 year",
-                            Position = "Backend Developer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 5,
-                            ApplicantId = 5,
-                            Company = "GameStudio",
-                            Duration = "2 years",
-                            Position = "Game Developer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 6,
-                            ApplicantId = 6,
-                            Company = "DevOpsInc",
-                            Duration = "3 years",
-                            Position = "DevOps Engineer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 7,
-                            ApplicantId = 7,
-                            Company = "MicroServicesCo",
-                            Duration = "4 years",
-                            Position = "Microservices Architect"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 8,
-                            ApplicantId = 8,
-                            Company = "AppDesign",
-                            Duration = "2 years",
-                            Position = "iOS Developer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 9,
-                            ApplicantId = 9,
-                            Company = "WebTech",
-                            Duration = "3 years",
-                            Position = "Full Stack Developer"
-                        },
-                        new
-                        {
-                            WorkExperienceId = 10,
-                            ApplicantId = 10,
-                            Company = "EnterpriseSolutions",
-                            Duration = "5 years",
-                            Position = "PHP Developer"
-                        });
-                });
-
             modelBuilder.Entity("Fanush.Entities.TimeAndAttendence.AbsenceReport", b =>
                 {
                     b.Property<int>("AbsenceReportId")
@@ -2348,7 +2142,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 1,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2402),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1318),
                             Approver = "Jane Smith",
                             EmployeeId = 1,
                             EndDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2379,7 +2173,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 3,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2463),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1335),
                             Approver = "Michael Brown",
                             EmployeeId = 3,
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2396,7 +2190,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 4,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2488),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1339),
                             Approver = "Sarah Johnson",
                             EmployeeId = 4,
                             EndDate = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2413,7 +2207,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 5,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2493),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1342),
                             Approver = "Robert Brown",
                             EmployeeId = 5,
                             EndDate = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2444,7 +2238,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 7,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2502),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1347),
                             Approver = "Olivia White",
                             EmployeeId = 7,
                             EndDate = new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2475,7 +2269,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 9,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2513),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1351),
                             Approver = "James Miller",
                             EmployeeId = 9,
                             EndDate = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2492,7 +2286,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 10,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2519),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1354),
                             Approver = "Daniel Moore",
                             EmployeeId = 10,
                             EndDate = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2580,19 +2374,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 1,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2588),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1384),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Jane Smith",
                             AttachmentUrl = "http://example.com/attachment1",
                             CreatedBy = "John Doe",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2592),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1386),
                             Date = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "IT",
                             EmployeeId = 1,
                             Hours = 4.5,
                             IsActive = true,
                             LastModifiedBy = "John Doe",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2593),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1387),
                             OvertimeType = "Voluntary",
                             Project = "Project A",
                             Reason = "Project deadline"
@@ -2602,14 +2396,14 @@ namespace Fanush.Migrations
                             OvertimeId = 2,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Alice Johnson",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2602),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1391),
                             Date = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Finance",
                             EmployeeId = 2,
                             Hours = 3.0,
                             IsActive = true,
                             LastModifiedBy = "Alice Johnson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2603),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1392),
                             OvertimeType = "Mandatory",
                             Project = "System Upgrade",
                             Reason = "System update"
@@ -2617,19 +2411,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 3,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2606),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1394),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Michael Brown",
                             AttachmentUrl = "http://example.com/attachment2",
                             CreatedBy = "Emily Davis",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2607),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1395),
                             Date = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Support",
                             EmployeeId = 3,
                             Hours = 2.0,
                             IsActive = true,
                             LastModifiedBy = "Emily Davis",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2607),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1395),
                             OvertimeType = "Voluntary",
                             Project = "Customer A",
                             Reason = "Customer support"
@@ -2637,19 +2431,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 4,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2618),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1398),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Sarah Johnson",
                             AttachmentUrl = "http://example.com/attachment3",
                             CreatedBy = "David Wilson",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2618),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1398),
                             Date = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Marketing",
                             EmployeeId = 4,
                             Hours = 5.0,
                             IsActive = true,
                             LastModifiedBy = "David Wilson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2619),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1399),
                             OvertimeType = "Mandatory",
                             Project = "Launch X",
                             Reason = "Product launch"
@@ -2659,14 +2453,14 @@ namespace Fanush.Migrations
                             OvertimeId = 5,
                             ApprovalStatus = "Rejected",
                             CreatedBy = "Jessica Lee",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2623),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1405),
                             Date = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "HR",
                             EmployeeId = 5,
                             Hours = 6.0,
                             IsActive = true,
                             LastModifiedBy = "Jessica Lee",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2624),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1405),
                             OvertimeType = "Voluntary",
                             Project = "Training Session",
                             Reason = "Training preparation"
@@ -2674,19 +2468,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 6,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2630),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1408),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Robert Brown",
                             AttachmentUrl = "http://example.com/attachment4",
                             CreatedBy = "Mark Taylor",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2631),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1409),
                             Date = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Sales",
                             EmployeeId = 6,
                             Hours = 4.0,
                             IsActive = true,
                             LastModifiedBy = "Mark Taylor",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2632),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1410),
                             OvertimeType = "Voluntary",
                             Project = "Meeting Y",
                             Reason = "Client meeting"
@@ -2696,14 +2490,14 @@ namespace Fanush.Migrations
                             OvertimeId = 7,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Anna Scott",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2636),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1412),
                             Date = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Audit",
                             EmployeeId = 7,
                             Hours = 2.5,
                             IsActive = true,
                             LastModifiedBy = "Anna Scott",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2637),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1412),
                             OvertimeType = "Mandatory",
                             Project = "Audit Z",
                             Reason = "Audit preparation"
@@ -2711,19 +2505,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 8,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2640),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1415),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Olivia White",
                             AttachmentUrl = "http://example.com/attachment5",
                             CreatedBy = "John Martin",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2641),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1416),
                             Date = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Operations",
                             EmployeeId = 8,
                             Hours = 3.5,
                             IsActive = true,
                             LastModifiedBy = "John Martin",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2641),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1416),
                             OvertimeType = "Voluntary",
                             Project = "Task A",
                             Reason = "Additional tasks"
@@ -2731,19 +2525,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 9,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2646),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1418),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "James Miller",
                             AttachmentUrl = "http://example.com/attachment6",
                             CreatedBy = "Laura Clark",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2647),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1419),
                             Date = new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Emergency",
                             EmployeeId = 9,
                             Hours = 5.0,
                             IsActive = true,
                             LastModifiedBy = "Laura Clark",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2648),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1420),
                             OvertimeType = "Mandatory",
                             Project = "Response X",
                             Reason = "Emergency response"
@@ -2751,19 +2545,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 10,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2651),
+                            ApprovalDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1422),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Daniel Moore",
                             AttachmentUrl = "http://example.com/attachment7",
                             CreatedBy = "Sophia Walker",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2652),
+                            CreatedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1422),
                             Date = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Customer Service",
                             EmployeeId = 10,
                             Hours = 4.5,
                             IsActive = true,
                             LastModifiedBy = "Sophia Walker",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2653),
+                            LastModifiedDate = new DateTime(2024, 8, 17, 22, 58, 34, 550, DateTimeKind.Local).AddTicks(1423),
                             OvertimeType = "Voluntary",
                             Project = "Support B",
                             Reason = "Extra support"
@@ -3212,7 +3006,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1132),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(999),
                             DateOfBirth = new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
@@ -3235,14 +3029,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/john_doe.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1132)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1000)
                         },
                         new
                         {
                             EmployeeId = 2,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1140),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1008),
                             DateOfBirth = new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
@@ -3265,14 +3059,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/jane_smith.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1141)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1009)
                         },
                         new
                         {
                             EmployeeId = 3,
                             BloodGroup = "B+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1148),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1015),
                             DateOfBirth = new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 3,
@@ -3295,14 +3089,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/michael_johnson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1148)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1016)
                         },
                         new
                         {
                             EmployeeId = 4,
                             BloodGroup = "AB-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1154),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1020),
                             DateOfBirth = new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 4,
@@ -3325,14 +3119,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/emily_brown.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1155)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1021)
                         },
                         new
                         {
                             EmployeeId = 5,
                             BloodGroup = "O-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1161),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1034),
                             DateOfBirth = new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 5,
@@ -3355,14 +3149,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/david_wilson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1161)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1034)
                         },
                         new
                         {
                             EmployeeId = 6,
                             BloodGroup = "A-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1170),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1039),
                             DateOfBirth = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 6,
@@ -3385,14 +3179,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/sophia_martinez.jpg",
                             Religion = "Catholic",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1170)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1040)
                         },
                         new
                         {
                             EmployeeId = 7,
                             BloodGroup = "B-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1175),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1048),
                             DateOfBirth = new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 7,
@@ -3415,14 +3209,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/daniel_taylor.jpg",
                             Religion = "Jewish",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1175)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1049)
                         },
                         new
                         {
                             EmployeeId = 8,
                             BloodGroup = "AB+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1182),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1054),
                             DateOfBirth = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 8,
@@ -3445,14 +3239,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/olivia_anderson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1183)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1055)
                         },
                         new
                         {
                             EmployeeId = 9,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1203),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1060),
                             DateOfBirth = new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 9,
@@ -3475,14 +3269,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ethan_thomas.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1203)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1061)
                         },
                         new
                         {
                             EmployeeId = 10,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1209),
+                            CreatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1066),
                             DateOfBirth = new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 10,
@@ -3505,7 +3299,7 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ava_white.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1209)
+                            UpdatedOn = new DateTime(2024, 8, 17, 16, 58, 34, 550, DateTimeKind.Utc).AddTicks(1066)
                         });
                 });
 
@@ -3863,33 +3657,75 @@ namespace Fanush.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Education", b =>
+            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Applicant", b =>
                 {
-                    b.HasOne("Fanush.Entities.RecruitmentManagement.Applicant", "Applicant")
-                        .WithMany("Educations")
-                        .HasForeignKey("ApplicantId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                    b.OwnsOne("Fanush.Entities.RecruitmentManagement.Applicant+Educations", "Education", b1 =>
+                        {
+                            b1.Property<int>("ApplicantId")
+                                .HasColumnType("int");
 
-                    b.Navigation("Applicant");
+                            b1.Property<string>("Degree")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Institution")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("PassingYear")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<decimal>("Result")
+                                .HasColumnType("decimal(18,2)");
+
+                            b1.HasKey("ApplicantId");
+
+                            b1.ToTable("Applicants");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ApplicantId");
+                        });
+
+                    b.OwnsOne("Fanush.Entities.RecruitmentManagement.Applicant+WorkExperiences", "WorkExperience", b1 =>
+                        {
+                            b1.Property<int>("ApplicantId")
+                                .HasColumnType("int");
+
+                            b1.Property<string>("Company")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Duration")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.Property<string>("Position")
+                                .IsRequired()
+                                .HasColumnType("nvarchar(max)");
+
+                            b1.HasKey("ApplicantId");
+
+                            b1.ToTable("Applicants");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ApplicantId");
+                        });
+
+                    b.Navigation("Education")
+                        .IsRequired();
+
+                    b.Navigation("WorkExperience")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Interview", b =>
                 {
                     b.HasOne("Fanush.Entities.RecruitmentManagement.Applicant", "Applicant")
-                        .WithMany("Interviews")
+                        .WithMany("ApplicantInterviews")
                         .HasForeignKey("ApplicantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Applicant");
-                });
-
-            modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.WorkExperience", b =>
-                {
-                    b.HasOne("Fanush.Entities.RecruitmentManagement.Applicant", "Applicant")
-                        .WithMany("WorkExperiences")
-                        .HasForeignKey("ApplicantId")
-                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Applicant");
                 });
@@ -3979,11 +3815,7 @@ namespace Fanush.Migrations
 
             modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Applicant", b =>
                 {
-                    b.Navigation("Educations");
-
-                    b.Navigation("Interviews");
-
-                    b.Navigation("WorkExperiences");
+                    b.Navigation("ApplicantInterviews");
                 });
 
             modelBuilder.Entity("Fanush.Models.EmployeeManagement.Department", b =>

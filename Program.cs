@@ -9,6 +9,8 @@ using Fanush.DAL.Interfaces.TimeAndAttendeceInterface;
 using Fanush.DAL.Repositories.TimeAndAttendanceRepositories;
 using Fanush.DAL.Interfaces.RecruitmentInterface;
 using Fanush.DAL.Repositories.RecruitmentRepositories;
+using Fanush.DAL.Interfaces.PerformenceInterface;
+using Fanush.DAL.Repositories.PerformenceManagementRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +40,13 @@ builder.Services.AddScoped<IClockInOutRepository, ClockInOutRepository>();
 builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
 builder.Services.AddScoped<IOvertimeRepository, OvertimeRepository>();
 builder.Services.AddScoped<IPayrollIntegrationRepository, PayrollIntegrationRepository>();
+
+//PerformenceManagement
+builder.Services.AddScoped<IDevelopmentPlanRepository, DevelopmentPlanRepository>();
+builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddScoped<IPerformanceReportRepository, PerformanceReportRepository>();
+builder.Services.AddScoped<IPerformanceReviewRepository, PerformanceReviewRepository>();
+
 
 
 builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)

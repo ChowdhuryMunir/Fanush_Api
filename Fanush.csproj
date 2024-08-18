@@ -20,11 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\PerformenceManagement\" />
     <Folder Include="DAL\Interfaces\PayrollInterface\" />
-    <Folder Include="DAL\Interfaces\PerformenceInterface\" />
     <Folder Include="DAL\Repositories\PayrollRepositories\" />
-    <Folder Include="DAL\Repositories\PerformenceRepositories\" />
     <Folder Include="Entities\PayrollManagement\" />
   </ItemGroup>
 

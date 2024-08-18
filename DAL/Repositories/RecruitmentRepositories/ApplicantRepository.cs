@@ -71,8 +71,6 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
             existingApplicant.ZipCode = entity.ZipCode;
             existingApplicant.Country = entity.Country;
             existingApplicant.ExpectedSalary = entity.ExpectedSalary;
-            existingApplicant.WorkExperience = entity.WorkExperience;
-            existingApplicant.Education = entity.Education;
             existingApplicant.Languages = entity.Languages;
             existingApplicant.Skills = entity.Skills;
             existingApplicant.References = entity.References;

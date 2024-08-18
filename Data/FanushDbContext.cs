@@ -3,6 +3,8 @@ using Fanush.Entities.RecruitmentManagement;
 using Fanush.Entities.TimeAndAttendence;
 using Fanush.Models.EmployeeManagement;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using static Fanush.Entities.RecruitmentManagement.Applicant;
 
 namespace Fanush.DAL
 {
@@ -22,6 +24,9 @@ namespace Fanush.DAL
         public DbSet<Interview> Interviews { get; set; }
         public DbSet<JobPosting> JobPostings { get; set; }
         public DbSet<Applicant> Applicants { get; set; }
+
+        public DbSet<Education> Educations { get; set; }
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
         #endregion RecruitManagement
 
         #region TimeAndAttendence
@@ -42,31 +47,32 @@ namespace Fanush.DAL
         #region Seed
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            #region SeedDataForEmpoyeeMangement
             // Seed data for JobTitles
             modelBuilder.Entity<JobTitle>().HasData(
-                new JobTitle { JobTitleId = 1, JobTitleName= "Software Engineer", IsActive = true },
-                new JobTitle { JobTitleId = 2, JobTitleName= "HR Manager", IsActive = true },
-                new JobTitle { JobTitleId = 3, JobTitleName= "Quality Assurance Analyst", IsActive = true },
-                new JobTitle { JobTitleId = 4, JobTitleName= "Marketing Specialist", IsActive = true },
-                new JobTitle { JobTitleId = 5, JobTitleName= "Finance Manager", IsActive = true },
-                new JobTitle { JobTitleId = 6, JobTitleName= "Operations Coordinator", IsActive = true },
-                new JobTitle { JobTitleId = 7, JobTitleName= "IT Support Specialist", IsActive = true },
-                new JobTitle { JobTitleId = 8, JobTitleName= "Sales Representative", IsActive = true },
-                new JobTitle { JobTitleId = 9, JobTitleName= "Customer Service Representative", IsActive = true },
-                new JobTitle { JobTitleId = 10,JobTitleName = "Project Manager", IsActive = true }
+                new JobTitle { JobTitleId = 1, JobTitleName = "Software Engineer", IsActive = true },
+                new JobTitle { JobTitleId = 2, JobTitleName = "HR Manager", IsActive = true },
+                new JobTitle { JobTitleId = 3, JobTitleName = "Quality Assurance Analyst", IsActive = true },
+                new JobTitle { JobTitleId = 4, JobTitleName = "Marketing Specialist", IsActive = true },
+                new JobTitle { JobTitleId = 5, JobTitleName = "Finance Manager", IsActive = true },
+                new JobTitle { JobTitleId = 6, JobTitleName = "Operations Coordinator", IsActive = true },
+                new JobTitle { JobTitleId = 7, JobTitleName = "IT Support Specialist", IsActive = true },
+                new JobTitle { JobTitleId = 8, JobTitleName = "Sales Representative", IsActive = true },
+                new JobTitle { JobTitleId = 9, JobTitleName = "Customer Service Representative", IsActive = true },
+                new JobTitle { JobTitleId = 10, JobTitleName = "Project Manager", IsActive = true }
             );
 
             // Seed data for Departments
             modelBuilder.Entity<Department>().HasData(
                 new Department { DepartmentId = 1, DepartmentName = "Engineering", IsActive = true },
-                new Department { DepartmentId = 2, DepartmentName= "Human Resources", IsActive = true },
-                new Department { DepartmentId = 3, DepartmentName= "Marketing", IsActive = true },
-                new Department { DepartmentId = 4, DepartmentName= "Finance", IsActive = true },
-                new Department { DepartmentId = 5, DepartmentName= "Operations", IsActive = true },
-                new Department { DepartmentId = 6, DepartmentName= "IT", IsActive = true },
-                new Department { DepartmentId = 7, DepartmentName= "Sales", IsActive = true },
-                new Department { DepartmentId = 8, DepartmentName= "Customer Service", IsActive = true },
-                new Department { DepartmentId = 9, DepartmentName= "Research & Development", IsActive = true },
+                new Department { DepartmentId = 2, DepartmentName = "Human Resources", IsActive = true },
+                new Department { DepartmentId = 3, DepartmentName = "Marketing", IsActive = true },
+                new Department { DepartmentId = 4, DepartmentName = "Finance", IsActive = true },
+                new Department { DepartmentId = 5, DepartmentName = "Operations", IsActive = true },
+                new Department { DepartmentId = 6, DepartmentName = "IT", IsActive = true },
+                new Department { DepartmentId = 7, DepartmentName = "Sales", IsActive = true },
+                new Department { DepartmentId = 8, DepartmentName = "Customer Service", IsActive = true },
+                new Department { DepartmentId = 9, DepartmentName = "Research & Development", IsActive = true },
                 new Department { DepartmentId = 10, DepartmentName = "Legal", IsActive = true }
             );
 
@@ -79,8 +85,8 @@ namespace Fanush.DAL
           LastName = "Doe",
           DateOfBirth = new DateTime(1985, 5, 20),
           Gender = "Male",
-          PresentAddress= "abc",
-          PermanentAddress="abc",
+          PresentAddress = "abc",
+          PermanentAddress = "abc",
           PhoneNumber = "1234567890",
           Email = "john.doe@example.com",
           NationalId = "1234567890123",
@@ -403,6 +409,9 @@ namespace Fanush.DAL
                 new EmployeeDataImportExport { ImportExportId = 10, Type = "Export", FileName = "employees_info_backup.xlsx", FilePath = "/exports/employees_info_backup.xlsx", ImportExportDate = new DateTime(2022, 5, 10), IsActive = true }
             );
 
+            #endregion SeedDataForEmpoyeeMangement
+
+            #region SeedForTimeAndAttendence
             // Seed data for AbsenceReport
             modelBuilder.Entity<AbsenceReport>().HasData(
             new AbsenceReport
@@ -751,19 +760,1376 @@ namespace Fanush.DAL
         EarlyDepartureReason = null
     }
 );
+            // Seed data for Leave
+            modelBuilder.Entity<Leave>().HasData(
+                new Leave { LeaveId = 1, EmployeeId = 1, LeaveType = "Vacation", StartDate = new DateTime(2024, 08, 01), EndDate = new DateTime(2024, 08, 07), Status = "Approved", Reason = "Annual vacation", RequestedBy = "John Doe", ApprovalDate = DateTime.Now, Approver = "Jane Smith", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Annual" },
+                new Leave { LeaveId = 2, EmployeeId = 2, LeaveType = "Sick", StartDate = new DateTime(2024, 08, 10), EndDate = new DateTime(2024, 08, 12), Status = "Pending", Reason = "Medical reasons", RequestedBy = "Alice Johnson", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = false, LeaveCategory = "Medical" },
+                new Leave { LeaveId = 3, EmployeeId = 3, LeaveType = "Maternity", StartDate = new DateTime(2024, 07, 01), EndDate = new DateTime(2024, 12, 31), Status = "Approved", Reason = "Childbirth", RequestedBy = "Emily Davis", ApprovalDate = DateTime.Now, Approver = "Michael Brown", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Maternity" },
+                new Leave { LeaveId = 4, EmployeeId = 4, LeaveType = "Personal", StartDate = new DateTime(2024, 09, 15), EndDate = new DateTime(2024, 09, 20), Status = "Approved", Reason = "Personal matters", RequestedBy = "David Wilson", ApprovalDate = DateTime.Now, Approver = "Sarah Johnson", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Personal" },
+                new Leave { LeaveId = 5, EmployeeId = 5, LeaveType = "Unpaid", StartDate = new DateTime(2024, 10, 01), EndDate = new DateTime(2024, 10, 07), Status = "Approved", Reason = "Extended leave", RequestedBy = "Jessica Lee", ApprovalDate = DateTime.Now, Approver = "Robert Brown", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = false, LeaveCategory = "Unpaid" },
+                new Leave { LeaveId = 6, EmployeeId = 6, LeaveType = "Vacation", StartDate = new DateTime(2024, 08, 25), EndDate = new DateTime(2024, 08, 30), Status = "Denied", Reason = "No coverage available", RequestedBy = "Mark Taylor", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = true, LeaveCategory = "Annual" },
+                new Leave { LeaveId = 7, EmployeeId = 7, LeaveType = "Sick", StartDate = new DateTime(2024, 08, 05), EndDate = new DateTime(2024, 08, 06), Status = "Approved", Reason = "Flu", RequestedBy = "Anna Scott", ApprovalDate = DateTime.Now, Approver = "Olivia White", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Medical" },
+                new Leave { LeaveId = 8, EmployeeId = 8, LeaveType = "Personal", StartDate = new DateTime(2024, 09, 10), EndDate = new DateTime(2024, 09, 15), Status = "Pending", Reason = "Family event", RequestedBy = "John Martin", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = true, LeaveCategory = "Personal" },
+                new Leave { LeaveId = 9, EmployeeId = 9, LeaveType = "Maternity", StartDate = new DateTime(2024, 10, 01), EndDate = new DateTime(2025, 01, 31), Status = "Approved", Reason = "Childbirth", RequestedBy = "Laura Clark", ApprovalDate = DateTime.Now, Approver = "James Miller", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Maternity" },
+                new Leave { LeaveId = 10, EmployeeId = 10, LeaveType = "Unpaid", StartDate = new DateTime(2024, 11, 01), EndDate = new DateTime(2024, 11, 15), Status = "Approved", Reason = "Personal reasons", RequestedBy = "Sophia Walker", ApprovalDate = DateTime.Now, Approver = "Daniel Moore", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = false, LeaveCategory = "Unpaid" }
+            );
+
+            // Seed data for Overtime
+            modelBuilder.Entity<Overtime>().HasData(
+                new Overtime { OvertimeId = 1, EmployeeId = 1, Date = new DateTime(2024, 08, 01), Hours = 4.5, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Approved", ApprovedBy = "Jane Smith", ApprovalDate = DateTime.Now, Reason = "Project deadline", AttachmentUrl = "http://example.com/attachment1", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "John Doe", LastModifiedBy = "John Doe", Department = "IT", Project = "Project A" },
+                new Overtime { OvertimeId = 2, EmployeeId = 2, Date = new DateTime(2024, 08, 03), Hours = 3.0, IsActive = true, OvertimeType = "Mandatory", ApprovalStatus = "Pending", ApprovedBy = null, ApprovalDate = null, Reason = "System update", AttachmentUrl = null, CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Alice Johnson", LastModifiedBy = "Alice Johnson", Department = "Finance", Project = "System Upgrade" },
+                new Overtime { OvertimeId = 3, EmployeeId = 3, Date = new DateTime(2024, 08, 05), Hours = 2.0, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Approved", ApprovedBy = "Michael Brown", ApprovalDate = DateTime.Now, Reason = "Customer support", AttachmentUrl = "http://example.com/attachment2", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Emily Davis", LastModifiedBy = "Emily Davis", Department = "Support", Project = "Customer A" },
+                new Overtime { OvertimeId = 4, EmployeeId = 4, Date = new DateTime(2024, 08, 10), Hours = 5.0, IsActive = true, OvertimeType = "Mandatory", ApprovalStatus = "Approved", ApprovedBy = "Sarah Johnson", ApprovalDate = DateTime.Now, Reason = "Product launch", AttachmentUrl = "http://example.com/attachment3", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "David Wilson", LastModifiedBy = "David Wilson", Department = "Marketing", Project = "Launch X" },
+                new Overtime { OvertimeId = 5, EmployeeId = 5, Date = new DateTime(2024, 08, 12), Hours = 6.0, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Rejected", ApprovedBy = null, ApprovalDate = null, Reason = "Training preparation", AttachmentUrl = null, CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Jessica Lee", LastModifiedBy = "Jessica Lee", Department = "HR", Project = "Training Session" },
+                new Overtime { OvertimeId = 6, EmployeeId = 6, Date = new DateTime(2024, 08, 15), Hours = 4.0, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Approved", ApprovedBy = "Robert Brown", ApprovalDate = DateTime.Now, Reason = "Client meeting", AttachmentUrl = "http://example.com/attachment4", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Mark Taylor", LastModifiedBy = "Mark Taylor", Department = "Sales", Project = "Meeting Y" },
+                new Overtime { OvertimeId = 7, EmployeeId = 7, Date = new DateTime(2024, 08, 18), Hours = 2.5, IsActive = true, OvertimeType = "Mandatory", ApprovalStatus = "Pending", ApprovedBy = null, ApprovalDate = null, Reason = "Audit preparation", AttachmentUrl = null, CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Anna Scott", LastModifiedBy = "Anna Scott", Department = "Audit", Project = "Audit Z" },
+                new Overtime { OvertimeId = 8, EmployeeId = 8, Date = new DateTime(2024, 08, 20), Hours = 3.5, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Approved", ApprovedBy = "Olivia White", ApprovalDate = DateTime.Now, Reason = "Additional tasks", AttachmentUrl = "http://example.com/attachment5", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "John Martin", LastModifiedBy = "John Martin", Department = "Operations", Project = "Task A" },
+                new Overtime { OvertimeId = 9, EmployeeId = 9, Date = new DateTime(2024, 08, 22), Hours = 5.0, IsActive = true, OvertimeType = "Mandatory", ApprovalStatus = "Approved", ApprovedBy = "James Miller", ApprovalDate = DateTime.Now, Reason = "Emergency response", AttachmentUrl = "http://example.com/attachment6", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Laura Clark", LastModifiedBy = "Laura Clark", Department = "Emergency", Project = "Response X" },
+                new Overtime { OvertimeId = 10, EmployeeId = 10, Date = new DateTime(2024, 08, 25), Hours = 4.5, IsActive = true, OvertimeType = "Voluntary", ApprovalStatus = "Approved", ApprovedBy = "Daniel Moore", ApprovalDate = DateTime.Now, Reason = "Extra support", AttachmentUrl = "http://example.com/attachment7", CreatedDate = DateTime.Now, LastModifiedDate = DateTime.Now, CreatedBy = "Sophia Walker", LastModifiedBy = "Sophia Walker", Department = "Customer Service", Project = "Support B" }
+            );
+
+            // Seed data for PayrollIntegration
+            modelBuilder.Entity<PayrollIntegration>().HasData(
+                new PayrollIntegration { PayrollIntegrationId = 1, EmployeeId = 1, PayrollSystemId = 101, Amount = 2500.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12345", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 150.00m, NetPay = 2350.00m, TaxAmount = 200.00m, GrossPay = 2550.00m },
+                new PayrollIntegration { PayrollIntegrationId = 2, EmployeeId = 2, PayrollSystemId = 102, Amount = 3000.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12346", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 200.00m, NetPay = 2800.00m, TaxAmount = 250.00m, GrossPay = 3050.00m },
+                new PayrollIntegration { PayrollIntegrationId = 3, EmployeeId = 3, PayrollSystemId = 103, Amount = 2700.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12347", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 180.00m, NetPay = 2520.00m, TaxAmount = 220.00m, GrossPay = 2740.00m },
+                new PayrollIntegration { PayrollIntegrationId = 4, EmployeeId = 4, PayrollSystemId = 104, Amount = 2900.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12348", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 210.00m, NetPay = 2690.00m, TaxAmount = 230.00m, GrossPay = 2920.00m },
+                new PayrollIntegration { PayrollIntegrationId = 5, EmployeeId = 5, PayrollSystemId = 105, Amount = 3200.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12349", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 230.00m, NetPay = 2970.00m, TaxAmount = 270.00m, GrossPay = 3240.00m },
+                new PayrollIntegration { PayrollIntegrationId = 6, EmployeeId = 6, PayrollSystemId = 106, Amount = 3100.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12350", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 220.00m, NetPay = 2880.00m, TaxAmount = 260.00m, GrossPay = 3140.00m },
+                new PayrollIntegration { PayrollIntegrationId = 7, EmployeeId = 7, PayrollSystemId = 107, Amount = 2800.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12351", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 190.00m, NetPay = 2610.00m, TaxAmount = 240.00m, GrossPay = 2850.00m },
+                new PayrollIntegration { PayrollIntegrationId = 8, EmployeeId = 8, PayrollSystemId = 108, Amount = 3300.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12352", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 240.00m, NetPay = 3060.00m, TaxAmount = 280.00m, GrossPay = 3340.00m },
+                new PayrollIntegration { PayrollIntegrationId = 9, EmployeeId = 9, PayrollSystemId = 109, Amount = 3500.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12353", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 250.00m, NetPay = 3250.00m, TaxAmount = 290.00m, GrossPay = 3550.00m },
+                new PayrollIntegration { PayrollIntegrationId = 10, EmployeeId = 10, PayrollSystemId = 110, Amount = 3400.00m, IntegrationDate = new DateTime(2024, 08, 01), IntegrationType = "Regular", TransactionId = "TX12354", IsActive = true, PayPeriodStartDate = new DateTime(2024, 08, 01), PayPeriodEndDate = new DateTime(2024, 08, 31), PayFrequency = "Monthly", Deductions = 230.00m, NetPay = 3170.00m, TaxAmount = 270.00m, GrossPay = 3440.00m }
+            );
+            #endregion SeedForTimeAndAttendence
+
+            #region SeedDataForRecruitmentManagement
+            // Configuring the Status enum as a string in the database
+            modelBuilder.Entity<Applicant>()
+                .Property(e => e.Status)
+                .HasConversion<string>();
+
+            // Configure Applicant - Education relationship
+            modelBuilder.Entity<Education>()
+                .HasOne(e => e.Applicant)
+                .WithMany(a => a.Educations)
+                .HasForeignKey(e => e.ApplicantId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure Applicant - WorkExperience relationship
+            modelBuilder.Entity<WorkExperience>()
+                .HasOne(w => w.Applicant)
+                .WithMany(a => a.WorkExperiences)
+                .HasForeignKey(w => w.ApplicantId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Seed data for Applicants
+            modelBuilder.Entity<Applicant>().HasData(
+                new Applicant
+                {
+                    ApplicantId = 1,
+                    ApplicantName = "John Doe",
+                    Email = "john.doe@example.com",
+                    ResumeUrl = "https://example.com/resume/johndoe.pdf",
+                    Status = Applicant.Statuses.Approved,
+                    AppliedDate = new DateTime(2024, 08, 01),
+                    PhoneNumber = "123-456-7890",
+                    LinkedinProfileUrl = "https://linkedin.com/in/johndoe",
+                    Address = "123 Main St",
+                    City = "New York",
+                    ZipCode = "10001",
+                    Country = "USA",
+                    ExpectedSalary = 70000m,
+                    Languages = "English, Spanish",
+                    Skills = "C#, .NET, SQL",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 2,
+                    ApplicantName = "Alice Johnson",
+                    Email = "alice.johnson@example.com",
+                    ResumeUrl = "https://example.com/resume/alicejohnson.pdf",
+                    Status = Applicant.Statuses.Pending,
+                    AppliedDate = new DateTime(2024, 08, 05),
+                    PhoneNumber = "234-567-8901",
+                    LinkedinProfileUrl = "https://linkedin.com/in/alicejohnson",
+                    Address = "456 Oak St",
+                    City = "San Francisco",
+                    ZipCode = "94101",
+                    Country = "USA",
+                    ExpectedSalary = 80000m,
+                    Languages = "English, Mandarin",
+                    Skills = "JavaScript, React, Node.js",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 3,
+                    ApplicantName = "Robert Smith",
+                    Email = "robert.smith@example.com",
+                    ResumeUrl = "https://example.com/resume/robertsmith.pdf",
+                    Status = Applicant.Statuses.Approved,
+                    AppliedDate = new DateTime(2024, 08, 07),
+                    PhoneNumber = "345-678-9012",
+                    LinkedinProfileUrl = "https://linkedin.com/in/robertsmith",
+                    Address = "789 Pine St",
+                    City = "Los Angeles",
+                    ZipCode = "90001",
+                    Country = "USA",
+                    ExpectedSalary = 90000m,
+                    Languages = "English, French",
+                    Skills = "Python, Django, Flask",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 4,
+                    ApplicantName = "Emily Davis",
+                    Email = "emily.davis@example.com",
+                    ResumeUrl = "https://example.com/resume/emilydavis.pdf",
+                    Status = Applicant.Statuses.Rejected,
+                    AppliedDate = new DateTime(2024, 08, 10),
+                    PhoneNumber = "456-789-0123",
+                    LinkedinProfileUrl = "https://linkedin.com/in/emilydavis",
+                    Address = "101 Maple St",
+                    City = "Chicago",
+                    ZipCode = "60601",
+                    Country = "USA",
+                    ExpectedSalary = 85000m,
+                    Languages = "English, German",
+                    Skills = "Java, Spring, Hibernate",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 5,
+                    ApplicantName = "Michael Brown",
+                    Email = "michael.brown@example.com",
+                    ResumeUrl = "https://example.com/resume/michaelbrown.pdf",
+                    Status = Applicant.Statuses.Pending,
+                    AppliedDate = new DateTime(2024, 08, 12),
+                    PhoneNumber = "567-890-1234",
+                    LinkedinProfileUrl = "https://linkedin.com/in/michaelbrown",
+                    Address = "202 Cedar St",
+                    City = "Houston",
+                    ZipCode = "77001",
+                    Country = "USA",
+                    ExpectedSalary = 75000m,
+                    Languages = "English, Japanese",
+                    Skills = "C++, Unreal Engine, Game Development",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 6,
+                    ApplicantName = "Sophia Martinez",
+                    Email = "sophia.martinez@example.com",
+                    ResumeUrl = "https://example.com/resume/sophiamartinez.pdf",
+                    Status = Applicant.Statuses.Approved,
+                    AppliedDate = new DateTime(2024, 08, 15),
+                    PhoneNumber = "678-901-2345",
+                    LinkedinProfileUrl = "https://linkedin.com/in/sophiamartinez",
+                    Address = "303 Spruce St",
+                    City = "Phoenix",
+                    ZipCode = "85001",
+                    Country = "USA",
+                    ExpectedSalary = 78000m,
+                    Languages = "English, Italian",
+                    Skills = "Ruby on Rails, PostgreSQL, DevOps",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 7,
+                    ApplicantName = "David Lee",
+                    Email = "david.lee@example.com",
+                    ResumeUrl = "https://example.com/resume/davidlee.pdf",
+                    Status = Applicant.Statuses.Rejected,
+                    AppliedDate = new DateTime(2024, 08, 18),
+                    PhoneNumber = "789-012-3456",
+                    LinkedinProfileUrl = "https://linkedin.com/in/davidlee",
+                    Address = "404 Birch St",
+                    City = "Miami",
+                    ZipCode = "33101",
+                    Country = "USA",
+                    ExpectedSalary = 82000m,
+                    Languages = "English, Korean",
+                    Skills = "Go, Kubernetes, Microservices",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 8,
+                    ApplicantName = "Olivia Wilson",
+                    Email = "olivia.wilson@example.com",
+                    ResumeUrl = "https://example.com/resume/oliviawilson.pdf",
+                    Status = Applicant.Statuses.Pending,
+                    AppliedDate = new DateTime(2024, 08, 20),
+                    PhoneNumber = "890-123-4567",
+                    LinkedinProfileUrl = "https://linkedin.com/in/oliviawilson",
+                    Address = "505 Ash St",
+                    City = "Seattle",
+                    ZipCode = "98101",
+                    Country = "USA",
+                    ExpectedSalary = 77000m,
+                    Languages = "English, Spanish",
+                    Skills = "Swift, iOS Development, UI/UX Design",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 9,
+                    ApplicantName = "William Taylor",
+                    Email = "william.taylor@example.com",
+                    ResumeUrl = "https://example.com/resume/williamtaylor.pdf",
+                    Status = Applicant.Statuses.Approved,
+                    AppliedDate = new DateTime(2024, 08, 23),
+                    PhoneNumber = "901-234-5678",
+                    LinkedinProfileUrl = "https://linkedin.com/in/williamtaylor",
+                    Address = "606 Poplar St",
+                    City = "Boston",
+                    ZipCode = "02101",
+                    Country = "USA",
+                    ExpectedSalary = 90000m,
+                    Languages = "English, Portuguese",
+                    Skills = "JavaScript, Angular, Node.js",
+                    References = "Available upon request"
+                },
+                new Applicant
+                {
+                    ApplicantId = 10,
+                    ApplicantName = "Charlotte Harris",
+                    Email = "charlotte.harris@example.com",
+                    ResumeUrl = "https://example.com/resume/charlotteharris.pdf",
+                    Status = Applicant.Statuses.Pending,
+                    AppliedDate = new DateTime(2024, 08, 25),
+                    PhoneNumber = "012-345-6789",
+                    LinkedinProfileUrl = "https://linkedin.com/in/charlotteharris",
+                    Address = "707 Willow St",
+                    City = "Dallas",
+                    ZipCode = "75201",
+                    Country = "USA",
+                    ExpectedSalary = 84000m,
+                    Languages = "English, Russian",
+                    Skills = "PHP, Laravel, MySQL",
+                    References = "Available upon request"
+                }
+            );
 
 
 
-            modelBuilder.Entity<Applicant>(entity =>
-            {
-                // Configuring the Status enum as a string in the database
-                entity.Property(e => e.Status)
-                      .HasConversion<string>();
+            // Seed data for Education
+            modelBuilder.Entity<Education>().HasData(
+     new Education
+     {
+         EducationId = 1,
+         ApplicantId = 1,  // Matches ApplicantId from Applicants table
+         Degree = "Bachelor's Degree",
+         Institution = "University A",
+         PassingYear = "2020",
+         Result = 3.5m
+     },
+     new Education
+     {
+         EducationId = 2,
+         ApplicantId = 2,  // Matches ApplicantId from Applicants table
+         Degree = "Master's Degree",
+         Institution = "University B",
+         PassingYear = "2022",
+         Result = 3.8m
+     },
+     new Education
+     {
+         EducationId = 3,
+         ApplicantId = 3,  // Matches ApplicantId from Applicants table
+         Degree = "PhD",
+         Institution = "University C",
+         PassingYear = "2024",
+         Result = 4.0m
+     },
+     new Education
+     {
+         EducationId = 4,
+         ApplicantId = 4,  // Matches ApplicantId from Applicants table
+         Degree = "Associate's Degree",
+         Institution = "College D",
+         PassingYear = "2018",
+         Result = 3.2m
+     },
+     new Education
+     {
+         EducationId = 5,
+         ApplicantId = 5,  // Matches ApplicantId from Applicants table
+         Degree = "Diploma",
+         Institution = "Institute E",
+         PassingYear = "2019",
+         Result = 3.0m
+     },
+     new Education
+     {
+         EducationId = 6,
+         ApplicantId = 6,  // Matches ApplicantId from Applicants table
+         Degree = "Bachelor's Degree",
+         Institution = "University F",
+         PassingYear = "2021",
+         Result = 3.6m
+     },
+     new Education
+     {
+         EducationId = 7,
+         ApplicantId = 7,  // Matches ApplicantId from Applicants table
+         Degree = "Master's Degree",
+         Institution = "University G",
+         PassingYear = "2023",
+         Result = 3.9m
+     },
+     new Education
+     {
+         EducationId = 8,
+         ApplicantId = 8,  // Matches ApplicantId from Applicants table
+         Degree = "Certificate",
+         Institution = "Training Center H",
+         PassingYear = "2022",
+         Result = 3.8m
+     },
+     new Education
+     {
+         EducationId = 9,
+         ApplicantId = 9,  // Matches ApplicantId from Applicants table
+         Degree = "High School",
+         Institution = "School I",
+         PassingYear = "2017",
+         Result = 3.1m
+     },
+     new Education
+     {
+         EducationId = 10,
+         ApplicantId = 10,  // Matches ApplicantId from Applicants table
+         Degree = "Bachelor's Degree",
+         Institution = "University J",
+         PassingYear = "2020",
+         Result = 3.7m
+     }
+ );
 
-                // Configuring WorkExperiences and Educations as complex types if necessary
-                entity.OwnsOne(a => a.WorkExperience);
-                entity.OwnsOne(a => a.Education);
-            });
+
+
+            // Seed data for WorkExperience
+            modelBuilder.Entity<WorkExperience>().HasData(
+     new WorkExperience
+     {
+         WorkExperienceId = 1,
+         ApplicantId = 1,  // Matches ApplicantId from Applicants table
+         Company = "TechCorp",
+         Position = "Software Engineer",
+         Duration = "2 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 2,
+         ApplicantId = 2,  // Matches ApplicantId from Applicants table
+         Company = "WebSolutions",
+         Position = "Frontend Developer",
+         Duration = "3 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 3,
+         ApplicantId = 3,  // Matches ApplicantId from Applicants table
+         Company = "DataWorks",
+         Position = "Data Scientist",
+         Duration = "4 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 4,
+         ApplicantId = 4,  // Matches ApplicantId from Applicants table
+         Company = "FinanceTech",
+         Position = "Backend Developer",
+         Duration = "1 year"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 5,
+         ApplicantId = 5,  // Matches ApplicantId from Applicants table
+         Company = "GameStudio",
+         Position = "Game Developer",
+         Duration = "2 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 6,
+         ApplicantId = 6,  // Matches ApplicantId from Applicants table
+         Company = "DevOpsInc",
+         Position = "DevOps Engineer",
+         Duration = "3 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 7,
+         ApplicantId = 7,  // Matches ApplicantId from Applicants table
+         Company = "MicroServicesCo",
+         Position = "Microservices Architect",
+         Duration = "4 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 8,
+         ApplicantId = 8,  // Matches ApplicantId from Applicants table
+         Company = "AppDesign",
+         Position = "iOS Developer",
+         Duration = "2 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 9,
+         ApplicantId = 9,  // Matches ApplicantId from Applicants table
+         Company = "WebTech",
+         Position = "Full Stack Developer",
+         Duration = "3 years"
+     },
+     new WorkExperience
+     {
+         WorkExperienceId = 10,
+         ApplicantId = 10,  // Matches ApplicantId from Applicants table
+         Company = "EnterpriseSolutions",
+         Position = "PHP Developer",
+         Duration = "5 years"
+     }
+ );
+
+
+            // Seed data for Interview
+            modelBuilder.Entity<Interview>().HasData(
+                new Interview
+                {
+                    InterviewId = 1,
+                    DateTime = new DateTime(2024, 07, 01, 10, 00, 00),
+                    Location = "Conference Room A",
+                    Notes = "Initial screening for software engineer position.",
+                    IsActive = true,
+                    Interviewer = "John Smith",
+                    ApplicantId = 1,
+                    InterviewType = Interview.InterviewTypes.PreliminaryTest,
+                    DurationMinutes = 30,
+                    Feedback = "Candidate demonstrated strong technical skills.",
+                    Outcome = "Pending",
+                    FollowUp = "Schedule a technical interview."
+                },
+                new Interview
+                {
+                    InterviewId = 2,
+                    DateTime = new DateTime(2024, 07, 02, 14, 00, 00),
+                    Location = "Zoom Meeting",
+                    Notes = "Technical interview with frontend developer.",
+                    IsActive = true,
+                    Interviewer = "Alice Johnson",
+                    ApplicantId = 2,
+                    InterviewType = Interview.InterviewTypes.Written,
+                    DurationMinutes = 45,
+                    Feedback = "Good problem-solving abilities, needs to improve on coding efficiency.",
+                    Outcome = "Pending",
+                    FollowUp = "Send coding challenge for further assessment."
+                },
+                new Interview
+                {
+                    InterviewId = 3,
+                    DateTime = new DateTime(2024, 07, 03, 09, 00, 00),
+                    Location = "Office Lobby",
+                    Notes = "In-person interview for data scientist role.",
+                    IsActive = true,
+                    Interviewer = "Robert Brown",
+                    ApplicantId = 3,
+                    InterviewType = Interview.InterviewTypes.OralTest,
+                    DurationMinutes = 60,
+                    Feedback = "Excellent understanding of data analysis concepts.",
+                    Outcome = "Hired",
+                    FollowUp = "Prepare offer letter."
+                },
+                new Interview
+                {
+                    InterviewId = 4,
+                    DateTime = new DateTime(2024, 07, 04, 11, 00, 00),
+                    Location = "Conference Room B",
+                    Notes = "Final round interview for project manager position.",
+                    IsActive = true,
+                    Interviewer = "Emily White",
+                    ApplicantId = 4,
+                    InterviewType = Interview.InterviewTypes.PreliminaryTest,
+                    DurationMinutes = 40,
+                    Feedback = "Strong leadership skills but lacks experience in Agile methodologies.",
+                    Outcome = "Pending",
+                    FollowUp = "Discuss with team regarding Agile experience."
+                },
+                new Interview
+                {
+                    InterviewId = 5,
+                    DateTime = new DateTime(2024, 07, 05, 13, 00, 00),
+                    Location = "Office Meeting Room",
+                    Notes = "Interview for UX designer position.",
+                    IsActive = true,
+                    Interviewer = "Grace Clark",
+                    ApplicantId = 5,
+                    InterviewType = Interview.InterviewTypes.Written,
+                    DurationMinutes = 50,
+                    Feedback = "Good design portfolio, needs improvement in user research.",
+                    Outcome = "Hired",
+                    FollowUp = "Arrange onboarding session."
+                },
+                new Interview
+                {
+                    InterviewId = 6,
+                    DateTime = new DateTime(2024, 07, 06, 15, 00, 00),
+                    Location = "Virtual Meeting",
+                    Notes = "Initial interview for business analyst role.",
+                    IsActive = false,
+                    Interviewer = "Henry Allen",
+                    ApplicantId = 6,
+                    InterviewType = Interview.InterviewTypes.OralTest,
+                    DurationMinutes = 30,
+                    Feedback = "Candidate has good analytical skills.",
+                    Outcome = "Rejected",
+                    FollowUp = "Send rejection email."
+                },
+                new Interview
+                {
+                    InterviewId = 7,
+                    DateTime = new DateTime(2024, 07, 07, 10, 00, 00),
+                    Location = "Conference Room C",
+                    Notes = "Technical interview for systems analyst position.",
+                    IsActive = true,
+                    Interviewer = "Linda Gray",
+                    ApplicantId = 7,
+                    InterviewType = Interview.InterviewTypes.PreliminaryTest,
+                    DurationMinutes = 35,
+                    Feedback = "Impressive technical knowledge but weak in communication skills.",
+                    Outcome = "Pending",
+                    FollowUp = "Consider additional communication training."
+                },
+                new Interview
+                {
+                    InterviewId = 8,
+                    DateTime = new DateTime(2024, 07, 08, 16, 00, 00),
+                    Location = "Office Meeting Room",
+                    Notes = "Final interview for network engineer role.",
+                    IsActive = true,
+                    Interviewer = "Sarah Black",
+                    ApplicantId = 8,
+                    InterviewType = Interview.InterviewTypes.Written,
+                    DurationMinutes = 60,
+                    Feedback = "Strong technical background and problem-solving skills.",
+                    Outcome = "Hired",
+                    FollowUp = "Prepare employment contract."
+                },
+                new Interview
+                {
+                    InterviewId = 9,
+                    DateTime = new DateTime(2024, 07, 09, 11, 00, 00),
+                    Location = "Zoom Meeting",
+                    Notes = "Interview for cloud engineer position.",
+                    IsActive = true,
+                    Interviewer = "Paul Black",
+                    ApplicantId = 9,
+                    InterviewType = Interview.InterviewTypes.OralTest,
+                    DurationMinutes = 40,
+                    Feedback = "Excellent knowledge of cloud technologies, needs to work on soft skills.",
+                    Outcome = "Pending",
+                    FollowUp = "Arrange for soft skills training."
+                },
+                new Interview
+                {
+                    InterviewId = 10,
+                    DateTime = new DateTime(2024, 07, 10, 09, 00, 00),
+                    Location = "Office Conference Room",
+                    Notes = "Interview for IT support specialist.",
+                    IsActive = true,
+                    Interviewer = "Samantha Lee",
+                    ApplicantId = 10,
+                    InterviewType = Interview.InterviewTypes.PreliminaryTest,
+                    DurationMinutes = 30,
+                    Feedback = "Good technical skills, but needs more experience in customer support.",
+                    Outcome = "Hired",
+                    FollowUp = "Send onboarding instructions."
+                }
+            );
+            
+            
+
+            // Seed data for JobPosting
+            modelBuilder.Entity<JobPosting>().HasData(
+                new JobPosting
+                {
+                    JobPostingId = 1,
+                    Title = "Software Engineer",
+                    Description = "Develop and maintain software applications.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 01),
+                    ApplicationDeadline = new DateTime(2024, 08, 31),
+                    StartDate = new DateTime(2024, 09, 15),
+                    City = "San Francisco",
+                    ContactEmail = "hr@company.com",
+                    ContactPhone = "123-456-7890",
+                    SalaryInformation = "Competitive salary based on experience",
+                    Requirements = "Bachelor's degree in Computer Science, 2+ years of experience.",
+                    JobType = "Full-time",
+                    ExperienceRequired = "2 years",
+                    EducationRequired = "Bachelor's degree",
+                    SkillsRequired = "C#, .NET, SQL",
+                    BenefitsOffered = "Healthcare, 401(k), Paid time off",
+                    WorkSchedule = "Monday to Friday, 9 AM to 5 PM",
+                    IsRemoteWork = false
+                },
+                new JobPosting
+                {
+                    JobPostingId = 2,
+                    Title = "UX Designer",
+                    Description = "Design user-friendly interfaces and experiences.",
+                    IsInternal = true,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 05),
+                    ApplicationDeadline = new DateTime(2024, 09, 05),
+                    StartDate = new DateTime(2024, 10, 01),
+                    City = "New York",
+                    ContactEmail = "design@company.com",
+                    ContactPhone = "987-654-3210",
+                    SalaryInformation = "Negotiable based on experience",
+                    Requirements = "3+ years of UX/UI design experience.",
+                    JobType = "Part-time",
+                    ExperienceRequired = "3 years",
+                    EducationRequired = "Associate's degree or higher",
+                    SkillsRequired = "Sketch, Figma, Adobe XD",
+                    BenefitsOffered = "Healthcare, Flexible working hours",
+                    WorkSchedule = "Flexible hours",
+                    IsRemoteWork = true
+                },
+                new JobPosting
+                {
+                    JobPostingId = 3,
+                    Title = "Project Manager",
+                    Description = "Manage project timelines, budgets, and team coordination.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 10),
+                    ApplicationDeadline = new DateTime(2024, 09, 10),
+                    StartDate = new DateTime(2024, 09, 20),
+                    City = "Chicago",
+                    ContactEmail = "pm@company.com",
+                    ContactPhone = "555-123-4567",
+                    SalaryInformation = "Up to $100,000 per year",
+                    Requirements = "PMP certification, 5+ years of project management experience.",
+                    JobType = "Full-time",
+                    ExperienceRequired = "5 years",
+                    EducationRequired = "Bachelor's degree",
+                    SkillsRequired = "Project management, Budgeting, Scheduling",
+                    BenefitsOffered = "Healthcare, Retirement plan, Paid vacation",
+                    WorkSchedule = "Monday to Friday, 8 AM to 4 PM",
+                    IsRemoteWork = false
+                },
+                new JobPosting
+                {
+                    JobPostingId = 4,
+                    Title = "Data Analyst",
+                    Description = "Analyze data and generate reports to support business decisions.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 15),
+                    ApplicationDeadline = new DateTime(2024, 09, 15),
+                    StartDate = new DateTime(2024, 10, 01),
+                    City = "Los Angeles",
+                    ContactEmail = "data@company.com",
+                    ContactPhone = "321-654-9870",
+                    SalaryInformation = "Competitive salary, based on experience",
+                    Requirements = "2+ years of data analysis experience, proficiency in SQL.",
+                    JobType = "Contract",
+                    ExperienceRequired = "2 years",
+                    EducationRequired = "Bachelor's degree in a related field",
+                    SkillsRequired = "SQL, Excel, Data visualization",
+                    BenefitsOffered = "Healthcare, Paid sick leave",
+                    WorkSchedule = "Monday to Friday, 9 AM to 6 PM",
+                    IsRemoteWork = true
+                },
+                new JobPosting
+                {
+                    JobPostingId = 5,
+                    Title = "Marketing Coordinator",
+                    Description = "Coordinate marketing campaigns and events.",
+                    IsInternal = true,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 20),
+                    ApplicationDeadline = new DateTime(2024, 09, 20),
+                    StartDate = new DateTime(2024, 10, 10),
+                    City = "Boston",
+                    ContactEmail = "marketing@company.com",
+                    ContactPhone = "654-321-0987",
+                    SalaryInformation = "Base salary + performance bonuses",
+                    Requirements = "1+ years of marketing experience.",
+                    JobType = "Full-time",
+                    ExperienceRequired = "1 year",
+                    EducationRequired = "Bachelor's degree in Marketing or related field",
+                    SkillsRequired = "Marketing strategy, Event planning, Social media",
+                    BenefitsOffered = "Healthcare, 401(k), Paid time off",
+                    WorkSchedule = "Monday to Friday, 8 AM to 5 PM",
+                    IsRemoteWork = false
+                },
+                new JobPosting
+                {
+                    JobPostingId = 6,
+                    Title = "Customer Support Specialist",
+                    Description = "Provide customer support and resolve customer issues.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 08, 25),
+                    ApplicationDeadline = new DateTime(2024, 09, 25),
+                    StartDate = new DateTime(2024, 10, 15),
+                    City = "Seattle",
+                    ContactEmail = "support@company.com",
+                    ContactPhone = "456-789-0123",
+                    SalaryInformation = "Hourly rate + benefits",
+                    Requirements = "Excellent communication skills, 1+ years of customer service experience.",
+                    JobType = "Part-time",
+                    ExperienceRequired = "1 year",
+                    EducationRequired = "High school diploma",
+                    SkillsRequired = "Customer service, Problem-solving, Communication",
+                    BenefitsOffered = "Healthcare, Paid time off",
+                    WorkSchedule = "Flexible hours",
+                    IsRemoteWork = true
+                },
+                new JobPosting
+                {
+                    JobPostingId = 7,
+                    Title = "Graphic Designer",
+                    Description = "Design marketing materials and brand assets.",
+                    IsInternal = true,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 09, 01),
+                    ApplicationDeadline = new DateTime(2024, 10, 01),
+                    StartDate = new DateTime(2024, 11, 01),
+                    City = "San Diego",
+                    ContactEmail = "design@company.com",
+                    ContactPhone = "789-012-3456",
+                    SalaryInformation = "Competitive salary based on experience",
+                    Requirements = "2+ years of graphic design experience, portfolio required.",
+                    JobType = "Full-time",
+                    ExperienceRequired = "2 years",
+                    EducationRequired = "Bachelor's degree in Design or related field",
+                    SkillsRequired = "Adobe Creative Suite, Graphic design, Creativity",
+                    BenefitsOffered = "Healthcare, 401(k), Paid time off",
+                    WorkSchedule = "Monday to Friday, 9 AM to 5 PM",
+                    IsRemoteWork = false
+                },
+                new JobPosting
+                {
+                    JobPostingId = 8,
+                    Title = "Software Tester",
+                    Description = "Test software applications to ensure quality and performance.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 09, 05),
+                    ApplicationDeadline = new DateTime(2024, 10, 05),
+                    StartDate = new DateTime(2024, 11, 01),
+                    City = "Austin",
+                    ContactEmail = "testing@company.com",
+                    ContactPhone = "012-345-6789",
+                    SalaryInformation = "Up to $80,000 per year",
+                    Requirements = "1+ years of software testing experience.",
+                    JobType = "Contract",
+                    ExperienceRequired = "1 year",
+                    EducationRequired = "Bachelor's degree in Computer Science",
+                    SkillsRequired = "Testing tools, Attention to detail, Problem-solving",
+                    BenefitsOffered = "Healthcare, Paid time off",
+                    WorkSchedule = "Monday to Friday, 10 AM to 6 PM",
+                    IsRemoteWork = true
+                },
+                new JobPosting
+                {
+                    JobPostingId = 9,
+                    Title = "HR Specialist",
+                    Description = "Manage HR functions and employee relations.",
+                    IsInternal = true,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 09, 10),
+                    ApplicationDeadline = new DateTime(2024, 10, 10),
+                    StartDate = new DateTime(2024, 11, 15),
+                    City = "Philadelphia",
+                    ContactEmail = "hr@company.com",
+                    ContactPhone = "345-678-9012",
+                    SalaryInformation = "Negotiable based on experience",
+                    Requirements = "3+ years of HR experience, strong interpersonal skills.",
+                    JobType = "Full-time",
+                    ExperienceRequired = "3 years",
+                    EducationRequired = "Bachelor's degree in Human Resources or related field",
+                    SkillsRequired = "HR management, Employee relations, Recruitment",
+                    BenefitsOffered = "Healthcare, 401(k), Paid vacation",
+                    WorkSchedule = "Monday to Friday, 8 AM to 5 PM",
+                    IsRemoteWork = false
+                },
+                new JobPosting
+                {
+                    JobPostingId = 10,
+                    Title = "Content Writer",
+                    Description = "Write and edit content for various platforms.",
+                    IsInternal = false,
+                    IsActive = true,
+                    PostingDate = new DateTime(2024, 09, 15),
+                    ApplicationDeadline = new DateTime(2024, 10, 15),
+                    StartDate = new DateTime(2024, 11, 01),
+                    City = "Denver",
+                    ContactEmail = "content@company.com",
+                    ContactPhone = "456-789-1234",
+                    SalaryInformation = "Competitive salary with performance bonuses",
+                    Requirements = "2+ years of content writing experience, strong writing skills.",
+                    JobType = "Part-time",
+                    ExperienceRequired = "2 years",
+                    EducationRequired = "Bachelor's degree in English or related field",
+                    SkillsRequired = "Content writing, SEO, Editing",
+                    BenefitsOffered = "Healthcare, Flexible working hours",
+                    WorkSchedule = "Flexible hours",
+                    IsRemoteWork = true
+                }
+            );
+
+            #endregion SeedDataForRecruitmentManagement
+
+            #region SeedDataForPerformenceManagement
+            //seed data for DevelopmentPlan
+            modelBuilder.Entity<DevelopmentPlan>().HasData(
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 1,
+        EmployeeId = 1,
+        Description = "Improve communication skills.",
+        TargetCompletionDate = new DateTime(2024, 12, 31),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Pending,
+        Progress = 20,
+        IsActive = true,
+        Feedback = "Needs more practice in public speaking.",
+        Resources = "Online communication course, public speaking workshops.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 2,
+        EmployeeId = 2,
+        Description = "Gain advanced skills in C#.",
+        TargetCompletionDate = new DateTime(2024, 11, 30),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Approved,
+        Progress = 40,
+        IsActive = true,
+        Feedback = "Excellent progress so far.",
+        Resources = "Advanced C# course, mentorship.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 3,
+        EmployeeId = 3,
+        Description = "Enhance project management skills.",
+        TargetCompletionDate = new DateTime(2024, 10, 31),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Pending,
+        Progress = 30,
+        IsActive = true,
+        Feedback = "Needs more focus on risk management.",
+        Resources = "PMI certification course, project simulations.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 4,
+        EmployeeId = 4,
+        Description = "Improve time management.",
+        TargetCompletionDate = new DateTime(2024, 09, 30),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Rejected,
+        Progress = 10,
+        IsActive = false,
+        Feedback = "Plan rejected due to insufficient details.",
+        Resources = "Time management workshops, books.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 5,
+        EmployeeId = 5,
+        Description = "Develop leadership skills.",
+        TargetCompletionDate = new DateTime(2024, 12, 31),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Pending,
+        Progress = 50,
+        IsActive = true,
+        Feedback = "Showing promise, continue with current plan.",
+        Resources = "Leadership seminars, mentoring.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 6,
+        EmployeeId = 6,
+        Description = "Learn new database management techniques.",
+        TargetCompletionDate = new DateTime(2024, 12, 01),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Approved,
+        Progress = 60,
+        IsActive = true,
+        Feedback = "Great progress in database design.",
+        Resources = "SQL workshops, advanced database books.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 7,
+        EmployeeId = 7,
+        Description = "Master cloud computing.",
+        TargetCompletionDate = new DateTime(2024, 08, 30),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Approved,
+        Progress = 70,
+        IsActive = true,
+        Feedback = "On track for certification.",
+        Resources = "Cloud certifications, online courses.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 8,
+        EmployeeId = 8,
+        Description = "Increase proficiency in Angular.",
+        TargetCompletionDate = new DateTime(2024, 07, 31),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Approved,
+        Progress = 80,
+        IsActive = true,
+        Feedback = "Nearly complete, great work!",
+        Resources = "Angular documentation, online courses.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 9,
+        EmployeeId = 9,
+        Description = "Improve technical writing skills.",
+        TargetCompletionDate = new DateTime(2024, 06, 30),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Pending,
+        Progress = 20,
+        IsActive = true,
+        Feedback = "Needs more practice.",
+        Resources = "Technical writing courses, guides.",
+        CompletionDate = null
+    },
+    new DevelopmentPlan
+    {
+        DevelopmentPlanId = 10,
+        EmployeeId = 10,
+        Description = "Gain proficiency in cybersecurity.",
+        TargetCompletionDate = new DateTime(2024, 05, 31),
+        DevelopmentPlanStatus = DevelopmentPlan.DevelopmentPlanStatuses.Approved,
+        Progress = 90,
+        IsActive = true,
+        Feedback = "Almost complete, keep up the good work!",
+        Resources = "Cybersecurity certifications, online courses.",
+        CompletionDate = null
+    }
+);
+
+            //Seed Data For Goal 
+            modelBuilder.Entity<Goal>().HasData(
+    new Goal
+    {
+        GoalId = 1,
+        Title = "Complete Project Alpha",
+        Description = "Finish all tasks related to Project Alpha by Q3.",
+        StartDate = new DateTime(2024, 01, 01),
+        EndDate = new DateTime(2024, 09, 30),
+        EmployeeId = 1,
+        GoalStatus = Goal.GoalStatuses.Pending,
+        Progress = 40,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Manager",
+        CompletionDate = null,
+        AssignedByUserId = 1,
+        Comments = "On track for completion."
+    },
+    new Goal
+    {
+        GoalId = 2,
+        Title = "Increase Sales by 20%",
+        Description = "Boost sales by 20% by end of the year.",
+        StartDate = new DateTime(2024, 01, 01),
+        EndDate = new DateTime(2024, 12, 31),
+        EmployeeId = 2,
+        GoalStatus = Goal.GoalStatuses.Approved,
+        Progress = 50,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Sales Director",
+        CompletionDate = null,
+        AssignedByUserId = 2,
+        Comments = "Sales are improving steadily."
+    },
+    new Goal
+    {
+        GoalId = 3,
+        Title = "Launch New Marketing Campaign",
+        Description = "Introduce a new marketing campaign to increase brand awareness.",
+        StartDate = new DateTime(2024, 02, 01),
+        EndDate = new DateTime(2024, 07, 31),
+        EmployeeId = 3,
+        GoalStatus = Goal.GoalStatuses.Pending,
+        Progress = 30,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Marketing Head",
+        CompletionDate = null,
+        AssignedByUserId = 3,
+        Comments = "Working on campaign materials."
+    },
+    new Goal
+    {
+        GoalId = 4,
+        Title = "Enhance Customer Support",
+        Description = "Improve customer support response time by 50%.",
+        StartDate = new DateTime(2024, 03, 01),
+        EndDate = new DateTime(2024, 09, 30),
+        EmployeeId = 4,
+        GoalStatus = Goal.GoalStatuses.Rejected,
+        Progress = 10,
+        IsActive = false,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Support Manager",
+        CompletionDate = null,
+        AssignedByUserId = 4,
+        Comments = "Plan needs more details."
+    },
+    new Goal
+    {
+        GoalId = 5,
+        Title = "Develop New Product Feature",
+        Description = "Create and implement a new feature for the flagship product.",
+        StartDate = new DateTime(2024, 04, 01),
+        EndDate = new DateTime(2024, 12, 31),
+        EmployeeId = 5,
+        GoalStatus = Goal.GoalStatuses.Approved,
+        Progress = 60,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Product Manager",
+        CompletionDate = null,
+        AssignedByUserId = 5,
+        Comments = "Feature development is going well."
+    },
+    new Goal
+    {
+        GoalId = 6,
+        Title = "Reduce Operational Costs",
+        Description = "Cut operational costs by 15% by Q4.",
+        StartDate = new DateTime(2024, 01, 01),
+        EndDate = new DateTime(2024, 10, 31),
+        EmployeeId = 6,
+        GoalStatus = Goal.GoalStatuses.Pending,
+        Progress = 20,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Operations Head",
+        CompletionDate = null,
+        AssignedByUserId = 6,
+        Comments = "Identifying areas to reduce costs."
+    },
+    new Goal
+    {
+        GoalId = 7,
+        Title = "Improve Team Collaboration",
+        Description = "Enhance collaboration across departments.",
+        StartDate = new DateTime(2024, 02, 01),
+        EndDate = new DateTime(2024, 08, 31),
+        EmployeeId = 7,
+        GoalStatus = Goal.GoalStatuses.Approved,
+        Progress = 50,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "HR Manager",
+        CompletionDate = null,
+        AssignedByUserId = 7,
+        Comments = "Collaboration tools have been introduced."
+    },
+    new Goal
+    {
+        GoalId = 8,
+        Title = "Optimize Supply Chain",
+        Description = "Streamline the supply chain to reduce delays.",
+        StartDate = new DateTime(2024, 01, 01),
+        EndDate = new DateTime(2024, 09, 30),
+        EmployeeId = 8,
+        GoalStatus = Goal.GoalStatuses.Approved,
+        Progress = 60,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Supply Chain Manager",
+        CompletionDate = null,
+        AssignedByUserId = 8,
+        Comments = "Supply chain optimization is in progress."
+    },
+    new Goal
+    {
+        GoalId = 9,
+        Title = "Implement New CRM System",
+        Description = "Introduce a new CRM system to improve customer management.",
+        StartDate = new DateTime(2024, 03, 01),
+        EndDate = new DateTime(2024, 12, 31),
+        EmployeeId = 9,
+        GoalStatus = Goal.GoalStatuses.Pending,
+        Progress = 30,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "IT Manager",
+        CompletionDate = null,
+        AssignedByUserId = 9,
+        Comments = "System is under testing."
+    },
+    new Goal
+    {
+        GoalId = 10,
+        Title = "Enhance Data Security",
+        Description = "Implement new data security measures to protect company assets.",
+        StartDate = new DateTime(2024, 01, 01),
+        EndDate = new DateTime(2024, 06, 30),
+        EmployeeId = 10,
+        GoalStatus = Goal.GoalStatuses.Approved,
+        Progress = 70,
+        IsActive = true,
+        LastUpdatedDate = DateTime.Now,
+        UpdatedBy = "Security Officer",
+        CompletionDate = null,
+        AssignedByUserId = 10,
+        Comments = "Security protocols are being updated."
+    }
+);
+
+            //seed data for PerformenceReport 
+            modelBuilder.Entity<PerformanceReport>().HasData(
+    new PerformanceReport
+    {
+        PerformanceReportId = 1,
+        EmployeeId = 1,
+        EvaluatorId = 2,
+        EvaluationDate = new DateTime(2024, 04, 15),
+        PerformanceScore = 85,
+        GoalsMet = "5 out of 7",
+        Strengths = "Excellent problem-solving skills.",
+        AreasForImprovement = "Needs to improve time management.",
+        Achievements = "Led successful project delivery.",
+        DevelopmentPlan = "Focus on time management training.",
+        Comments = "Great performance, keep up the good work.",
+        OverallRating = "Above Average",
+        ReviewPeriodStart = new DateTime(2023, 10, 01),
+        ReviewPeriodEnd = new DateTime(2024, 03, 31),
+        Status = "Completed",
+        ActionItems = "Set up a follow-up meeting in 3 months."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 2,
+        EmployeeId = 3,
+        EvaluatorId = 4,
+        EvaluationDate = new DateTime(2024, 05, 20),
+        PerformanceScore = 75,
+        GoalsMet = "4 out of 6",
+        Strengths = "Strong technical knowledge.",
+        AreasForImprovement = "Needs better communication skills.",
+        Achievements = "Implemented new system architecture.",
+        DevelopmentPlan = "Enroll in communication workshops.",
+        Comments = "Good overall performance, with room for improvement.",
+        OverallRating = "Average",
+        ReviewPeriodStart = new DateTime(2023, 11, 01),
+        ReviewPeriodEnd = new DateTime(2024, 04, 30),
+        Status = "Completed",
+        ActionItems = "Review progress in the next quarter."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 3,
+        EmployeeId = 5,
+        EvaluatorId = 6,
+        EvaluationDate = new DateTime(2024, 03, 10),
+        PerformanceScore = 90,
+        GoalsMet = "6 out of 7",
+        Strengths = "Excellent leadership and team management.",
+        AreasForImprovement = "Focus on strategic planning.",
+        Achievements = "Successfully launched a new product line.",
+        DevelopmentPlan = "Attend leadership and strategy seminars.",
+        Comments = "Outstanding performance, well done.",
+        OverallRating = "Excellent",
+        ReviewPeriodStart = new DateTime(2023, 09, 01),
+        ReviewPeriodEnd = new DateTime(2024, 02, 28),
+        Status = "Completed",
+        ActionItems = "Continue with leadership training."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 4,
+        EmployeeId = 7,
+        EvaluatorId = 8,
+        EvaluationDate = new DateTime(2024, 06, 25),
+        PerformanceScore = 80,
+        GoalsMet = "5 out of 7",
+        Strengths = "Strong analytical skills.",
+        AreasForImprovement = "Improve decision-making speed.",
+        Achievements = "Analyzed and optimized business processes.",
+        DevelopmentPlan = "Participate in decision-making workshops.",
+        Comments = "Solid performance, needs slight improvements.",
+        OverallRating = "Above Average",
+        ReviewPeriodStart = new DateTime(2023, 12, 01),
+        ReviewPeriodEnd = new DateTime(2024, 05, 31),
+        Status = "Completed",
+        ActionItems = "Schedule a check-in meeting next quarter."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 5,
+        EmployeeId = 9,
+        EvaluatorId = 10,
+        EvaluationDate = new DateTime(2024, 02, 05),
+        PerformanceScore = 70,
+        GoalsMet = "3 out of 5",
+        Strengths = "Good team collaboration.",
+        AreasForImprovement = "Enhance technical skills.",
+        Achievements = "Supported multiple successful projects.",
+        DevelopmentPlan = "Focus on technical certifications.",
+        Comments = "Needs improvement in technical aspects.",
+        OverallRating = "Average",
+        ReviewPeriodStart = new DateTime(2023, 08, 01),
+        ReviewPeriodEnd = new DateTime(2024, 01, 31),
+        Status = "Completed",
+        ActionItems = "Review progress in the next performance cycle."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 6,
+        EmployeeId = 2,
+        EvaluatorId = 3,
+        EvaluationDate = new DateTime(2024, 04, 10),
+        PerformanceScore = 85,
+        GoalsMet = "4 out of 5",
+        Strengths = "Great attention to detail.",
+        AreasForImprovement = "Needs to improve delegation skills.",
+        Achievements = "Delivered complex project on time.",
+        DevelopmentPlan = "Attend workshops on delegation and leadership.",
+        Comments = "Good performance, with potential for growth.",
+        OverallRating = "Above Average",
+        ReviewPeriodStart = new DateTime(2023, 09, 15),
+        ReviewPeriodEnd = new DateTime(2024, 02, 29),
+        Status = "Completed",
+        ActionItems = "Schedule a leadership training session."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 7,
+        EmployeeId = 4,
+        EvaluatorId = 5,
+        EvaluationDate = new DateTime(2024, 03, 20),
+        PerformanceScore = 80,
+        GoalsMet = "5 out of 6",
+        Strengths = "Strong client relationship management.",
+        AreasForImprovement = "Enhance negotiation skills.",
+        Achievements = "Secured major client deals.",
+        DevelopmentPlan = "Participate in negotiation training.",
+        Comments = "Solid performance with room for growth.",
+        OverallRating = "Above Average",
+        ReviewPeriodStart = new DateTime(2023, 11, 01),
+        ReviewPeriodEnd = new DateTime(2024, 03, 31),
+        Status = "Completed",
+        ActionItems = "Follow up on client feedback."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 8,
+        EmployeeId = 6,
+        EvaluatorId = 7,
+        EvaluationDate = new DateTime(2024, 05, 15),
+        PerformanceScore = 75,
+        GoalsMet = "4 out of 5",
+        Strengths = "Effective team player.",
+        AreasForImprovement = "Improve technical documentation skills.",
+        Achievements = "Contributed significantly to team success.",
+        DevelopmentPlan = "Focus on technical writing courses.",
+        Comments = "Good performance, with minor improvements needed.",
+        OverallRating = "Average",
+        ReviewPeriodStart = new DateTime(2023, 10, 01),
+        ReviewPeriodEnd = new DateTime(2024, 03, 31),
+        Status = "Completed",
+        ActionItems = "Schedule a writing workshop."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 9,
+        EmployeeId = 7,
+        EvaluatorId = 8,
+        EvaluationDate = new DateTime(2024, 05, 15),
+        PerformanceScore = 85,
+        GoalsMet = "4 out of 5",
+        Strengths = "Effective team player.",
+        AreasForImprovement = "Improve technical documentation skills.",
+        Achievements = "Contributed significantly to team success.",
+        DevelopmentPlan = "Focus on technical writing courses.",
+        Comments = "Good performance, with minor improvements needed.",
+        OverallRating = "Average",
+        ReviewPeriodStart = new DateTime(2023, 10, 01),
+        ReviewPeriodEnd = new DateTime(2024, 03, 31),
+        Status = "Completed",
+        ActionItems = "Schedule a writing workshop."
+    },
+    new PerformanceReport
+    {
+        PerformanceReportId = 10,
+        EmployeeId = 8,
+        EvaluatorId = 9,
+        EvaluationDate = new DateTime(2024, 05, 15),
+        PerformanceScore = 90,
+        GoalsMet = "4 out of 5",
+        Strengths = "Effective team player.",
+        AreasForImprovement = "Improve technical documentation skills.",
+        Achievements = "Contributed significantly to team success.",
+        DevelopmentPlan = "Focus on technical writing courses.",
+        Comments = "Good performance, with minor improvements needed.",
+        OverallRating = "Average",
+        ReviewPeriodStart = new DateTime(2023, 10, 01),
+        ReviewPeriodEnd = new DateTime(2024, 03, 31),
+        Status = "Completed",
+        ActionItems = "Schedule a writing workshop."
+    }
+
+    );
+            // seed data for performence review
+            modelBuilder.Entity<PerformanceReview>().HasData(
+       new PerformanceReview { PerformanceReviewId = 1, EmployeeId = 1, ReviewerId = 1, Feedback = "Great job overall, keep up the good work.", PerformanceRating = 5, Comments = "Exceptional performance", ReviewDate = DateTime.Now, ReviewType = "Annual" },
+       new PerformanceReview { PerformanceReviewId = 2, EmployeeId = 2, ReviewerId = 2, Feedback = "Good progress but needs improvement in communication.", PerformanceRating = 4, Comments = "Solid performance", ReviewDate = DateTime.Now, ReviewType = "Quarterly" },
+       new PerformanceReview { PerformanceReviewId = 3, EmployeeId = 3, ReviewerId = 3, Feedback = "Requires more focus on client interactions.", PerformanceRating = 3, Comments = "Satisfactory performance", ReviewDate = DateTime.Now, ReviewType = "Annual" },
+       new PerformanceReview { PerformanceReviewId = 4, EmployeeId = 4, ReviewerId = 4, Feedback = "Excellent leadership skills demonstrated.", PerformanceRating = 5, Comments = "Outstanding", ReviewDate = DateTime.Now, ReviewType = "Quarterly" },
+       new PerformanceReview { PerformanceReviewId = 5, EmployeeId = 5, ReviewerId = 5, Feedback = "Good analytical skills, needs improvement in client relations.", PerformanceRating = 4, Comments = "Good effort", ReviewDate = DateTime.Now, ReviewType = "Annual" },
+       new PerformanceReview { PerformanceReviewId = 6, EmployeeId = 6, ReviewerId = 6, Feedback = "Strong teamwork but needs better project management.", PerformanceRating = 4, Comments = "Good teamwork", ReviewDate = DateTime.Now, ReviewType = "Quarterly" },
+       new PerformanceReview { PerformanceReviewId = 7, EmployeeId = 7, ReviewerId = 7, Feedback = "Creative thinking is a strength, work on organizational skills.", PerformanceRating = 3, Comments = "Needs improvement", ReviewDate = DateTime.Now, ReviewType = "Annual" },
+       new PerformanceReview { PerformanceReviewId = 8, EmployeeId = 8, ReviewerId = 8, Feedback = "Excellent technical expertise, communication skills need work.", PerformanceRating = 5, Comments = "Very strong performance", ReviewDate = DateTime.Now, ReviewType = "Quarterly" },
+       new PerformanceReview { PerformanceReviewId = 9, ReviewerId = 9, EmployeeId = 9, Feedback = "Dependable employee, needs improvement in time management.", PerformanceRating = 3, Comments = "Satisfactory", ReviewDate = DateTime.Now, ReviewType = "Annual" },
+       new PerformanceReview { PerformanceReviewId = 10, EmployeeId = 10, ReviewerId = 10, Feedback = "Great attention to detail, work on team collaboration.", PerformanceRating = 4, Comments = "Good performance", ReviewDate = DateTime.Now, ReviewType = "Quarterly" }
+   );
+            #endregion SeedDataForPerformenceManagement
+
+            //modelBuilder.Entity<Applicant>(entity =>
+            //{
+            //    // Configuring the Status enum as a string in the database
+            //    entity.Property(e => e.Status)
+            //          .HasConversion<string>();
+
+            //    // Configure Applicant - Education relationship
+            //    modelBuilder.Entity<Education>()
+            //        .HasOne(e => e.Applicant)
+            //        .WithMany(a => a.Educations)
+            //        .HasForeignKey(e => e.ApplicantId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+
+            //    // Configure Applicant - WorkExperience relationship
+            //    modelBuilder.Entity<WorkExperience>()
+            //        .HasOne(w => w.Applicant)
+            //        .WithMany(a => a.WorkExperiences)
+            //        .HasForeignKey(w => w.ApplicantId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+            //});
 
 
 

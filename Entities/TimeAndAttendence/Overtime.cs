@@ -31,7 +31,7 @@ namespace Fanush.Entities.TimeAndAttendence
         public string ApprovalStatus { get; set; } // Status of overtime approval (e.g., pending, approved, rejected)
 
         [Display(Name = "Approved By")]
-        public string ApprovedBy { get; set; } // Name of the person who approved the overtime
+        public string? ApprovedBy { get; set; } // Name of the person who approved the overtime
 
         [Display(Name = "Approval Date")]
         [DataType(DataType.DateTime)]
@@ -41,7 +41,7 @@ namespace Fanush.Entities.TimeAndAttendence
         public string Reason { get; set; } // Reason for overtime
 
         [Display(Name = "Attachment")]
-        public string AttachmentUrl { get; set; } // URL of any attachment related to the overtime record
+        public string? AttachmentUrl { get; set; } // URL of any attachment related to the overtime record
 
         // Real-time HRM properties
         [Display(Name = "Created Date")]

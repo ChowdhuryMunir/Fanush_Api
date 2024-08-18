@@ -43,10 +43,10 @@ namespace Fanush.Entities.TimeAndAttendence
         public DateTime? ApprovalDate { get; set; }
 
         [Display(Name = "Approver")]
-        public string Approver { get; set; }
+        public string? Approver { get; set; }
 
         [Display(Name = "Approval Comments")]
-        public string ApprovalComments { get; set; }
+        public string? ApprovalComments { get; set; }
 
         [Display(Name = "Is Active")]
         public bool IsActive { get; set; }
