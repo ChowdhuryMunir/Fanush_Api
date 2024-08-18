@@ -257,7 +257,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5161),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1878),
                             Progress = 40,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Complete Project Alpha",
@@ -273,7 +273,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5180),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1893),
                             Progress = 50,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Increase Sales by 20%",
@@ -289,7 +289,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5183),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1896),
                             Progress = 30,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Launch New Marketing Campaign",
@@ -305,7 +305,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 2,
                             IsActive = false,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5185),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1899),
                             Progress = 10,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Customer Support",
@@ -321,7 +321,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5188),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1903),
                             Progress = 60,
                             StartDate = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Develop New Product Feature",
@@ -337,7 +337,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5191),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1906),
                             Progress = 20,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Reduce Operational Costs",
@@ -353,7 +353,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5194),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1909),
                             Progress = 50,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Improve Team Collaboration",
@@ -369,7 +369,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5196),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1912),
                             Progress = 60,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Optimize Supply Chain",
@@ -385,7 +385,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5199),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1915),
                             Progress = 30,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Implement New CRM System",
@@ -401,7 +401,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5201),
+                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1918),
                             Progress = 70,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Data Security",
@@ -715,7 +715,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             Feedback = "Great job overall, keep up the good work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5388),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2040),
                             ReviewType = "Annual",
                             ReviewerId = 1
                         },
@@ -726,7 +726,7 @@ namespace Fanush.Migrations
                             EmployeeId = 2,
                             Feedback = "Good progress but needs improvement in communication.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5392),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2043),
                             ReviewType = "Quarterly",
                             ReviewerId = 2
                         },
@@ -737,7 +737,7 @@ namespace Fanush.Migrations
                             EmployeeId = 3,
                             Feedback = "Requires more focus on client interactions.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5393),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2045),
                             ReviewType = "Annual",
                             ReviewerId = 3
                         },
@@ -748,7 +748,7 @@ namespace Fanush.Migrations
                             EmployeeId = 4,
                             Feedback = "Excellent leadership skills demonstrated.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5395),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2048),
                             ReviewType = "Quarterly",
                             ReviewerId = 4
                         },
@@ -759,7 +759,7 @@ namespace Fanush.Migrations
                             EmployeeId = 5,
                             Feedback = "Good analytical skills, needs improvement in client relations.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5397),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2051),
                             ReviewType = "Annual",
                             ReviewerId = 5
                         },
@@ -770,7 +770,7 @@ namespace Fanush.Migrations
                             EmployeeId = 6,
                             Feedback = "Strong teamwork but needs better project management.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5399),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2053),
                             ReviewType = "Quarterly",
                             ReviewerId = 6
                         },
@@ -781,7 +781,7 @@ namespace Fanush.Migrations
                             EmployeeId = 7,
                             Feedback = "Creative thinking is a strength, work on organizational skills.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5400),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2055),
                             ReviewType = "Annual",
                             ReviewerId = 7
                         },
@@ -792,7 +792,7 @@ namespace Fanush.Migrations
                             EmployeeId = 8,
                             Feedback = "Excellent technical expertise, communication skills need work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5407),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2057),
                             ReviewType = "Quarterly",
                             ReviewerId = 8
                         },
@@ -803,7 +803,7 @@ namespace Fanush.Migrations
                             EmployeeId = 9,
                             Feedback = "Dependable employee, needs improvement in time management.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5408),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2059),
                             ReviewType = "Annual",
                             ReviewerId = 9
                         },
@@ -814,7 +814,7 @@ namespace Fanush.Migrations
                             EmployeeId = 10,
                             Feedback = "Great attention to detail, work on team collaboration.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 2, 38, 55, 619, DateTimeKind.Local).AddTicks(5410),
+                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2061),
                             ReviewType = "Quarterly",
                             ReviewerId = 10
                         });
@@ -2348,7 +2348,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 1,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2402),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6581),
                             Approver = "Jane Smith",
                             EmployeeId = 1,
                             EndDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2379,7 +2379,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 3,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2463),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6600),
                             Approver = "Michael Brown",
                             EmployeeId = 3,
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2396,7 +2396,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 4,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2488),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6604),
                             Approver = "Sarah Johnson",
                             EmployeeId = 4,
                             EndDate = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2413,7 +2413,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 5,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2493),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6607),
                             Approver = "Robert Brown",
                             EmployeeId = 5,
                             EndDate = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2444,7 +2444,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 7,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2502),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6613),
                             Approver = "Olivia White",
                             EmployeeId = 7,
                             EndDate = new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2475,7 +2475,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 9,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2513),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6619),
                             Approver = "James Miller",
                             EmployeeId = 9,
                             EndDate = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2492,7 +2492,7 @@ namespace Fanush.Migrations
                         {
                             LeaveId = 10,
                             ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2519),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6622),
                             Approver = "Daniel Moore",
                             EmployeeId = 10,
                             EndDate = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -2580,19 +2580,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 1,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2588),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6666),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Jane Smith",
                             AttachmentUrl = "http://example.com/attachment1",
                             CreatedBy = "John Doe",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2592),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669),
                             Date = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "IT",
                             EmployeeId = 1,
                             Hours = 4.5,
                             IsActive = true,
                             LastModifiedBy = "John Doe",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2593),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669),
                             OvertimeType = "Voluntary",
                             Project = "Project A",
                             Reason = "Project deadline"
@@ -2602,14 +2602,14 @@ namespace Fanush.Migrations
                             OvertimeId = 2,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Alice Johnson",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2602),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6674),
                             Date = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Finance",
                             EmployeeId = 2,
                             Hours = 3.0,
                             IsActive = true,
                             LastModifiedBy = "Alice Johnson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2603),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6675),
                             OvertimeType = "Mandatory",
                             Project = "System Upgrade",
                             Reason = "System update"
@@ -2617,19 +2617,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 3,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2606),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6678),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Michael Brown",
                             AttachmentUrl = "http://example.com/attachment2",
                             CreatedBy = "Emily Davis",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2607),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6679),
                             Date = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Support",
                             EmployeeId = 3,
                             Hours = 2.0,
                             IsActive = true,
                             LastModifiedBy = "Emily Davis",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2607),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6680),
                             OvertimeType = "Voluntary",
                             Project = "Customer A",
                             Reason = "Customer support"
@@ -2637,19 +2637,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 4,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2618),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6683),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Sarah Johnson",
                             AttachmentUrl = "http://example.com/attachment3",
                             CreatedBy = "David Wilson",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2618),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6684),
                             Date = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Marketing",
                             EmployeeId = 4,
                             Hours = 5.0,
                             IsActive = true,
                             LastModifiedBy = "David Wilson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2619),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6685),
                             OvertimeType = "Mandatory",
                             Project = "Launch X",
                             Reason = "Product launch"
@@ -2659,14 +2659,14 @@ namespace Fanush.Migrations
                             OvertimeId = 5,
                             ApprovalStatus = "Rejected",
                             CreatedBy = "Jessica Lee",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2623),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688),
                             Date = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "HR",
                             EmployeeId = 5,
                             Hours = 6.0,
                             IsActive = true,
                             LastModifiedBy = "Jessica Lee",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2624),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688),
                             OvertimeType = "Voluntary",
                             Project = "Training Session",
                             Reason = "Training preparation"
@@ -2674,19 +2674,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 6,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2630),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6691),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Robert Brown",
                             AttachmentUrl = "http://example.com/attachment4",
                             CreatedBy = "Mark Taylor",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2631),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6692),
                             Date = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Sales",
                             EmployeeId = 6,
                             Hours = 4.0,
                             IsActive = true,
                             LastModifiedBy = "Mark Taylor",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2632),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6693),
                             OvertimeType = "Voluntary",
                             Project = "Meeting Y",
                             Reason = "Client meeting"
@@ -2696,14 +2696,14 @@ namespace Fanush.Migrations
                             OvertimeId = 7,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Anna Scott",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2636),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696),
                             Date = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Audit",
                             EmployeeId = 7,
                             Hours = 2.5,
                             IsActive = true,
                             LastModifiedBy = "Anna Scott",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2637),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696),
                             OvertimeType = "Mandatory",
                             Project = "Audit Z",
                             Reason = "Audit preparation"
@@ -2711,19 +2711,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 8,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2640),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6699),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Olivia White",
                             AttachmentUrl = "http://example.com/attachment5",
                             CreatedBy = "John Martin",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2641),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6700),
                             Date = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Operations",
                             EmployeeId = 8,
                             Hours = 3.5,
                             IsActive = true,
                             LastModifiedBy = "John Martin",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2641),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6701),
                             OvertimeType = "Voluntary",
                             Project = "Task A",
                             Reason = "Additional tasks"
@@ -2731,19 +2731,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 9,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2646),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6704),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "James Miller",
                             AttachmentUrl = "http://example.com/attachment6",
                             CreatedBy = "Laura Clark",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2647),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705),
                             Date = new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Emergency",
                             EmployeeId = 9,
                             Hours = 5.0,
                             IsActive = true,
                             LastModifiedBy = "Laura Clark",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2648),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705),
                             OvertimeType = "Mandatory",
                             Project = "Response X",
                             Reason = "Emergency response"
@@ -2751,19 +2751,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 10,
-                            ApprovalDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2651),
+                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6708),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Daniel Moore",
                             AttachmentUrl = "http://example.com/attachment7",
                             CreatedBy = "Sophia Walker",
-                            CreatedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2652),
+                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6709),
                             Date = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Customer Service",
                             EmployeeId = 10,
                             Hours = 4.5,
                             IsActive = true,
                             LastModifiedBy = "Sophia Walker",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 2, 38, 55, 618, DateTimeKind.Local).AddTicks(2653),
+                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6710),
                             OvertimeType = "Voluntary",
                             Project = "Support B",
                             Reason = "Extra support"
@@ -3212,7 +3212,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1132),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6193),
                             DateOfBirth = new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
@@ -3235,14 +3235,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/john_doe.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1132)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6194)
                         },
                         new
                         {
                             EmployeeId = 2,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1140),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6202),
                             DateOfBirth = new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
@@ -3265,14 +3265,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/jane_smith.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1141)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6203)
                         },
                         new
                         {
                             EmployeeId = 3,
                             BloodGroup = "B+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1148),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6210),
                             DateOfBirth = new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 3,
@@ -3295,14 +3295,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/michael_johnson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1148)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6211)
                         },
                         new
                         {
                             EmployeeId = 4,
                             BloodGroup = "AB-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1154),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6217),
                             DateOfBirth = new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 4,
@@ -3325,14 +3325,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/emily_brown.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1155)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6218)
                         },
                         new
                         {
                             EmployeeId = 5,
                             BloodGroup = "O-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1161),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241),
                             DateOfBirth = new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 5,
@@ -3355,14 +3355,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/david_wilson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1161)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241)
                         },
                         new
                         {
                             EmployeeId = 6,
                             BloodGroup = "A-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1170),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6248),
                             DateOfBirth = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 6,
@@ -3385,14 +3385,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/sophia_martinez.jpg",
                             Religion = "Catholic",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1170)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6249)
                         },
                         new
                         {
                             EmployeeId = 7,
                             BloodGroup = "B-",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1175),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6255),
                             DateOfBirth = new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 7,
@@ -3415,14 +3415,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/daniel_taylor.jpg",
                             Religion = "Jewish",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1175)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6256)
                         },
                         new
                         {
                             EmployeeId = 8,
                             BloodGroup = "AB+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1182),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6262),
                             DateOfBirth = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 8,
@@ -3445,14 +3445,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/olivia_anderson.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1183)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6263)
                         },
                         new
                         {
                             EmployeeId = 9,
                             BloodGroup = "O+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1203),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6269),
                             DateOfBirth = new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 9,
@@ -3475,14 +3475,14 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ethan_thomas.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1203)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6270)
                         },
                         new
                         {
                             EmployeeId = 10,
                             BloodGroup = "A+",
                             CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1209),
+                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6277),
                             DateOfBirth = new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateOfJoining = new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 10,
@@ -3505,7 +3505,7 @@ namespace Fanush.Migrations
                             ProfileImagePath = "/images/profiles/ava_white.jpg",
                             Religion = "Christian",
                             UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 17, 20, 38, 55, 618, DateTimeKind.Utc).AddTicks(1209)
+                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6278)
                         });
                 });
 
