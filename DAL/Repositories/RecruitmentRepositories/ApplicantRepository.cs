@@ -7,6 +7,8 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
     public class ApplicantRepository : IApplicantRepository
     {
         private readonly FanushDbContext _context;
+        private readonly IWebHostEnvironment _environment;
+        
 
         public ApplicantRepository(FanushDbContext context)
         {
@@ -38,6 +40,10 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
 
         public async Task<object> Post(Applicant entity)
         {
+            if (entity.ResumeFile != null)
+            {
+                entity.ResumeUrl = await UploadFileAsync(entity.ResumeFile);
+            }
             _context.Applicants.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
@@ -56,7 +62,10 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
             {
                 return NotFound("Applicant not found.");
             }
-
+            if (entity.ResumeFile != null)
+            {
+                entity.ResumeUrl = await UploadFileAsync(entity.ResumeFile);
+            }
             // Update properties of existingApplicant with values from entity
             existingApplicant.ApplicantName = entity.ApplicantName;
             existingApplicant.Email = entity.Email;
@@ -93,6 +102,21 @@ namespace Fanush.DAL.Repositories.RecruitmentRepositories
         private object NotFound(string message)
         {
             return message;
+        }
+
+        private async Task<string> UploadFileAsync(IFormFile resumeFile)
+        {
+            string uploadsFolder = Path.Combine(_environment.WebRootPath, "Files");
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + resumeFile.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await resumeFile.CopyToAsync(fileStream);
+            }
+            var rsmUrl = "http://localhost:5041/" + "Files/" + uniqueFileName;
+
+            return rsmUrl;
         }
     }
 }

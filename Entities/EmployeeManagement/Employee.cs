@@ -60,7 +60,7 @@ namespace Fanush.Models.EmployeeManagement
         public string UpdatedBy { get; set; }
 
         // Relationships
-
+       
         public virtual List<EmployeeLifecycle>? EmployeeLifecycles { get; set; }
         // Time And Attendence
         public virtual List<ClockInOut>? ClockInOuts { get; set; } = new List<ClockInOut>();

@@ -1543,8 +1543,8 @@ namespace Fanush.DAL
                     FollowUp = "Send onboarding instructions."
                 }
             );
-            
-            
+
+
 
             // Seed data for JobPosting
             modelBuilder.Entity<JobPosting>().HasData(
@@ -2299,6 +2299,25 @@ namespace Fanush.DAL
        new PerformanceReview { PerformanceReviewId = 10, EmployeeId = 10, ReviewerId = 10, Feedback = "Great attention to detail, work on team collaboration.", PerformanceRating = 4, Comments = "Good performance", ReviewDate = DateTime.Now, ReviewType = "Quarterly" }
    );
             #endregion SeedDataForPerformenceManagement
+
+            #region SeedDataForPayrollMangement
+
+            modelBuilder.Entity<PayrollCalculation>().HasData(
+    new PayrollCalculation { PayrollCalcuationId = 1, EmployeeId = 1, BasicSalary = 50000m, HouseRent = 10000m, MedicalAllowence = 5000m, ConveyanceAllowence = 3000m, OtherAllowence = 2000m },
+    new PayrollCalculation { PayrollCalcuationId = 2, EmployeeId = 2, BasicSalary = 45000m, HouseRent = 9000m, MedicalAllowence = 4500m, ConveyanceAllowence = 2500m, OtherAllowence = 1500m },
+    new PayrollCalculation { PayrollCalcuationId = 3, EmployeeId = 3, BasicSalary = 47000m, HouseRent = 9400m, MedicalAllowence = 4700m, ConveyanceAllowence = 2700m, OtherAllowence = 1700m },
+    new PayrollCalculation { PayrollCalcuationId = 4, EmployeeId = 4, BasicSalary = 55000m, HouseRent = 11000m, MedicalAllowence = 5500m, ConveyanceAllowence = 3500m, OtherAllowence = 2500m },
+    new PayrollCalculation { PayrollCalcuationId = 5, EmployeeId = 5, BasicSalary = 48000m, HouseRent = 9600m, MedicalAllowence = 4800m, ConveyanceAllowence = 2800m, OtherAllowence = 1800m },
+    new PayrollCalculation { PayrollCalcuationId = 6, EmployeeId = 6, BasicSalary = 51000m, HouseRent = 10200m, MedicalAllowence = 5100m, ConveyanceAllowence = 3100m, OtherAllowence = 2100m },
+    new PayrollCalculation { PayrollCalcuationId = 7, EmployeeId = 7, BasicSalary = 49000m, HouseRent = 9800m, MedicalAllowence = 4900m, ConveyanceAllowence = 2900m, OtherAllowence = 1900m },
+    new PayrollCalculation { PayrollCalcuationId = 8, EmployeeId = 8, BasicSalary = 53000m, HouseRent = 10600m, MedicalAllowence = 5300m, ConveyanceAllowence = 3300m, OtherAllowence = 2300m },
+    new PayrollCalculation { PayrollCalcuationId = 9, EmployeeId = 9, BasicSalary = 56000m, HouseRent = 11200m, MedicalAllowence = 5600m, ConveyanceAllowence = 3600m, OtherAllowence = 2600m },
+    new PayrollCalculation { PayrollCalcuationId = 10, EmployeeId = 10, BasicSalary = 46000m, HouseRent = 9200m, MedicalAllowence = 4600m, ConveyanceAllowence = 2600m, OtherAllowence = 1600m }
+    );
+
+
+   
+            #endregion SeedDataForPayrollMangement
 
             //modelBuilder.Entity<Applicant>(entity =>
             //{
