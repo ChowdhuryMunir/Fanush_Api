@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-﻿using Fanush.Entities.PayrollManagement;
-=======
+using Fanush.Entities.PayrollManagement;
 ﻿using Fanush.Entities.Administrator;
->>>>>>> 20/8/2024
 using Fanush.Entities.PerformenceManagement;
 using Fanush.Entities.RecruitmentManagement;
 using Fanush.Entities.TimeAndAttendence;

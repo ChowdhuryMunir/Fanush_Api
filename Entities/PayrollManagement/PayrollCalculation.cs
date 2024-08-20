@@ -1,34 +1,30 @@
-﻿using Fanush.Models.EmployeeManagement;
+﻿using System;
+using System.Collections.Generic;
+using Fanush.Models.EmployeeManagement;
 using Fanush.Entities.TimeAndAttendence;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fanush.Entities.PayrollManagement
 {
     public class PayrollCalculation
     {
+        [Key]
         public int PayrollCalcuationId { get; set; }
         public int EmployeeId { get; set; }
         public Employee Employee { get; set; }
 
         public decimal BasicSalary { get; set; }
-
         public decimal HouseRent { get; set; }
-
         public decimal MedicalAllowence { get; set; }
-
         public decimal ConveyanceAllowence { get; set; }
-
         public decimal OtherAllowence { get; set; }
 
-        // Deduction Portion
-
-        public decimal DeductedAmount { get; set; }
 
         // Overtime calculation
         public decimal CalculateOvertimeAmount(Overtime overtime)
         {
-            // Assuming overtime rate is 1.5 times the regular hourly rate
             decimal overtimeRate = 1.5m;
-            decimal hourlyRate = BasicSalary / 208; // Assuming 208 working hours in a month
+            decimal hourlyRate = BasicSalary / 208;
             decimal overtimeAmount = overtime.Hours * overtimeRate * hourlyRate;
             return overtimeAmount;
         }
@@ -36,8 +32,7 @@ namespace Fanush.Entities.PayrollManagement
         // Deduction calculation for absence
         public decimal CalculateAbsenceDeduction(AbsenceReport absenceReport)
         {
-            // Assuming deduction rate is the employee's daily rate
-            decimal dailyRate = BasicSalary / 30; // Assuming 30 working days in a month
+            decimal dailyRate = BasicSalary / 30;
             decimal deductionAmount = dailyRate * absenceReport.DaysAbsent;
             return deductionAmount;
         }
@@ -51,8 +46,7 @@ namespace Fanush.Entities.PayrollManagement
             {
                 if (!leave.IsPaidLeave)
                 {
-                    // Assuming deduction rate is the employee's daily rate
-                    decimal dailyRate = BasicSalary / 30; // Assuming 30 working days in a month
+                    decimal dailyRate = BasicSalary / 30;
                     decimal deductionAmount = dailyRate * leave.NumberOfDays;
                     totalDeduction += deductionAmount;
                 }
@@ -74,7 +68,6 @@ namespace Fanush.Entities.PayrollManagement
         {
             decimal grossPayableAmount = BasicSalary + HouseRent + MedicalAllowence + ConveyanceAllowence + OtherAllowence;
 
-            // Add overtime amounts
             foreach (var overtime in overtimes)
             {
                 grossPayableAmount += CalculateOvertimeAmount(overtime);
@@ -90,6 +83,25 @@ namespace Fanush.Entities.PayrollManagement
             decimal totalDeduction = CalculateTotalDeduction(absenceReport, leaves);
             decimal netPayableAmount = grossPayableAmount - totalDeduction;
             return netPayableAmount;
+        }
+
+        // Generate a detailed PaySlip for the month
+        public string GeneratePaySlip(List<Overtime> overtimes, AbsenceReport absenceReport, List<Leave> leaves, DateTime payDate)
+        {
+            decimal grossPayableAmount = CalculateGrossPayableAmount(overtimes);
+            decimal totalDeduction = CalculateTotalDeduction(absenceReport, leaves);
+            decimal netPayableAmount = grossPayableAmount - totalDeduction;
+
+            return $@"
+                PaySlip for {Employee.FirstName} {Employee.LastName} ({payDate.ToString("MMMM yyyy")})
+                -------------------------------------------------
+                Gross Salary: {grossPayableAmount:C}
+                Total Deductions: -{totalDeduction:C}
+                -------------------------------------------------
+                Net Salary: {netPayableAmount:C}
+                -------------------------------------------------
+                Paid on: {payDate.ToShortDateString()}
+            ";
         }
     }
 }

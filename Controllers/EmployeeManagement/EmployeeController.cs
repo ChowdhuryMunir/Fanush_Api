@@ -68,6 +68,62 @@ namespace Fanush.Controllers.EmployeeController
             }
             return Ok(deletedEmployee);
         }
+
+        [HttpGet("count/total")]
+        public async Task<ActionResult<int>> CountTotalEmployees()
+        {
+            var count = await _repository.CountTotalEmployees();
+            return Ok(count);
+        }
+
+        [HttpGet("count/active")]
+        public async Task<ActionResult<int>> CountActiveEmployees()
+        {
+            var count = await _repository.CountActiveEmployees();
+            return Ok(count);
+        }
+
+        [HttpGet("count/inactive")]
+        public async Task<ActionResult<int>> CountInactiveEmployees()
+        {
+            var count = await _repository.CountInactiveEmployees();
+            return Ok(count);
+        }
+
+        [HttpGet("count/department")]
+        public async Task<ActionResult<Dictionary<string, int>>> CountEmployeesByDepartment()
+        {
+            var count = await _repository.CountEmployeesByDepartment();
+            return Ok(count);
+        }
+
+        [HttpGet("attendance/today")]
+        public async Task<ActionResult<int>> CountTodayAttendance()
+        {
+            var count = await _repository.CountTodayAttendance();
+            return Ok(count);
+        }
+
+        [HttpGet("attendance/weekly")]
+        public async Task<ActionResult<int>> CountWeeklyAttendance()
+        {
+            var count = await _repository.CountWeeklyAttendance();
+            return Ok(count);
+        }
+
+        [HttpGet("attendance/monthly")]
+        public async Task<ActionResult<int>> CountMonthlyAttendance()
+        {
+            var count = await _repository.CountMonthlyAttendance();
+            return Ok(count);
+        }
+
+        [HttpGet("leave")]
+        public async Task<ActionResult<int>> CountEmployeesOnLeave()
+        {
+            var count = await _repository.CountEmployeesOnLeave();
+            return Ok(count);
+        }
     }
 }
 

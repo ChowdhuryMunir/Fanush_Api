@@ -10,6 +10,7 @@ namespace Fanush.Models.EmployeeManagement
 {
     public class Employee
     {
+        [Key]
         public int EmployeeId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -25,6 +26,11 @@ namespace Fanush.Models.EmployeeManagement
         public string NationalId { get; set; }
         public string PassportNumber { get; set; }
         public DateTime DateOfJoining { get; set; }
+
+        public string? ImagePath { get; set; }
+
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
 
         //Navigation Property
         public int JobTitleId { get; set; }

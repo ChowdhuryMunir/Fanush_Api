@@ -20,7 +20,7 @@ namespace Fanush.Controllers.RecruitmentManagement
             _repository = repository;
         }
 
-        [HttpGet]
+        [HttpGet, Route("GetAllJobPosting")]
         public async Task<ActionResult<IEnumerable<JobPosting>>> Get()
         {
             var jobPostings = await _repository.Get();

@@ -16,10 +16,10 @@ namespace Fanush.Entities.RecruitmentManagement
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Resume is required.")]
-        public string ResumeUrl { get; set; }
+        public string? ResumeUrl { get; set; }
 
         [NotMapped]
-        public IFormFile ResumeFile { get; set; }
+        public IFormFile? ResumeFile { get; set; }
 
 
         public enum Statuses { Approved, Pending, Rejected }

@@ -8,10 +8,12 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
     public class EmployeeRepository : IEmployeeRepository
     {
         private readonly FanushDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public EmployeeRepository(FanushDbContext context)
+        public EmployeeRepository(FanushDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
         public async Task<object> Delete(int id)
         {
@@ -37,6 +39,10 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
 
         public async Task<object> Post(Employee entity)
         {
+            if (entity.ImageFile != null)
+            {
+                entity.ImagePath = await UploadImageAsync(entity.ImageFile);
+            }
             _context.Employees.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
@@ -54,6 +60,10 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             if (existingEmployee == null)
             {
                 return NotFound("Nothing");
+            }
+            if (entity.ImageFile != null)
+            {
+                existingEmployee.ImagePath = await UploadImageAsync(entity.ImageFile);
             }
 
             // Update properties of existingEmployee with values from entity
@@ -82,30 +92,107 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             existingEmployee.CreatedOn = entity.CreatedOn;
             existingEmployee.UpdatedBy = entity.UpdatedBy;
             existingEmployee.UpdatedOn = entity.UpdatedOn;
-            
+
 
 
 
             try
             {
                 await _context.SaveChangesAsync();
-                return existingEmployee; 
+                return existingEmployee;
             }
             catch (DbUpdateConcurrencyException)
             {
                 throw new Exception("Failed to update employee. Concurrency issue occurred.");
-                
+
             }
             catch (Exception ex)
             {
                 throw new Exception($"Failed to update employee: {ex.Message}");
-                
+
             }
         }
 
         private object NotFound(string a)
         {
             return a = "Nothing";
+        }
+
+
+        public async Task<int> CountTotalEmployees()
+        {
+            return await _context.Employees.CountAsync();
+        }
+
+        public async Task<int> CountActiveEmployees()
+        {
+            return await _context.Employees.CountAsync(e => e.IsActive);
+        }
+
+        public async Task<int> CountInactiveEmployees()
+        {
+            return await _context.Employees.CountAsync(e => !e.IsActive);
+        }
+
+        public async Task<Dictionary<string, int>> CountEmployeesByDepartment()
+        {
+            return await _context.Employees
+                .GroupBy(e => e.Department.DepartmentName)
+                .Select(g => new { Department = g.Key, Count = g.Count() })
+                .ToDictionaryAsync(g => g.Department, g => g.Count);
+        }
+
+        public async Task<int> CountAttendance(DateTime startDate, DateTime endDate)
+        {
+            return await _context.ClockInOuts
+                .CountAsync(a => a.ClockInTime >= startDate && a.ClockInTime <= endDate);
+        }
+
+        public async Task<int> CountTodayAttendance()
+        {
+            var today = DateTime.Today;
+            return await CountAttendance(today, today.AddDays(1).AddTicks(-1));
+        }
+
+        public async Task<int> CountWeeklyAttendance()
+        {
+            var today = DateTime.Today;
+            var startOfWeek = today.AddDays(-(int)today.DayOfWeek);
+            var endOfWeek = startOfWeek.AddDays(7).AddTicks(-1);
+            return await CountAttendance(startOfWeek, endOfWeek);
+        }
+
+        public async Task<int> CountMonthlyAttendance()
+        {
+            var today = DateTime.Today;
+            var startOfMonth = new DateTime(today.Year, today.Month, 1);
+            var endOfMonth = startOfMonth.AddMonths(1).AddTicks(-1);
+            return await CountAttendance(startOfMonth, endOfMonth);
+        }
+
+        public async Task<int> CountEmployeesOnLeave()
+        {
+            var today = DateTime.Today;
+            return await _context.Leaves
+                .CountAsync(l => l.StartDate <= today && l.EndDate >= today);
+        }
+
+
+        ///For Image
+
+        private async Task<string> UploadImageAsync(IFormFile imageFile)
+        {
+            string uploadsFolder = Path.Combine(_environment.WebRootPath, "Images");
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            var imgUrl = "http://localhost:5041/" + "Images/" + uniqueFileName;
+
+            return imgUrl;
         }
     }
 }

@@ -19,6 +19,7 @@ using System.Text;
 using Fanush.DAL.JWTService;
 using Fanush.Entities.Administrator;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -133,7 +134,11 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors(options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 //app.UseCors(options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());
-
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+    RequestPath = "/Images"
+});
 app.UseAuthorization();
 
 
