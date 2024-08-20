@@ -57,6 +57,6 @@ namespace Fanush.Entities.TimeAndAttendence
 
         [Display(Name = "Leave Category")]
         public string LeaveCategory { get; set; } // Category of leave (e.g., sick leave, vacation leave)
-
+        public decimal NumberOfDays { get; set; }
     }
 }

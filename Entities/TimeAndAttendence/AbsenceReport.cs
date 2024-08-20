@@ -41,5 +41,6 @@ namespace Fanush.Entities.TimeAndAttendence
 
         [Display(Name = "Half Day Type")]
         public string? HalfDayType { get; set; } // New property for half day type (morning/afternoon)
+        public decimal DaysAbsent { get;  set; }
     }
 }

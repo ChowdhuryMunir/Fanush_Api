@@ -1,4 +1,5 @@
-﻿using Fanush.Entities.PerformenceManagement;
+﻿using Fanush.Entities.PayrollManagement;
+using Fanush.Entities.PerformenceManagement;
 using Fanush.Entities.TimeAndAttendence;
 using Microsoft.Owin.BuilderProperties;
 using System.ComponentModel.DataAnnotations;
@@ -61,11 +62,13 @@ namespace Fanush.Models.EmployeeManagement
         public virtual List<Leave>? Leaves { get; set; } = new List<Leave>();
         public virtual List<Overtime>? Overtimes { get; set; } = new List<Overtime>();
         public virtual List<PayrollIntegration>? PayrollIntegrations { get; set; } = new List<PayrollIntegration>();
-        // Time And Attendence
+        // Performence Management
         public virtual List<Goal>? Goals { get; set; } = new List<Goal>();
         public virtual List<PerformanceReview>? PerformanceReviews { get; set; } = new List<PerformanceReview>();
         public virtual List<DevelopmentPlan>? DevelopmentPlans { get; set; } = new List<DevelopmentPlan>();
         public virtual List<PerformanceReport>? PerformanceReports { get; set; } = new List<PerformanceReport>();
+        public virtual List<PayrollCalculation>? PayrollCalculations { get; set; } = new List<PayrollCalculation>();
+
 
 
     }

@@ -17,8 +17,8 @@ namespace Fanush.Entities.TimeAndAttendence
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Hours is required.")]
-        [Range(0, double.MaxValue, ErrorMessage = "Hours must be a non-negative value.")]
-        public double Hours { get; set; }
+        //[Range(0, decimal.MaxValue, ErrorMessage = "Hours must be a non-negative value.")]
+        public decimal Hours { get; set; }
 
         [Required(ErrorMessage = "IsActive is required.")]
         public bool IsActive { get; set; }
