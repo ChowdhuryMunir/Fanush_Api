@@ -11,6 +11,14 @@ using Fanush.DAL.Interfaces.RecruitmentInterface;
 using Fanush.DAL.Repositories.RecruitmentRepositories;
 using Fanush.DAL.Interfaces.PerformenceInterface;
 using Fanush.DAL.Repositories.PerformenceManagementRepositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.OpenApi.Models;
+
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Fanush.DAL.JWTService;
+using Fanush.Entities.Administrator;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +29,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<FanushDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+var usrIden = builder.Services.AddIdentityCore<AppUser>();
+usrIden = new IdentityBuilder(usrIden.UserType, usrIden.Services);
+usrIden.AddEntityFrameworkStores<FanushDbContext>();
+usrIden.AddSignInManager<SignInManager<AppUser>>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 //EmployeeManagement
@@ -47,12 +60,24 @@ builder.Services.AddScoped<IGoalRepository, GoalRepository>();
 builder.Services.AddScoped<IPerformanceReportRepository, PerformanceReportRepository>();
 builder.Services.AddScoped<IPerformanceReviewRepository, PerformanceReviewRepository>();
 
+builder.Services.AddScoped<ITokenService, TokenService>();
 
+//builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
+//   .AddNegotiate();
 
-builder.Services.AddAuthentication(NegotiateDefaults.AuthenticationScheme)
-   .AddNegotiate();
-
-
+var config = builder.Configuration;
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(o =>
+    {
+        o.TokenValidationParameters = new TokenValidationParameters()
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Token:Key"])),
+            ValidIssuer = config["Token:Issuer"],
+            ValidateIssuer = true,
+            ValidateAudience = false
+        };
+    });
 
 
 
@@ -60,7 +85,33 @@ builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod());
 });
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "User", Version = "v1" });
 
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme.",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },new string[] {}
+        }
+    });
+
+});
 //builder.Services.AddCors(c =>
 //{
 //    c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod());

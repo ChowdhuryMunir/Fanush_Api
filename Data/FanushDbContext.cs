@@ -1,17 +1,26 @@
+<<<<<<< HEAD
 ﻿using Fanush.Entities.PayrollManagement;
+=======
+﻿using Fanush.Entities.Administrator;
+>>>>>>> 20/8/2024
 using Fanush.Entities.PerformenceManagement;
 using Fanush.Entities.RecruitmentManagement;
 using Fanush.Entities.TimeAndAttendence;
 using Fanush.Models.EmployeeManagement;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using static Fanush.Entities.RecruitmentManagement.Applicant;
 
 namespace Fanush.DAL
 {
-    public class FanushDbContext : DbContext
+    public class FanushDbContext : IdentityDbContext<AppUser>
     {
-        public FanushDbContext(DbContextOptions<FanushDbContext> options) : base(options) { }
+        public FanushDbContext(DbContextOptions<FanushDbContext> options) : base(options)
+        { 
+        
+        }
+
 
         #region EmployeeManagement
         public DbSet<Employee> Employees { get; set; }
