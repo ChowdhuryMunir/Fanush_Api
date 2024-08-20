@@ -1,6 +1,5 @@
 ﻿using Fanush.DAL;
 using Fanush.DAL.Interfaces.PayrollInterface;
-using Fanush.Data;
 using Fanush.Entities.PayrollManagement;
 using Microsoft.EntityFrameworkCore;
 using System;

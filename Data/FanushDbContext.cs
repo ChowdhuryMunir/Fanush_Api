@@ -417,148 +417,158 @@ namespace Fanush.DAL
             #region SeedForTimeAndAttendence
             // Seed data for AbsenceReport
             modelBuilder.Entity<AbsenceReport>().HasData(
-            new AbsenceReport
-            {
-                AbsenceReportId = 1,
-                EmployeeId = 1,
-                StartDate = new DateTime(2024, 8, 1),
-                EndDate = new DateTime(2024, 8, 3),
-                Reason = "Medical Leave",
-                Approver = "John Doe",
-                Status = "Approved",
-                IsPaid = true,
-                ApprovedDate = new DateTime(2024, 8, 2, 10, 0, 0),
-                IsHalfDay = false,
-                HalfDayType = null
-            },
-             new AbsenceReport
-             {
-                 AbsenceReportId = 2,
-                 EmployeeId = 2,
-                 StartDate = new DateTime(2024, 8, 10),
-                 EndDate = new DateTime(2024, 8, 10),
-                 Reason = "Personal Leave",
-                 Approver = "Jane Smith",
-                 Status = "Pending",
-                 IsPaid = false,
-                 ApprovedDate = null,
-                 IsHalfDay = true,
-                 HalfDayType = "Morning"
-             },
-             new AbsenceReport
-             {
-                 AbsenceReportId = 3,
-                 EmployeeId = 3,
-                 StartDate = new DateTime(2024, 8, 15),
-                 EndDate = new DateTime(2024, 8, 16),
-                 Reason = "Vacation",
-                 Approver = "Emily Brown",
-                 Status = "Approved",
-                 IsPaid = true,
-                 ApprovedDate = new DateTime(2024, 8, 14, 14, 30, 0),
-                 IsHalfDay = false,
-                 HalfDayType = null
-             },
-            new AbsenceReport
-            {
-                AbsenceReportId = 4,
-                EmployeeId = 4,
-                StartDate = new DateTime(2024, 8, 20),
-                EndDate = new DateTime(2024, 8, 20),
-                Reason = "Medical Appointment",
-                Approver = "Chris Evans",
-                Status = "Approved",
-                IsPaid = true,
-                ApprovedDate = new DateTime(2024, 8, 19, 9, 0, 0),
-                IsHalfDay = true,
-                HalfDayType = "Afternoon"
-            },
-             new AbsenceReport
-             {
-                 AbsenceReportId = 5,
-                 EmployeeId = 5,
-                 StartDate = new DateTime(2024, 8, 22),
-                 EndDate = new DateTime(2024, 8, 23),
-                 Reason = "Family Emergency",
-                 Approver = "Anna Taylor",
-                 Status = "Pending",
-                 IsPaid = false,
-                 ApprovedDate = null,
-                 IsHalfDay = false,
-                 HalfDayType = null
-             },
-             new AbsenceReport
-             {
-                 AbsenceReportId = 6,
-                 EmployeeId = 6,
-                 StartDate = new DateTime(2024, 8, 25),
-                 EndDate = new DateTime(2024, 8, 25),
-                 Reason = "Childcare",
-                 Approver = "Robert Downey",
-                 Status = "Approved",
-                 IsPaid = true,
-                 ApprovedDate = new DateTime(2024, 8, 24, 16, 0, 0),
-                 IsHalfDay = true,
-                 HalfDayType = "Morning"
-             },
-            new AbsenceReport
-            {
-                AbsenceReportId = 7,
-                EmployeeId = 7,
-                StartDate = new DateTime(2024, 8, 28),
-                EndDate = new DateTime(2024, 8, 28),
-                Reason = "Study Leave",
-                Approver = "Scarlett Johansson",
-                Status = "Approved",
-                IsPaid = false,
-                ApprovedDate = new DateTime(2024, 8, 27, 11, 30, 0),
-                IsHalfDay = true,
-                HalfDayType = "Afternoon"
-            },
-             new AbsenceReport
-             {
-                 AbsenceReportId = 8,
-                 EmployeeId = 8,
-                 StartDate = new DateTime(2024, 9, 1),
-                 EndDate = new DateTime(2024, 9, 5),
-                 Reason = "Holiday",
-                 Approver = "Mark Ruffalo",
-                 Status = "Approved",
-                 IsPaid = true,
-                 ApprovedDate = new DateTime(2024, 8, 30, 15, 0, 0),
-                 IsHalfDay = false,
-                 HalfDayType = null
-             },
-            new AbsenceReport
-            {
-                AbsenceReportId = 9,
-                EmployeeId = 9,
-                StartDate = new DateTime(2024, 9, 6),
-                EndDate = new DateTime(2024, 9, 6),
-                Reason = "Sick Leave",
-                Approver = "Natalie Portman",
-                Status = "Pending",
-                IsPaid = false,
-                ApprovedDate = null,
-                IsHalfDay = true,
-                HalfDayType = "Morning"
-            },
-              new AbsenceReport
-              {
-                  AbsenceReportId = 10,
-                  EmployeeId = 10,
-                  StartDate = new DateTime(2024, 9, 10),
-                  EndDate = new DateTime(2024, 9, 12),
-                  Reason = "Workshop Attendance",
-                  Approver = "Chris Hemsworth",
-                  Status = "Approved",
-                  IsPaid = true,
-                  ApprovedDate = new DateTime(2024, 9, 9, 10, 15, 0),
-                  IsHalfDay = false,
-                  HalfDayType = null
-              }
+     new AbsenceReport
+     {
+         AbsenceReportId = 1,
+         EmployeeId = 1,
+         StartDate = new DateTime(2024, 8, 1),
+         EndDate = new DateTime(2024, 8, 2),
+         Reason = "Medical Leave",
+         Approver = "John Doe",
+         Status = "Approved",
+         IsPaid = true,
+         ApprovedDate = new DateTime(2024, 8, 3, 10, 30, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 2,
+         EmployeeId = 2,
+         StartDate = new DateTime(2024, 7, 15),
+         EndDate = new DateTime(2024, 7, 15),
+         Reason = "Personal Leave",
+         Approver = "Jane Smith",
+         Status = "Approved",
+         IsPaid = false,
+         ApprovedDate = new DateTime(2024, 7, 14, 9, 0, 0),
+         IsHalfDay = true,
+         HalfDayType = "Morning",
+         DaysAbsent = 0.5m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 3,
+         EmployeeId = 3,
+         StartDate = new DateTime(2024, 8, 3),
+         EndDate = new DateTime(2024, 8, 5),
+         Reason = "Family Emergency",
+         Approver = "John Doe",
+         Status = "Pending",
+         IsPaid = false,
+         ApprovedDate = new DateTime(2024, 8, 6, 14, 15, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 3.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 4,
+         EmployeeId = 4,
+         StartDate = new DateTime(2024, 7, 20),
+         EndDate = new DateTime(2024, 7, 21),
+         Reason = "Sick Leave",
+         Approver = "Jane Smith",
+         Status = "Approved",
+         IsPaid = true,
+         ApprovedDate = new DateTime(2024, 7, 22, 11, 0, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 5,
+         EmployeeId = 5,
+         StartDate = new DateTime(2024, 8, 10),
+         EndDate = new DateTime(2024, 8, 10),
+         Reason = "Doctor's Appointment",
+         Approver = "John Doe",
+         Status = "Approved",
+         IsPaid = false,
+         ApprovedDate = new DateTime(2024, 8, 10, 12, 0, 0),
+         IsHalfDay = true,
+         HalfDayType = "Afternoon",
+         DaysAbsent = 0.5m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 6,
+         EmployeeId = 6,
+         StartDate = new DateTime(2024, 7, 30),
+         EndDate = new DateTime(2024, 7, 31),
+         Reason = "Vacation",
+         Approver = "Jane Smith",
+         Status = "Approved",
+         IsPaid = true,
+         ApprovedDate = new DateTime(2024, 7, 29, 9, 30, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 7,
+         EmployeeId = 7,
+         StartDate = new DateTime(2024, 8, 5),
+         EndDate = new DateTime(2024, 8, 6),
+         Reason = "Jury Duty",
+         Approver = "John Doe",
+         Status = "Approved",
+         IsPaid = true,
+         ApprovedDate = new DateTime(2024, 8, 7, 15, 0, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 8,
+         EmployeeId = 8,
+         StartDate = new DateTime(2024, 8, 15),
+         EndDate = new DateTime(2024, 8, 15),
+         Reason = "Bereavement Leave",
+         Approver = "Jane Smith",
+         Status = "Pending",
+         IsPaid = false,
+         ApprovedDate = new DateTime(2024, 8, 16, 10, 0, 0),
+         IsHalfDay = true,
+         HalfDayType = "Morning",
+         DaysAbsent = 0.5m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 9,
+         EmployeeId = 9,
+         StartDate = new DateTime(2024, 7, 25),
+         EndDate = new DateTime(2024, 7, 26),
+         Reason = "Travel",
+         Approver = "John Doe",
+         Status = "Approved",
+         IsPaid = false,
+         ApprovedDate = new DateTime(2024, 7, 27, 13, 30, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     },
+     new AbsenceReport
+     {
+         AbsenceReportId = 10,
+         EmployeeId = 10,
+         StartDate = new DateTime(2024, 8, 7),
+         EndDate = new DateTime(2024, 8, 8),
+         Reason = "Training",
+         Approver = "Jane Smith",
+         Status = "Approved",
+         IsPaid = true,
+         ApprovedDate = new DateTime(2024, 8, 9, 10, 45, 0),
+         IsHalfDay = false,
+         HalfDayType = "None",
+         DaysAbsent = 2.0m
+     }
+ );
 
-              );
 
             // Seed data for ClockInOut
             modelBuilder.Entity<ClockInOut>().HasData(
@@ -765,17 +775,188 @@ namespace Fanush.DAL
 );
             // Seed data for Leave
             modelBuilder.Entity<Leave>().HasData(
-                new Leave { LeaveId = 1, EmployeeId = 1, LeaveType = "Vacation", StartDate = new DateTime(2024, 08, 01), EndDate = new DateTime(2024, 08, 07), Status = "Approved", Reason = "Annual vacation", RequestedBy = "John Doe", ApprovalDate = DateTime.Now, Approver = "Jane Smith", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Annual" },
-                new Leave { LeaveId = 2, EmployeeId = 2, LeaveType = "Sick", StartDate = new DateTime(2024, 08, 10), EndDate = new DateTime(2024, 08, 12), Status = "Pending", Reason = "Medical reasons", RequestedBy = "Alice Johnson", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = false, LeaveCategory = "Medical" },
-                new Leave { LeaveId = 3, EmployeeId = 3, LeaveType = "Maternity", StartDate = new DateTime(2024, 07, 01), EndDate = new DateTime(2024, 12, 31), Status = "Approved", Reason = "Childbirth", RequestedBy = "Emily Davis", ApprovalDate = DateTime.Now, Approver = "Michael Brown", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Maternity" },
-                new Leave { LeaveId = 4, EmployeeId = 4, LeaveType = "Personal", StartDate = new DateTime(2024, 09, 15), EndDate = new DateTime(2024, 09, 20), Status = "Approved", Reason = "Personal matters", RequestedBy = "David Wilson", ApprovalDate = DateTime.Now, Approver = "Sarah Johnson", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Personal" },
-                new Leave { LeaveId = 5, EmployeeId = 5, LeaveType = "Unpaid", StartDate = new DateTime(2024, 10, 01), EndDate = new DateTime(2024, 10, 07), Status = "Approved", Reason = "Extended leave", RequestedBy = "Jessica Lee", ApprovalDate = DateTime.Now, Approver = "Robert Brown", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = false, LeaveCategory = "Unpaid" },
-                new Leave { LeaveId = 6, EmployeeId = 6, LeaveType = "Vacation", StartDate = new DateTime(2024, 08, 25), EndDate = new DateTime(2024, 08, 30), Status = "Denied", Reason = "No coverage available", RequestedBy = "Mark Taylor", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = true, LeaveCategory = "Annual" },
-                new Leave { LeaveId = 7, EmployeeId = 7, LeaveType = "Sick", StartDate = new DateTime(2024, 08, 05), EndDate = new DateTime(2024, 08, 06), Status = "Approved", Reason = "Flu", RequestedBy = "Anna Scott", ApprovalDate = DateTime.Now, Approver = "Olivia White", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Medical" },
-                new Leave { LeaveId = 8, EmployeeId = 8, LeaveType = "Personal", StartDate = new DateTime(2024, 09, 10), EndDate = new DateTime(2024, 09, 15), Status = "Pending", Reason = "Family event", RequestedBy = "John Martin", ApprovalDate = null, Approver = null, ApprovalComments = null, IsActive = true, IsPaidLeave = true, LeaveCategory = "Personal" },
-                new Leave { LeaveId = 9, EmployeeId = 9, LeaveType = "Maternity", StartDate = new DateTime(2024, 10, 01), EndDate = new DateTime(2025, 01, 31), Status = "Approved", Reason = "Childbirth", RequestedBy = "Laura Clark", ApprovalDate = DateTime.Now, Approver = "James Miller", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = true, LeaveCategory = "Maternity" },
-                new Leave { LeaveId = 10, EmployeeId = 10, LeaveType = "Unpaid", StartDate = new DateTime(2024, 11, 01), EndDate = new DateTime(2024, 11, 15), Status = "Approved", Reason = "Personal reasons", RequestedBy = "Sophia Walker", ApprovalDate = DateTime.Now, Approver = "Daniel Moore", ApprovalComments = "Approved", IsActive = true, IsPaidLeave = false, LeaveCategory = "Unpaid" }
-            );
+     new Leave
+     {
+         LeaveId = 1,
+         EmployeeId = 1,
+         LeaveType = "Sick Leave",
+         StartDate = new DateTime(2024, 8, 1),
+         EndDate = new DateTime(2024, 8, 3),
+         Status = "Approved",
+         Reason = "Fever and cold",
+         RequestedBy = "John Doe",
+         ApprovalDate = new DateTime(2024, 7, 31, 10, 0, 0),
+         Approver = "Jane Smith",
+         ApprovalComments = "Take care",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Sick Leave",
+         NumberOfDays = 3.0m
+     },
+     new Leave
+     {
+         LeaveId = 2,
+         EmployeeId = 2,
+         LeaveType = "Vacation",
+         StartDate = new DateTime(2024, 7, 15),
+         EndDate = new DateTime(2024, 7, 20),
+         Status = "Approved",
+         Reason = "Family vacation",
+         RequestedBy = "Jane Smith",
+         ApprovalDate = new DateTime(2024, 7, 10, 14, 30, 0),
+         Approver = "John Doe",
+         ApprovalComments = "Enjoy your time",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Vacation Leave",
+         NumberOfDays = 6.0m
+     },
+     new Leave
+     {
+         LeaveId = 3,
+         EmployeeId = 3,
+         LeaveType = "Maternity Leave",
+         StartDate = new DateTime(2024, 9, 1),
+         EndDate = new DateTime(2024, 12, 1),
+         Status = "Pending",
+         Reason = "Maternity",
+         RequestedBy = "Emily Clark",
+         ApprovalDate = new DateTime(2024, 8, 20, 9, 0, 0),
+         Approver = "Jane Smith",
+         ApprovalComments = "Pending approval",
+         IsActive = false,
+         IsPaidLeave = true,
+         LeaveCategory = "Maternity Leave",
+         NumberOfDays = 9.0m
+     },
+     new Leave
+     {
+         LeaveId = 4,
+         EmployeeId = 4,
+         LeaveType = "Bereavement Leave",
+         StartDate = new DateTime(2024, 8, 10),
+         EndDate = new DateTime(2024, 8, 15),
+         Status = "Approved",
+         Reason = "Loss of family member",
+         RequestedBy = "Michael Brown",
+         ApprovalDate = new DateTime(2024, 8, 8, 16, 0, 0),
+         Approver = "John Doe",
+         ApprovalComments = "Condolences",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Bereavement Leave",
+         NumberOfDays = 6.0m
+     },
+     new Leave
+     {
+         LeaveId = 5,
+         EmployeeId = 5,
+         LeaveType = "Sick Leave",
+         StartDate = new DateTime(2024, 7, 25),
+         EndDate = new DateTime(2024, 7, 26),
+         Status = "Approved",
+         Reason = "Migraine",
+         RequestedBy = "Sarah Johnson",
+         ApprovalDate = new DateTime(2024, 7, 24, 10, 15, 0),
+         Approver = "Jane Smith",
+         ApprovalComments = "Get well soon",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Sick Leave",
+         NumberOfDays = 2.0m
+     },
+     new Leave
+     {
+         LeaveId = 6,
+         EmployeeId = 6,
+         LeaveType = "Vacation",
+         StartDate = new DateTime(2024, 8, 20),
+         EndDate = new DateTime(2024, 8, 25),
+         Status = "Approved",
+         Reason = "Holiday trip",
+         RequestedBy = "David Williams",
+         ApprovalDate = new DateTime(2024, 8, 15, 11, 30, 0),
+         Approver = "John Doe",
+         ApprovalComments = "Safe travels",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Vacation Leave",
+         NumberOfDays = 6.0m
+     },
+     new Leave
+     {
+         LeaveId = 7,
+         EmployeeId = 7,
+         LeaveType = "Sick Leave",
+         StartDate = new DateTime(2024, 7, 30),
+         EndDate = new DateTime(2024, 7, 31),
+         Status = "Approved",
+         Reason = "Back pain",
+         RequestedBy = "James White",
+         ApprovalDate = new DateTime(2024, 7, 29, 14, 45, 0),
+         Approver = "Jane Smith",
+         ApprovalComments = "Take rest",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Sick Leave",
+         NumberOfDays = 2.0m
+     },
+     new Leave
+     {
+         LeaveId = 8,
+         EmployeeId = 8,
+         LeaveType = "Paternity Leave",
+         StartDate = new DateTime(2024, 9, 5),
+         EndDate = new DateTime(2024, 9, 19),
+         Status = "Approved",
+         Reason = "Newborn care",
+         RequestedBy = "Robert Green",
+         ApprovalDate = new DateTime(2024, 9, 3, 10, 0, 0),
+         Approver = "John Doe",
+         ApprovalComments = "Congrats!",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Paternity Leave",
+         NumberOfDays = 15.0m
+     },
+     new Leave
+     {
+         LeaveId = 9,
+         EmployeeId = 9,
+         LeaveType = "Sick Leave",
+         StartDate = new DateTime(2024, 8, 2),
+         EndDate = new DateTime(2024, 8, 4),
+         Status = "Approved",
+         Reason = "Flu",
+         RequestedBy = "William Black",
+         ApprovalDate = new DateTime(2024, 8, 1, 9, 30, 0),
+         Approver = "Jane Smith",
+         ApprovalComments = "Take care",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Sick Leave",
+         NumberOfDays = 3.0m
+     },
+     new Leave
+     {
+         LeaveId = 10,
+         EmployeeId = 10,
+         LeaveType = "Vacation",
+         StartDate = new DateTime(2024, 8, 25),
+         EndDate = new DateTime(2024, 8, 30),
+         Status = "Approved",
+         Reason = "Beach holiday",
+         RequestedBy = "Jessica King",
+         ApprovalDate = new DateTime(2024, 8, 20, 12, 15, 0),
+         Approver = "John Doe",
+         ApprovalComments = "Enjoy your time off",
+         IsActive = true,
+         IsPaidLeave = true,
+         LeaveCategory = "Vacation Leave",
+         NumberOfDays = 6.0m
+     }
+ );
+
 
             // Seed data for Overtime
             modelBuilder.Entity<Overtime>().HasData(
