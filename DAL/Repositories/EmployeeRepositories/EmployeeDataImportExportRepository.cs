@@ -7,6 +7,8 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
     public class EmployeeDataImportExportRepository : IEmployeeDataImportExportRepository
     {
         private readonly FanushDbContext _context;
+        private readonly IWebHostEnvironment _environment;
+
 
         public EmployeeDataImportExportRepository(FanushDbContext context)
         {
@@ -37,6 +39,10 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
 
         public async Task<object> Post(EmployeeDataImportExport entity)
         {
+            if (entity.DataFile != null)
+            {
+                entity.DataPath = await UploadFileAsync(entity.DataFile);
+            }
             _context.EmployeeDataImportExports.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
@@ -53,6 +59,10 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
 
             try
             {
+                if (entity.DataFile != null)
+                {
+                    entity.DataPath = await UploadFileAsync(entity.DataFile);
+                }
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -72,6 +82,21 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
         private bool EmployeeDataImportExportExists(int id)
         {
             return _context.EmployeeDataImportExports.Any(e => e.ImportExportId == id);
+        }
+
+        private async Task<string> UploadFileAsync(IFormFile dataFile)
+        {
+            string uploadsFolder = Path.Combine(_environment.WebRootPath, "Files");
+            string uniqueFileName = Guid.NewGuid().ToString() + "_" + dataFile.FileName;
+            string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await dataFile.CopyToAsync(fileStream);
+            }
+            var rsmUrl = "http://localhost:5041/" + "Files/" + uniqueFileName;
+
+            return rsmUrl;
         }
     }
 }

@@ -6,585 +6,574 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Fanush.Migrations
 {
     /// <inheritdoc />
-    public partial class Changes3 : Migration
+    public partial class InitialCreate2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DeductedAmount",
-                table: "PayrollCalculations");
-
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(303), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(304) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8019), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8020) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 2,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(311), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(311) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8028), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8029) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 3,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(318), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(318) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8095), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8095) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 4,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(323), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(324) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8102), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8102) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 5,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(330), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(330) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8109), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8109) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 6,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(336), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(336) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8115), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8116) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 7,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(341), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(352) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8123), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8123) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 8,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(357), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(357) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8129), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8129) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 9,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(363), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(364) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8135), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8135) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 10,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(369), new DateTime(2024, 8, 20, 5, 29, 5, 170, DateTimeKind.Utc).AddTicks(369) });
+                values: new object[] { new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8140), new DateTime(2024, 8, 21, 6, 26, 33, 533, DateTimeKind.Utc).AddTicks(8141) });
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 1,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7052));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2621));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 2,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7069));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2630));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 3,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7079));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2633));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 4,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7096));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2635));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 5,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7098));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2638));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 6,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7101));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2640));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 7,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7103));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2643));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 8,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7106));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2646));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 9,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7108));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2648));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 10,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7110));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2650));
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 1,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(784), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(798), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(798) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8495), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8505), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8507) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 2,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(802), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(803) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8511), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8511) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 3,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(806), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(807), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(808) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8514), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8515), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8515) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 4,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(815), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(816), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(816) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8518), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8518), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8519) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 5,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(820), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(821) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8521), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8522) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 6,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(823), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(824), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(824) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8524), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8525), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8525) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 7,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(827), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(827) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8530), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8530) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 8,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(830), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(831), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(832) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8533), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8533), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8534) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 9,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(834), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(835), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(835) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8536), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8537), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8537) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 10,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(838), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(839), new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(839) });
+                values: new object[] { new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8539), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8540), new DateTime(2024, 8, 21, 12, 26, 33, 533, DateTimeKind.Local).AddTicks(8541) });
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 1,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7234));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2746));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 2,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7237));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2749));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 3,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7239));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2750));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 4,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7241));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2752));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 5,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7242));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2754));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 6,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7244));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2759));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 7,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7246));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2760));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 8,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7247));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2762));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 9,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7249));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2764));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 10,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 11, 29, 5, 170, DateTimeKind.Local).AddTicks(7251));
+                value: new DateTime(2024, 8, 21, 12, 26, 33, 534, DateTimeKind.Local).AddTicks(2766));
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<decimal>(
-                name: "DeductedAmount",
-                table: "PayrollCalculations",
-                type: "decimal(18,2)",
-                nullable: false,
-                defaultValue: 0m);
-
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 1,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6590), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6591) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9405), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9406) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 2,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6599), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6599) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9414), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9415) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 3,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6606), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6606) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9420), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9421) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 4,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6612), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6613) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9459), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9459) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 5,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6618), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6619) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9465), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9466) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 6,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6625), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6626) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9471), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9473) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 7,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6666), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6681) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9478), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9478) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 8,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6687), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6687) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9484), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9484) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 9,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6693), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6693) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9489), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9490) });
 
             migrationBuilder.UpdateData(
                 table: "Employees",
                 keyColumn: "EmployeeId",
                 keyValue: 10,
                 columns: new[] { "CreatedOn", "UpdatedOn" },
-                values: new object[] { new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6699), new DateTime(2024, 8, 20, 4, 33, 13, 933, DateTimeKind.Utc).AddTicks(6699) });
+                values: new object[] { new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9495), new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9496) });
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 1,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(2993));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4867));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 2,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3003));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4874));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 3,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3012));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4877));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 4,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3068));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4879));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 5,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3071));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4881));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 6,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3074));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4884));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 7,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3076));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4887));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 8,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3078));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4889));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 9,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3081));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4891));
 
             migrationBuilder.UpdateData(
                 table: "Goals",
                 keyColumn: "GoalId",
                 keyValue: 10,
                 column: "LastUpdatedDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3084));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4893));
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 1,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7156), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7170), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7171) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9887), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9900), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9900) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 2,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7176), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7177) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9904), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9905) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 3,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7179), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7180), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7181) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9907), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9908), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9908) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 4,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7192), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7193), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7193) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9911), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9911), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9912) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 5,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7196), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7196) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9915), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9915) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 6,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7199), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7200), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7201) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9918), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9919), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9919) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 7,
                 columns: new[] { "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7203), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7204) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9922), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9922) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 8,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7206), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7207), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7207) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9925), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9925), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9926) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 9,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7210), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7211), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7211) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9928), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9929), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9929) });
 
             migrationBuilder.UpdateData(
                 table: "Overtimes",
                 keyColumn: "OvertimeId",
                 keyValue: 10,
                 columns: new[] { "ApprovalDate", "CreatedDate", "LastModifiedDate" },
-                values: new object[] { new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7213), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7214), new DateTime(2024, 8, 20, 10, 33, 13, 933, DateTimeKind.Local).AddTicks(7215) });
+                values: new object[] { new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9932), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9932), new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9933) });
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 1,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3210));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4987));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 2,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3214));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4989));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 3,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3216));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4990));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 4,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3217));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4992));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 5,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3219));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4994));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 6,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3221));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4996));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 7,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3222));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4997));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 8,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3224));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4999));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 9,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3225));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(5001));
 
             migrationBuilder.UpdateData(
                 table: "PerformanceReviews",
                 keyColumn: "PerformanceReviewId",
                 keyValue: 10,
                 column: "ReviewDate",
-                value: new DateTime(2024, 8, 20, 10, 33, 13, 934, DateTimeKind.Local).AddTicks(3227));
+                value: new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(5003));
         }
     }
 }

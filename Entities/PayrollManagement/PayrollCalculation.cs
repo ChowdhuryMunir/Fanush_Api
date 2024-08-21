@@ -86,22 +86,87 @@ namespace Fanush.Entities.PayrollManagement
         }
 
         // Generate a detailed PaySlip for the month
+        //    public string GeneratePaySlip(List<Overtime> overtimes, AbsenceReport absenceReport, List<Leave> leaves, DateTime payDate)
+        //    {
+        //        decimal grossPayableAmount = BasicSalary + HouseRent + MedicalAllowence + ConveyanceAllowence + OtherAllowence;
+
+        //        // Check if overtime records exist
+        //        if (overtimes != null)
+        //        {
+        //            foreach (var overtime in overtimes)
+        //            {
+        //                grossPayableAmount += CalculateOvertimeAmount(overtime);
+        //            }
+        //        }
+
+        //        decimal totalDeduction = 0;
+
+        //        // Check if absence report exists
+        //        if (absenceReport != null)
+        //        {
+        //            totalDeduction += CalculateAbsenceDeduction(absenceReport);
+        //        }
+
+        //        // Check if leave records exist
+        //        if (leaves != null)
+        //        {
+        //            totalDeduction += CalculateUnpaidLeaveDeduction(leaves);
+        //        }
+
+        //        decimal netPayableAmount = grossPayableAmount - totalDeduction;
+
+        //        // Generate PaySlip
+        //        return $@"
+        //    PaySlip for {Employee.FirstName} {Employee.LastName} ({payDate.ToString("MMMM yyyy")})
+        //    -------------------------------------------------
+        //    Gross Salary: {grossPayableAmount:C}
+        //    Total Deductions: -{totalDeduction:C}
+        //    -------------------------------------------------
+        //    Net Salary: {netPayableAmount:C}
+        //    -------------------------------------------------
+        //    Paid on: {payDate.ToShortDateString()}
+        //";
+        //    }
+
         public string GeneratePaySlip(List<Overtime> overtimes, AbsenceReport absenceReport, List<Leave> leaves, DateTime payDate)
         {
-            decimal grossPayableAmount = CalculateGrossPayableAmount(overtimes);
-            decimal totalDeduction = CalculateTotalDeduction(absenceReport, leaves);
+            decimal grossPayableAmount = BasicSalary + HouseRent + MedicalAllowence + ConveyanceAllowence + OtherAllowence;
+
+            if (overtimes != null && overtimes.Any())
+            {
+                foreach (var overtime in overtimes)
+                {
+                    grossPayableAmount += CalculateOvertimeAmount(overtime);
+                }
+            }
+
+            decimal totalDeduction = 0;
+
+            if (absenceReport != null)
+            {
+                totalDeduction += CalculateAbsenceDeduction(absenceReport);
+            }
+
+            if (leaves != null && leaves.Any())
+            {
+                totalDeduction += CalculateUnpaidLeaveDeduction(leaves);
+            }
+
             decimal netPayableAmount = grossPayableAmount - totalDeduction;
 
             return $@"
-                PaySlip for {Employee.FirstName} {Employee.LastName} ({payDate.ToString("MMMM yyyy")})
-                -------------------------------------------------
-                Gross Salary: {grossPayableAmount:C}
-                Total Deductions: -{totalDeduction:C}
-                -------------------------------------------------
-                Net Salary: {netPayableAmount:C}
-                -------------------------------------------------
-                Paid on: {payDate.ToShortDateString()}
-            ";
+PaySlip for {Employee?.FirstName ?? "Unknown"} {Employee?.LastName ?? "Unknown"} ({payDate.ToString("MMMM yyyy")})
+-------------------------------------------------
+Gross Salary: {grossPayableAmount:C}
+Total Deductions: -{totalDeduction:C}
+-------------------------------------------------
+Net Salary: {netPayableAmount:C}
+-------------------------------------------------
+Paid on: {payDate.ToShortDateString()}
+";
         }
+
+
+
     }
 }

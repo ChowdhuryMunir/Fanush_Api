@@ -23,6 +23,11 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
             return await _context.Set<Leave>().FindAsync(id);
         }
 
+        public async Task<List<Leave>> GetLeavesByEmployeeIdAsync(int employeeId)
+        {
+            return await _context.Leaves.Where(l => l.EmployeeId == employeeId).ToListAsync();
+        }
+
         public async Task<object> Post(Leave entity)
         {
             _context.Leaves.Add(entity);

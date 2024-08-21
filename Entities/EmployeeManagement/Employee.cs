@@ -49,9 +49,6 @@ namespace Fanush.Models.EmployeeManagement
         public string MaritalStatus { get; set; }
         public string Nationality { get; set; }
 
-        // Profile image path
-        public string ProfileImagePath { get; set; }
-
         // Lifecycle and audit properties
         public bool IsActive { get; set; }
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;

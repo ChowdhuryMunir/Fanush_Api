@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fanush.Models.EmployeeManagement
 {
@@ -9,9 +10,10 @@ namespace Fanush.Models.EmployeeManagement
 
         public string? Type { get; set; } // Example: Import, Export
 
-        public string? FileName { get; set; }
+        public string? DataPath { get; set; }
 
-        public string? FilePath { get; set; }
+        [NotMapped]
+        public IFormFile? DataFile { get; set; }
         public DateTime ImportExportDate { get; set; }
         public bool IsActive { get; set; }
     }

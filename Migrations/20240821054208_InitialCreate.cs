@@ -41,6 +41,47 @@ namespace Fanush.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoles",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
@@ -61,8 +102,7 @@ namespace Fanush.Migrations
                     ImportExportId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DataPath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImportExportDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -191,6 +231,112 @@ namespace Fanush.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserClaims_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserLogins_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserRoles",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AspNetUserRoles_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
+                    table.ForeignKey(
+                        name: "FK_AspNetUserTokens_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
                 {
@@ -207,6 +353,7 @@ namespace Fanush.Migrations
                     NationalId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PassportNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DateOfJoining = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JobTitleId = table.Column<int>(type: "int", nullable: false),
                     DepartmentId = table.Column<int>(type: "int", nullable: false),
                     EmergencyContactNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -216,7 +363,6 @@ namespace Fanush.Migrations
                     Religion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MaritalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfileImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -255,7 +401,8 @@ namespace Fanush.Migrations
                     IsPaid = table.Column<bool>(type: "bit", nullable: false),
                     ApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsHalfDay = table.Column<bool>(type: "bit", nullable: false),
-                    HalfDayType = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    HalfDayType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DaysAbsent = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -400,7 +547,8 @@ namespace Fanush.Migrations
                     ApprovalComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     IsPaidLeave = table.Column<bool>(type: "bit", nullable: false),
-                    LeaveCategory = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    LeaveCategory = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumberOfDays = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -421,7 +569,7 @@ namespace Fanush.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Hours = table.Column<double>(type: "float", nullable: false),
+                    Hours = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     OvertimeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ApprovalStatus = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -441,6 +589,30 @@ namespace Fanush.Migrations
                     table.PrimaryKey("PK_Overtimes", x => x.OvertimeId);
                     table.ForeignKey(
                         name: "FK_Overtimes_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "EmployeeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PayrollCalculations",
+                columns: table => new
+                {
+                    PayrollCalcuationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    BasicSalary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HouseRent = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MedicalAllowence = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ConveyanceAllowence = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OtherAllowence = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PayrollCalculations", x => x.PayrollCalcuationId);
+                    table.ForeignKey(
+                        name: "FK_PayrollCalculations_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "EmployeeId",
@@ -573,19 +745,19 @@ namespace Fanush.Migrations
 
             migrationBuilder.InsertData(
                 table: "EmployeeDataImportExports",
-                columns: new[] { "ImportExportId", "FileName", "FilePath", "ImportExportDate", "IsActive", "Type" },
+                columns: new[] { "ImportExportId", "DataPath", "ImportExportDate", "IsActive", "Type" },
                 values: new object[,]
                 {
-                    { 1, "employees.xlsx", "/uploads/employees.xlsx", new DateTime(2022, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
-                    { 2, "employees_export.xlsx", "/exports/employees_export.xlsx", new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
-                    { 3, "employees_backup.xlsx", "/backups/employees_backup.xlsx", new DateTime(2022, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
-                    { 4, "employees_archive.xlsx", "/archives/employees_archive.xlsx", new DateTime(2022, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
-                    { 5, "employees_data.xlsx", "/uploads/employees_data.xlsx", new DateTime(2022, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
-                    { 6, "employees_info.xlsx", "/exports/employees_info.xlsx", new DateTime(2022, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
-                    { 7, "employees_sheet.xlsx", "/uploads/employees_sheet.xlsx", new DateTime(2022, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
-                    { 8, "employees_export_info.xlsx", "/exports/employees_export_info.xlsx", new DateTime(2022, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
-                    { 9, "employees_data_sheet.xlsx", "/uploads/employees_data_sheet.xlsx", new DateTime(2022, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
-                    { 10, "employees_info_backup.xlsx", "/exports/employees_info_backup.xlsx", new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" }
+                    { 1, "/data/imports/employee_data_2023.csv", new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
+                    { 2, "/data/exports/employee_data_2023.xlsx", new DateTime(2023, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
+                    { 3, "/data/imports/employee_data_2023_part2.csv", new DateTime(2023, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
+                    { 4, "/data/exports/employee_data_backup_2023.csv", new DateTime(2023, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
+                    { 5, "/data/imports/employee_data_new_records.csv", new DateTime(2023, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
+                    { 6, "/data/exports/employee_data_summary_2023.xlsx", new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
+                    { 7, "/data/imports/employee_attendance_data_2023.csv", new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
+                    { 8, "/data/exports/employee_performance_data_2023.xlsx", new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" },
+                    { 9, "/data/imports/employee_salary_data_2023.csv", new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Import" },
+                    { 10, "/data/exports/employee_data_full_2023.xlsx", new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "Export" }
                 });
 
             migrationBuilder.InsertData(
@@ -641,19 +813,19 @@ namespace Fanush.Migrations
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "EmployeeId", "BloodGroup", "CreatedBy", "CreatedOn", "DateOfBirth", "DateOfJoining", "DepartmentId", "Email", "EmergencyContactNumber", "FathersName", "FirstName", "Gender", "IsActive", "JobTitleId", "LastName", "MaritalStatus", "MothersName", "NationalId", "Nationality", "PassportNumber", "PermanentAddress", "PhoneNumber", "PresentAddress", "ProfileImagePath", "Religion", "UpdatedBy", "UpdatedOn" },
+                columns: new[] { "EmployeeId", "BloodGroup", "CreatedBy", "CreatedOn", "DateOfBirth", "DateOfJoining", "DepartmentId", "Email", "EmergencyContactNumber", "FathersName", "FirstName", "Gender", "ImagePath", "IsActive", "JobTitleId", "LastName", "MaritalStatus", "MothersName", "NationalId", "Nationality", "PassportNumber", "PermanentAddress", "PhoneNumber", "PresentAddress", "Religion", "UpdatedBy", "UpdatedOn" },
                 values: new object[,]
                 {
-                    { 1, "O+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6193), new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "john.doe@example.com", "9876543210", "James Doe", "John", "Male", true, 1, "Doe", "Married", "Anna Doe", "1234567890123", "American", "A12345678", "abc", "1234567890", "abc", "/images/profiles/john_doe.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6194) },
-                    { 2, "A+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6202), new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "jane.smith@example.com", "1234567890", "Robert Smith", "Jane", "Female", true, 2, "Smith", "Single", "Laura Smith", "9876543210987", "Canadian", "B23456789", "abc", "9876543210", "abc", "/images/profiles/jane_smith.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6203) },
-                    { 3, "B+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6210), new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "michael.johnson@example.com", "6666666666", "David Johnson", "Michael", "Male", true, 3, "Johnson", "Married", "Emily Johnson", "5555555555555", "British", "C34567890", "abc", "5555555555", "abc", "/images/profiles/michael_johnson.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6211) },
-                    { 4, "AB-", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6217), new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "emily.brown@example.com", "3333333333", "William Brown", "Emily", "Female", true, 4, "Brown", "Single", "Elizabeth Brown", "4444444444444", "Australian", "D45678901", "abc", "4444444444", "abc", "/images/profiles/emily_brown.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6218) },
-                    { 5, "O-", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241), new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "david.wilson@example.com", "8888888888", "Thomas Wilson", "David", "Male", true, 5, "Wilson", "Married", "Sophia Wilson", "7777777777777", "New Zealander", "E56789012", "abc", "7777777777", "abc", "/images/profiles/david_wilson.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241) },
-                    { 6, "A-", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6248), new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "sophia.martinez@example.com", "9999999999", "Carlos Martinez", "Sophia", "Female", true, 6, "Martinez", "Single", "Maria Martinez", "2222222222222", "Spanish", "F67890123", "abc", "2222222222", "abc", "/images/profiles/sophia_martinez.jpg", "Catholic", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6249) },
-                    { 7, "B-", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6255), new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "daniel.taylor@example.com", "1111111111", "Henry Taylor", "Daniel", "Male", true, 7, "Taylor", "Married", "Alice Taylor", "6666666666666", "South African", "G78901234", "abc", "6666666666", "abc", "/images/profiles/daniel_taylor.jpg", "Jewish", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6256) },
-                    { 8, "AB+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6262), new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, "olivia.anderson@example.com", "7777777777", "George Anderson", "Olivia", "Female", true, 8, "Anderson", "Single", "Eleanor Anderson", "9999999999999", "American", "H89012345", "abc", "9999999999", "abc", "/images/profiles/olivia_anderson.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6263) },
-                    { 9, "O+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6269), new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, "ethan.thomas@example.com", "5555555555", "Samuel Thomas", "Ethan", "Male", true, 9, "Thomas", "Married", "Lily Thomas", "3333333333333", "Indian", "I90123456", "abc", "3333333333", "abc", "/images/profiles/ethan_thomas.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6270) },
-                    { 10, "A+", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6277), new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, "ava.white@example.com", "4444444444", "Frank White", "Ava", "Female", true, 10, "White", "Single", "Grace White", "8888888888888", "Canadian", "J01234567", "abc", "8888888888", "abc", "/images/profiles/ava_white.jpg", "Christian", "Admin", new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6278) }
+                    { 1, "O+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9405), new DateTime(1990, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "amit.roy@example.com", "01823456789", "Shankar Roy", "Amit", "Male", "/images/amitroy.jpg", true, 1, "Roy", "Single", "Mina Roy", "123456789012", "Bangladeshi", "A1234567", "456 River Road, Chattogram", "01712345678", "123 Lake Road, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9406) },
+                    { 2, "A+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9414), new DateTime(1985, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "rina.chakraborty@example.com", "01834567890", "Kumar Chakraborty", "Rina", "Female", "/images/rinachakraborty.jpg", true, 2, "Chakraborty", "Married", "Soma Chakraborty", "234567890123", "Bangladeshi", "B2345678", "1012 Beach Road, Sylhet", "01787654321", "789 Hill Street, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9415) },
+                    { 3, "B+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9420), new DateTime(1988, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2018, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), 3, "sanjay.ghosh@example.com", "01845678901", "Suresh Ghosh", "Sanjay", "Male", "/images/sanjayghosh.jpg", true, 3, "Ghosh", "Single", "Anita Ghosh", "345678901234", "Bangladeshi", "C3456789", "456 Blue Lane, Bogura", "01798765432", "123 Green Lane, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9421) },
+                    { 4, "AB+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9459), new DateTime(1992, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2021, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 4, "mina.das@example.com", "01856789012", "Ramesh Das", "Mina", "Female", "/images/minadas.jpg", true, 4, "Das", "Divorced", "Gita Das", "456789012345", "Bangladeshi", "D4567890", "654 Park Avenue, Khulna", "01745678901", "321 Market Street, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9459) },
+                    { 5, "O-", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9465), new DateTime(1987, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "arif.hossain@example.com", "01867890123", "Mohammad Hossain", "Arif", "Male", "/images/arifhossain.jpg", true, 5, "Hossain", "Married", "Fatema Hossain", "567890123456", "Bangladeshi", "E5678901", "1012 Central Road, Rajshahi", "01712349876", "789 Hill Top, Dhaka", "Muslim", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9466) },
+                    { 6, "AB-", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9471), new DateTime(1995, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), 6, "jaya.mukherjee@example.com", "01878901234", "Dipak Mukherjee", "Jaya", "Female", "/images/jayamukherjee.jpg", true, 6, "Mukherjee", "Single", "Kakoli Mukherjee", "678901234567", "Bangladeshi", "F6789012", "789 Maple Avenue, Moulvibazar", "01734567890", "456 Oak Street, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9473) },
+                    { 7, "B-", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9478), new DateTime(1989, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2020, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 7, "rafig.khan@example.com", "01889012345", "Aziz Khan", "Rafiq", "Male", "/images/rafiqukhan.jpg", true, 7, "Khan", "Widowed", "Amina Khan", "789012345678", "Bangladeshi", "G7890123", "202 Cedar Road, Barishal", "01765432109", "101 Pine Lane, Dhaka", "Muslim", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9478) },
+                    { 8, "A-", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9484), new DateTime(1991, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2019, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 8, "sonali.saha@example.com", "01890123456", "Babul Saha", "Sonali", "Female", "/images/sonalisaha.jpg", true, 8, "Saha", "Married", "Rina Saha", "890123456789", "Bangladeshi", "H8901234", "345 Pine Avenue, Sylhet", "01723456789", "234 Maple Street, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9484) },
+                    { 9, "O+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9489), new DateTime(1984, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 9, "imran.ahmed@example.com", "01891234567", "Mohammad Ahmed", "Imran", "Male", "/images/imranahmed.jpg", true, 9, "Ahmed", "Single", "Nasima Ahmed", "901234567890", "Bangladeshi", "I9012345", "678 Elm Street, Rangpur", "01756789012", "567 Birch Lane, Dhaka", "Muslim", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9490) },
+                    { 10, "AB+", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9495), new DateTime(1993, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2022, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), 10, "anita.bhattacharya@example.com", "01893456789", "Pranab Bhattacharya", "Anita", "Female", "/images/anitabhattacharya.jpg", true, 10, "Bhattacharya", "Married", "Chitra Bhattacharya", "012345678901", "Bangladeshi", "J0123456", "123 Oak Road, Comilla", "01767890123", "890 Walnut Street, Dhaka", "Hindu", "admin", new DateTime(2024, 8, 21, 5, 42, 5, 770, DateTimeKind.Utc).AddTicks(9496) }
                 });
 
             migrationBuilder.InsertData(
@@ -692,19 +864,19 @@ namespace Fanush.Migrations
 
             migrationBuilder.InsertData(
                 table: "AbsenceReports",
-                columns: new[] { "AbsenceReportId", "ApprovedDate", "Approver", "EmployeeId", "EndDate", "HalfDayType", "IsHalfDay", "IsPaid", "Reason", "StartDate", "Status" },
+                columns: new[] { "AbsenceReportId", "ApprovedDate", "Approver", "DaysAbsent", "EmployeeId", "EndDate", "HalfDayType", "IsHalfDay", "IsPaid", "Reason", "StartDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 8, 2, 10, 0, 0, 0, DateTimeKind.Unspecified), "John Doe", 1, new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, "Medical Leave", new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 2, null, "Jane Smith", 2, new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Morning", true, false, "Personal Leave", new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
-                    { 3, new DateTime(2024, 8, 14, 14, 30, 0, 0, DateTimeKind.Unspecified), "Emily Brown", 3, new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, "Vacation", new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 4, new DateTime(2024, 8, 19, 9, 0, 0, 0, DateTimeKind.Unspecified), "Chris Evans", 4, new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Afternoon", true, true, "Medical Appointment", new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 5, null, "Anna Taylor", 5, new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, false, "Family Emergency", new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
-                    { 6, new DateTime(2024, 8, 24, 16, 0, 0, 0, DateTimeKind.Unspecified), "Robert Downey", 6, new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Morning", true, true, "Childcare", new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 7, new DateTime(2024, 8, 27, 11, 30, 0, 0, DateTimeKind.Unspecified), "Scarlett Johansson", 7, new DateTime(2024, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Afternoon", true, false, "Study Leave", new DateTime(2024, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 8, new DateTime(2024, 8, 30, 15, 0, 0, 0, DateTimeKind.Unspecified), "Mark Ruffalo", 8, new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, "Holiday", new DateTime(2024, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 9, null, "Natalie Portman", 9, new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Morning", true, false, "Sick Leave", new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
-                    { 10, new DateTime(2024, 9, 9, 10, 15, 0, 0, DateTimeKind.Unspecified), "Chris Hemsworth", 10, new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, false, true, "Workshop Attendance", new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" }
+                    { 1, new DateTime(2024, 8, 3, 10, 30, 0, 0, DateTimeKind.Unspecified), "John Doe", 2.0m, 1, new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, true, "Medical Leave", new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 2, new DateTime(2024, 7, 14, 9, 0, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 0.5m, 2, new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Morning", true, false, "Personal Leave", new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 3, new DateTime(2024, 8, 6, 14, 15, 0, 0, DateTimeKind.Unspecified), "John Doe", 3.0m, 3, new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, false, "Family Emergency", new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
+                    { 4, new DateTime(2024, 7, 22, 11, 0, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 2.0m, 4, new DateTime(2024, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, true, "Sick Leave", new DateTime(2024, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 5, new DateTime(2024, 8, 10, 12, 0, 0, 0, DateTimeKind.Unspecified), "John Doe", 0.5m, 5, new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Afternoon", true, false, "Doctor's Appointment", new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 6, new DateTime(2024, 7, 29, 9, 30, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 2.0m, 6, new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, true, "Vacation", new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 7, new DateTime(2024, 8, 7, 15, 0, 0, 0, DateTimeKind.Unspecified), "John Doe", 2.0m, 7, new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, true, "Jury Duty", new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 8, new DateTime(2024, 8, 16, 10, 0, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 0.5m, 8, new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Morning", true, false, "Bereavement Leave", new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
+                    { 9, new DateTime(2024, 7, 27, 13, 30, 0, 0, DateTimeKind.Unspecified), "John Doe", 2.0m, 9, new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, false, "Travel", new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 10, new DateTime(2024, 8, 9, 10, 45, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 2.0m, 10, new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "None", false, true, "Training", new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" }
                 });
 
             migrationBuilder.InsertData(
@@ -763,33 +935,33 @@ namespace Fanush.Migrations
                 columns: new[] { "GoalId", "AssignedByUserId", "Comments", "CompletionDate", "Description", "EmployeeId", "EndDate", "GoalStatus", "IsActive", "LastUpdatedDate", "Progress", "StartDate", "Title", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { 1, 1, "On track for completion.", null, "Finish all tasks related to Project Alpha by Q3.", 1, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1878), 40, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Complete Project Alpha", "Manager" },
-                    { 2, 2, "Sales are improving steadily.", null, "Boost sales by 20% by end of the year.", 2, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1893), 50, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Increase Sales by 20%", "Sales Director" },
-                    { 3, 3, "Working on campaign materials.", null, "Introduce a new marketing campaign to increase brand awareness.", 3, new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1896), 30, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Launch New Marketing Campaign", "Marketing Head" },
-                    { 4, 4, "Plan needs more details.", null, "Improve customer support response time by 50%.", 4, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, false, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1899), 10, new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Enhance Customer Support", "Support Manager" },
-                    { 5, 5, "Feature development is going well.", null, "Create and implement a new feature for the flagship product.", 5, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1903), 60, new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Develop New Product Feature", "Product Manager" },
-                    { 6, 6, "Identifying areas to reduce costs.", null, "Cut operational costs by 15% by Q4.", 6, new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1906), 20, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Reduce Operational Costs", "Operations Head" },
-                    { 7, 7, "Collaboration tools have been introduced.", null, "Enhance collaboration across departments.", 7, new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1909), 50, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Improve Team Collaboration", "HR Manager" },
-                    { 8, 8, "Supply chain optimization is in progress.", null, "Streamline the supply chain to reduce delays.", 8, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1912), 60, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Optimize Supply Chain", "Supply Chain Manager" },
-                    { 9, 9, "System is under testing.", null, "Introduce a new CRM system to improve customer management.", 9, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1915), 30, new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Implement New CRM System", "IT Manager" },
-                    { 10, 10, "Security protocols are being updated.", null, "Implement new data security measures to protect company assets.", 10, new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1918), 70, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Enhance Data Security", "Security Officer" }
+                    { 1, 1, "On track for completion.", null, "Finish all tasks related to Project Alpha by Q3.", 1, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4867), 40, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Complete Project Alpha", "Manager" },
+                    { 2, 2, "Sales are improving steadily.", null, "Boost sales by 20% by end of the year.", 2, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4874), 50, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Increase Sales by 20%", "Sales Director" },
+                    { 3, 3, "Working on campaign materials.", null, "Introduce a new marketing campaign to increase brand awareness.", 3, new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4877), 30, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Launch New Marketing Campaign", "Marketing Head" },
+                    { 4, 4, "Plan needs more details.", null, "Improve customer support response time by 50%.", 4, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, false, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4879), 10, new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Enhance Customer Support", "Support Manager" },
+                    { 5, 5, "Feature development is going well.", null, "Create and implement a new feature for the flagship product.", 5, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4881), 60, new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Develop New Product Feature", "Product Manager" },
+                    { 6, 6, "Identifying areas to reduce costs.", null, "Cut operational costs by 15% by Q4.", 6, new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4884), 20, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Reduce Operational Costs", "Operations Head" },
+                    { 7, 7, "Collaboration tools have been introduced.", null, "Enhance collaboration across departments.", 7, new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4887), 50, new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Improve Team Collaboration", "HR Manager" },
+                    { 8, 8, "Supply chain optimization is in progress.", null, "Streamline the supply chain to reduce delays.", 8, new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4889), 60, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Optimize Supply Chain", "Supply Chain Manager" },
+                    { 9, 9, "System is under testing.", null, "Introduce a new CRM system to improve customer management.", 9, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4891), 30, new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Implement New CRM System", "IT Manager" },
+                    { 10, 10, "Security protocols are being updated.", null, "Implement new data security measures to protect company assets.", 10, new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), 0, true, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4893), 70, new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Enhance Data Security", "Security Officer" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Leaves",
-                columns: new[] { "LeaveId", "ApprovalComments", "ApprovalDate", "Approver", "EmployeeId", "EndDate", "IsActive", "IsPaidLeave", "LeaveCategory", "LeaveType", "Reason", "RequestedBy", "StartDate", "Status" },
+                columns: new[] { "LeaveId", "ApprovalComments", "ApprovalDate", "Approver", "EmployeeId", "EndDate", "IsActive", "IsPaidLeave", "LeaveCategory", "LeaveType", "NumberOfDays", "Reason", "RequestedBy", "StartDate", "Status" },
                 values: new object[,]
                 {
-                    { 1, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6581), "Jane Smith", 1, new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Annual", "Vacation", "Annual vacation", "John Doe", new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 2, null, null, null, 2, new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, "Medical", "Sick", "Medical reasons", "Alice Johnson", new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
-                    { 3, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6600), "Michael Brown", 3, new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Maternity", "Maternity", "Childbirth", "Emily Davis", new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 4, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6604), "Sarah Johnson", 4, new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Personal", "Personal", "Personal matters", "David Wilson", new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 5, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6607), "Robert Brown", 5, new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, "Unpaid", "Unpaid", "Extended leave", "Jessica Lee", new DateTime(2024, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 6, null, null, null, 6, new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Annual", "Vacation", "No coverage available", "Mark Taylor", new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Denied" },
-                    { 7, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6613), "Olivia White", 7, new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Medical", "Sick", "Flu", "Anna Scott", new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 8, null, null, null, 8, new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Personal", "Personal", "Family event", "John Martin", new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
-                    { 9, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6619), "James Miller", 9, new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Maternity", "Maternity", "Childbirth", "Laura Clark", new DateTime(2024, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
-                    { 10, "Approved", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6622), "Daniel Moore", 10, new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, false, "Unpaid", "Unpaid", "Personal reasons", "Sophia Walker", new DateTime(2024, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" }
+                    { 1, "Take care", new DateTime(2024, 7, 31, 10, 0, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 1, new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Sick Leave", "Sick Leave", 3.0m, "Fever and cold", "John Doe", new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 2, "Enjoy your time", new DateTime(2024, 7, 10, 14, 30, 0, 0, DateTimeKind.Unspecified), "John Doe", 2, new DateTime(2024, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Vacation Leave", "Vacation", 6.0m, "Family vacation", "Jane Smith", new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 3, "Pending approval", new DateTime(2024, 8, 20, 9, 0, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 3, new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, "Maternity Leave", "Maternity Leave", 9.0m, "Maternity", "Emily Clark", new DateTime(2024, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Pending" },
+                    { 4, "Condolences", new DateTime(2024, 8, 8, 16, 0, 0, 0, DateTimeKind.Unspecified), "John Doe", 4, new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Bereavement Leave", "Bereavement Leave", 6.0m, "Loss of family member", "Michael Brown", new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 5, "Get well soon", new DateTime(2024, 7, 24, 10, 15, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 5, new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Sick Leave", "Sick Leave", 2.0m, "Migraine", "Sarah Johnson", new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 6, "Safe travels", new DateTime(2024, 8, 15, 11, 30, 0, 0, DateTimeKind.Unspecified), "John Doe", 6, new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Vacation Leave", "Vacation", 6.0m, "Holiday trip", "David Williams", new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 7, "Take rest", new DateTime(2024, 7, 29, 14, 45, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 7, new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Sick Leave", "Sick Leave", 2.0m, "Back pain", "James White", new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 8, "Congrats!", new DateTime(2024, 9, 3, 10, 0, 0, 0, DateTimeKind.Unspecified), "John Doe", 8, new DateTime(2024, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Paternity Leave", "Paternity Leave", 15.0m, "Newborn care", "Robert Green", new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 9, "Take care", new DateTime(2024, 8, 1, 9, 30, 0, 0, DateTimeKind.Unspecified), "Jane Smith", 9, new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Sick Leave", "Sick Leave", 3.0m, "Flu", "William Black", new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" },
+                    { 10, "Enjoy your time off", new DateTime(2024, 8, 20, 12, 15, 0, 0, DateTimeKind.Unspecified), "John Doe", 10, new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), true, true, "Vacation Leave", "Vacation", 6.0m, "Beach holiday", "Jessica King", new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Approved" }
                 });
 
             migrationBuilder.InsertData(
@@ -797,16 +969,33 @@ namespace Fanush.Migrations
                 columns: new[] { "OvertimeId", "ApprovalDate", "ApprovalStatus", "ApprovedBy", "AttachmentUrl", "CreatedBy", "CreatedDate", "Date", "Department", "EmployeeId", "Hours", "IsActive", "LastModifiedBy", "LastModifiedDate", "OvertimeType", "Project", "Reason" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6666), "Approved", "Jane Smith", "http://example.com/attachment1", "John Doe", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669), new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "IT", 1, 4.5, true, "John Doe", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669), "Voluntary", "Project A", "Project deadline" },
-                    { 2, null, "Pending", null, null, "Alice Johnson", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6674), new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Finance", 2, 3.0, true, "Alice Johnson", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6675), "Mandatory", "System Upgrade", "System update" },
-                    { 3, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6678), "Approved", "Michael Brown", "http://example.com/attachment2", "Emily Davis", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6679), new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Support", 3, 2.0, true, "Emily Davis", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6680), "Voluntary", "Customer A", "Customer support" },
-                    { 4, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6683), "Approved", "Sarah Johnson", "http://example.com/attachment3", "David Wilson", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6684), new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marketing", 4, 5.0, true, "David Wilson", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6685), "Mandatory", "Launch X", "Product launch" },
-                    { 5, null, "Rejected", null, null, "Jessica Lee", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688), new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "HR", 5, 6.0, true, "Jessica Lee", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688), "Voluntary", "Training Session", "Training preparation" },
-                    { 6, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6691), "Approved", "Robert Brown", "http://example.com/attachment4", "Mark Taylor", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6692), new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sales", 6, 4.0, true, "Mark Taylor", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6693), "Voluntary", "Meeting Y", "Client meeting" },
-                    { 7, null, "Pending", null, null, "Anna Scott", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696), new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Audit", 7, 2.5, true, "Anna Scott", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696), "Mandatory", "Audit Z", "Audit preparation" },
-                    { 8, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6699), "Approved", "Olivia White", "http://example.com/attachment5", "John Martin", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6700), new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Operations", 8, 3.5, true, "John Martin", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6701), "Voluntary", "Task A", "Additional tasks" },
-                    { 9, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6704), "Approved", "James Miller", "http://example.com/attachment6", "Laura Clark", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705), new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Emergency", 9, 5.0, true, "Laura Clark", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705), "Mandatory", "Response X", "Emergency response" },
-                    { 10, new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6708), "Approved", "Daniel Moore", "http://example.com/attachment7", "Sophia Walker", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6709), new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Customer Service", 10, 4.5, true, "Sophia Walker", new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6710), "Voluntary", "Support B", "Extra support" }
+                    { 1, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9887), "Approved", "Jane Smith", "http://example.com/attachment1", "John Doe", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9900), new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "IT", 1, 4.5m, true, "John Doe", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9900), "Voluntary", "Project A", "Project deadline" },
+                    { 2, null, "Pending", null, null, "Alice Johnson", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9904), new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), "Finance", 2, 3.0m, true, "Alice Johnson", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9905), "Mandatory", "System Upgrade", "System update" },
+                    { 3, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9907), "Approved", "Michael Brown", "http://example.com/attachment2", "Emily Davis", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9908), new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Support", 3, 2.0m, true, "Emily Davis", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9908), "Voluntary", "Customer A", "Customer support" },
+                    { 4, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9911), "Approved", "Sarah Johnson", "http://example.com/attachment3", "David Wilson", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9911), new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Marketing", 4, 5.0m, true, "David Wilson", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9912), "Mandatory", "Launch X", "Product launch" },
+                    { 5, null, "Rejected", null, null, "Jessica Lee", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9915), new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "HR", 5, 6.0m, true, "Jessica Lee", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9915), "Voluntary", "Training Session", "Training preparation" },
+                    { 6, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9918), "Approved", "Robert Brown", "http://example.com/attachment4", "Mark Taylor", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9919), new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Sales", 6, 4.0m, true, "Mark Taylor", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9919), "Voluntary", "Meeting Y", "Client meeting" },
+                    { 7, null, "Pending", null, null, "Anna Scott", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9922), new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Audit", 7, 2.5m, true, "Anna Scott", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9922), "Mandatory", "Audit Z", "Audit preparation" },
+                    { 8, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9925), "Approved", "Olivia White", "http://example.com/attachment5", "John Martin", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9925), new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "Operations", 8, 3.5m, true, "John Martin", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9926), "Voluntary", "Task A", "Additional tasks" },
+                    { 9, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9928), "Approved", "James Miller", "http://example.com/attachment6", "Laura Clark", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9929), new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Emergency", 9, 5.0m, true, "Laura Clark", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9929), "Mandatory", "Response X", "Emergency response" },
+                    { 10, new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9932), "Approved", "Daniel Moore", "http://example.com/attachment7", "Sophia Walker", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9932), new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Customer Service", 10, 4.5m, true, "Sophia Walker", new DateTime(2024, 8, 21, 11, 42, 5, 770, DateTimeKind.Local).AddTicks(9933), "Voluntary", "Support B", "Extra support" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "PayrollCalculations",
+                columns: new[] { "PayrollCalcuationId", "BasicSalary", "ConveyanceAllowence", "EmployeeId", "HouseRent", "MedicalAllowence", "OtherAllowence" },
+                values: new object[,]
+                {
+                    { 1, 50000m, 3000m, 1, 10000m, 5000m, 2000m },
+                    { 2, 45000m, 2500m, 2, 9000m, 4500m, 1500m },
+                    { 3, 47000m, 2700m, 3, 9400m, 4700m, 1700m },
+                    { 4, 55000m, 3500m, 4, 11000m, 5500m, 2500m },
+                    { 5, 48000m, 2800m, 5, 9600m, 4800m, 1800m },
+                    { 6, 51000m, 3100m, 6, 10200m, 5100m, 2100m },
+                    { 7, 49000m, 2900m, 7, 9800m, 4900m, 1900m },
+                    { 8, 53000m, 3300m, 8, 10600m, 5300m, 2300m },
+                    { 9, 56000m, 3600m, 9, 11200m, 5600m, 2600m },
+                    { 10, 46000m, 2600m, 10, 9200m, 4600m, 1600m }
                 });
 
             migrationBuilder.InsertData(
@@ -848,22 +1037,61 @@ namespace Fanush.Migrations
                 columns: new[] { "PerformanceReviewId", "Comments", "EmployeeId", "Feedback", "PerformanceRating", "ReviewDate", "ReviewType", "ReviewerId" },
                 values: new object[,]
                 {
-                    { 1, "Exceptional performance", 1, "Great job overall, keep up the good work.", 5, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2040), "Annual", 1 },
-                    { 2, "Solid performance", 2, "Good progress but needs improvement in communication.", 4, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2043), "Quarterly", 2 },
-                    { 3, "Satisfactory performance", 3, "Requires more focus on client interactions.", 3, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2045), "Annual", 3 },
-                    { 4, "Outstanding", 4, "Excellent leadership skills demonstrated.", 5, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2048), "Quarterly", 4 },
-                    { 5, "Good effort", 5, "Good analytical skills, needs improvement in client relations.", 4, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2051), "Annual", 5 },
-                    { 6, "Good teamwork", 6, "Strong teamwork but needs better project management.", 4, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2053), "Quarterly", 6 },
-                    { 7, "Needs improvement", 7, "Creative thinking is a strength, work on organizational skills.", 3, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2055), "Annual", 7 },
-                    { 8, "Very strong performance", 8, "Excellent technical expertise, communication skills need work.", 5, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2057), "Quarterly", 8 },
-                    { 9, "Satisfactory", 9, "Dependable employee, needs improvement in time management.", 3, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2059), "Annual", 9 },
-                    { 10, "Good performance", 10, "Great attention to detail, work on team collaboration.", 4, new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2061), "Quarterly", 10 }
+                    { 1, "Exceptional performance", 1, "Great job overall, keep up the good work.", 5, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4987), "Annual", 1 },
+                    { 2, "Solid performance", 2, "Good progress but needs improvement in communication.", 4, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4989), "Quarterly", 2 },
+                    { 3, "Satisfactory performance", 3, "Requires more focus on client interactions.", 3, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4990), "Annual", 3 },
+                    { 4, "Outstanding", 4, "Excellent leadership skills demonstrated.", 5, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4992), "Quarterly", 4 },
+                    { 5, "Good effort", 5, "Good analytical skills, needs improvement in client relations.", 4, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4994), "Annual", 5 },
+                    { 6, "Good teamwork", 6, "Strong teamwork but needs better project management.", 4, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4996), "Quarterly", 6 },
+                    { 7, "Needs improvement", 7, "Creative thinking is a strength, work on organizational skills.", 3, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4997), "Annual", 7 },
+                    { 8, "Very strong performance", 8, "Excellent technical expertise, communication skills need work.", 5, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(4999), "Quarterly", 8 },
+                    { 9, "Satisfactory", 9, "Dependable employee, needs improvement in time management.", 3, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(5001), "Annual", 9 },
+                    { 10, "Good performance", 10, "Great attention to detail, work on team collaboration.", 4, new DateTime(2024, 8, 21, 11, 42, 5, 771, DateTimeKind.Local).AddTicks(5003), "Quarterly", 10 }
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AbsenceReports_EmployeeId",
                 table: "AbsenceReports",
                 column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetRoleClaims_RoleId",
+                table: "AspNetRoleClaims",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "RoleNameIndex",
+                table: "AspNetRoles",
+                column: "NormalizedName",
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserClaims_UserId",
+                table: "AspNetUserClaims",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserLogins_UserId",
+                table: "AspNetUserLogins",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUserRoles_RoleId",
+                table: "AspNetUserRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "EmailIndex",
+                table: "AspNetUsers",
+                column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "UserNameIndex",
+                table: "AspNetUsers",
+                column: "NormalizedUserName",
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClockInOuts_EmployeeId",
@@ -916,6 +1144,11 @@ namespace Fanush.Migrations
                 column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PayrollCalculations_EmployeeId",
+                table: "PayrollCalculations",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PayrollIntegrations_EmployeeId",
                 table: "PayrollIntegrations",
                 column: "EmployeeId");
@@ -941,6 +1174,21 @@ namespace Fanush.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AbsenceReports");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
                 name: "ClockInOuts");
@@ -973,6 +1221,9 @@ namespace Fanush.Migrations
                 name: "Overtimes");
 
             migrationBuilder.DropTable(
+                name: "PayrollCalculations");
+
+            migrationBuilder.DropTable(
                 name: "PayrollIntegrations");
 
             migrationBuilder.DropTable(
@@ -983,6 +1234,12 @@ namespace Fanush.Migrations
 
             migrationBuilder.DropTable(
                 name: "WorkExperiences");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Employees");

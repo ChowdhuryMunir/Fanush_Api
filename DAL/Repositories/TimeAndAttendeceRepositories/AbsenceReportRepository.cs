@@ -24,6 +24,11 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
             return await _context.Set<AbsenceReport>().FindAsync(id);
         }
 
+        public async Task<AbsenceReport> GetAbsenceReportByEmployeeIdAsync(int employeeId)
+        {
+            return await _context.AbsenceReports.FirstOrDefaultAsync(ar => ar.EmployeeId == employeeId);
+        }
+
         public async Task<object> Post(AbsenceReport entity)
         {
             _context.AbsenceReports.Add(entity);

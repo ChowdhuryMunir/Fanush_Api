@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fanush.Migrations
 {
     [DbContext(typeof(FanushDbContext))]
-    [Migration("20240818143006_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240821064153_InitialCreate3")]
+    partial class InitialCreate3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,212 @@ namespace Fanush.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Fanush.Entities.Administrator.AppUser", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("Fanush.Entities.PayrollManagement.PayrollCalculation", b =>
+                {
+                    b.Property<int>("PayrollCalcuationId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PayrollCalcuationId"));
+
+                    b.Property<decimal>("BasicSalary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ConveyanceAllowence")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("HouseRent")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MedicalAllowence")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("OtherAllowence")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("PayrollCalcuationId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("PayrollCalculations");
+
+                    b.HasData(
+                        new
+                        {
+                            PayrollCalcuationId = 1,
+                            BasicSalary = 50000m,
+                            ConveyanceAllowence = 3000m,
+                            EmployeeId = 1,
+                            HouseRent = 10000m,
+                            MedicalAllowence = 5000m,
+                            OtherAllowence = 2000m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 2,
+                            BasicSalary = 45000m,
+                            ConveyanceAllowence = 2500m,
+                            EmployeeId = 2,
+                            HouseRent = 9000m,
+                            MedicalAllowence = 4500m,
+                            OtherAllowence = 1500m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 3,
+                            BasicSalary = 47000m,
+                            ConveyanceAllowence = 2700m,
+                            EmployeeId = 3,
+                            HouseRent = 9400m,
+                            MedicalAllowence = 4700m,
+                            OtherAllowence = 1700m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 4,
+                            BasicSalary = 55000m,
+                            ConveyanceAllowence = 3500m,
+                            EmployeeId = 4,
+                            HouseRent = 11000m,
+                            MedicalAllowence = 5500m,
+                            OtherAllowence = 2500m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 5,
+                            BasicSalary = 48000m,
+                            ConveyanceAllowence = 2800m,
+                            EmployeeId = 5,
+                            HouseRent = 9600m,
+                            MedicalAllowence = 4800m,
+                            OtherAllowence = 1800m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 6,
+                            BasicSalary = 51000m,
+                            ConveyanceAllowence = 3100m,
+                            EmployeeId = 6,
+                            HouseRent = 10200m,
+                            MedicalAllowence = 5100m,
+                            OtherAllowence = 2100m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 7,
+                            BasicSalary = 49000m,
+                            ConveyanceAllowence = 2900m,
+                            EmployeeId = 7,
+                            HouseRent = 9800m,
+                            MedicalAllowence = 4900m,
+                            OtherAllowence = 1900m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 8,
+                            BasicSalary = 53000m,
+                            ConveyanceAllowence = 3300m,
+                            EmployeeId = 8,
+                            HouseRent = 10600m,
+                            MedicalAllowence = 5300m,
+                            OtherAllowence = 2300m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 9,
+                            BasicSalary = 56000m,
+                            ConveyanceAllowence = 3600m,
+                            EmployeeId = 9,
+                            HouseRent = 11200m,
+                            MedicalAllowence = 5600m,
+                            OtherAllowence = 2600m
+                        },
+                        new
+                        {
+                            PayrollCalcuationId = 10,
+                            BasicSalary = 46000m,
+                            ConveyanceAllowence = 2600m,
+                            EmployeeId = 10,
+                            HouseRent = 9200m,
+                            MedicalAllowence = 4600m,
+                            OtherAllowence = 1600m
+                        });
+                });
 
             modelBuilder.Entity("Fanush.Entities.PerformenceManagement.DevelopmentPlan", b =>
                 {
@@ -260,7 +466,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1878),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7078),
                             Progress = 40,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Complete Project Alpha",
@@ -276,7 +482,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1893),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7089),
                             Progress = 50,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Increase Sales by 20%",
@@ -292,7 +498,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1896),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7100),
                             Progress = 30,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Launch New Marketing Campaign",
@@ -308,7 +514,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 2,
                             IsActive = false,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1899),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7112),
                             Progress = 10,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Customer Support",
@@ -324,7 +530,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1903),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7114),
                             Progress = 60,
                             StartDate = new DateTime(2024, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Develop New Product Feature",
@@ -340,7 +546,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1906),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7116),
                             Progress = 20,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Reduce Operational Costs",
@@ -356,7 +562,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 8, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1909),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7119),
                             Progress = 50,
                             StartDate = new DateTime(2024, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Improve Team Collaboration",
@@ -372,7 +578,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1912),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7121),
                             Progress = 60,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Optimize Supply Chain",
@@ -388,7 +594,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 1,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1915),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7123),
                             Progress = 30,
                             StartDate = new DateTime(2024, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Implement New CRM System",
@@ -404,7 +610,7 @@ namespace Fanush.Migrations
                             EndDate = new DateTime(2024, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GoalStatus = 0,
                             IsActive = true,
-                            LastUpdatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(1918),
+                            LastUpdatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7125),
                             Progress = 70,
                             StartDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Enhance Data Security",
@@ -718,7 +924,7 @@ namespace Fanush.Migrations
                             EmployeeId = 1,
                             Feedback = "Great job overall, keep up the good work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2040),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7252),
                             ReviewType = "Annual",
                             ReviewerId = 1
                         },
@@ -729,7 +935,7 @@ namespace Fanush.Migrations
                             EmployeeId = 2,
                             Feedback = "Good progress but needs improvement in communication.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2043),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7255),
                             ReviewType = "Quarterly",
                             ReviewerId = 2
                         },
@@ -740,7 +946,7 @@ namespace Fanush.Migrations
                             EmployeeId = 3,
                             Feedback = "Requires more focus on client interactions.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2045),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7258),
                             ReviewType = "Annual",
                             ReviewerId = 3
                         },
@@ -751,7 +957,7 @@ namespace Fanush.Migrations
                             EmployeeId = 4,
                             Feedback = "Excellent leadership skills demonstrated.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2048),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7259),
                             ReviewType = "Quarterly",
                             ReviewerId = 4
                         },
@@ -762,7 +968,7 @@ namespace Fanush.Migrations
                             EmployeeId = 5,
                             Feedback = "Good analytical skills, needs improvement in client relations.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2051),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7261),
                             ReviewType = "Annual",
                             ReviewerId = 5
                         },
@@ -773,7 +979,7 @@ namespace Fanush.Migrations
                             EmployeeId = 6,
                             Feedback = "Strong teamwork but needs better project management.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2053),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7263),
                             ReviewType = "Quarterly",
                             ReviewerId = 6
                         },
@@ -784,7 +990,7 @@ namespace Fanush.Migrations
                             EmployeeId = 7,
                             Feedback = "Creative thinking is a strength, work on organizational skills.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2055),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7326),
                             ReviewType = "Annual",
                             ReviewerId = 7
                         },
@@ -795,7 +1001,7 @@ namespace Fanush.Migrations
                             EmployeeId = 8,
                             Feedback = "Excellent technical expertise, communication skills need work.",
                             PerformanceRating = 5,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2057),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7328),
                             ReviewType = "Quarterly",
                             ReviewerId = 8
                         },
@@ -806,7 +1012,7 @@ namespace Fanush.Migrations
                             EmployeeId = 9,
                             Feedback = "Dependable employee, needs improvement in time management.",
                             PerformanceRating = 3,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2059),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7330),
                             ReviewType = "Annual",
                             ReviewerId = 9
                         },
@@ -817,7 +1023,7 @@ namespace Fanush.Migrations
                             EmployeeId = 10,
                             Feedback = "Great attention to detail, work on team collaboration.",
                             PerformanceRating = 4,
-                            ReviewDate = new DateTime(2024, 8, 18, 20, 30, 5, 260, DateTimeKind.Local).AddTicks(2061),
+                            ReviewDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(7332),
                             ReviewType = "Quarterly",
                             ReviewerId = 10
                         });
@@ -1859,6 +2065,9 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("DaysAbsent")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
@@ -1895,10 +2104,12 @@ namespace Fanush.Migrations
                         new
                         {
                             AbsenceReportId = 1,
-                            ApprovedDate = new DateTime(2024, 8, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            ApprovedDate = new DateTime(2024, 8, 3, 10, 30, 0, 0, DateTimeKind.Unspecified),
                             Approver = "John Doe",
+                            DaysAbsent = 2.0m,
                             EmployeeId = 1,
-                            EndDate = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
                             IsHalfDay = false,
                             IsPaid = true,
                             Reason = "Medical Leave",
@@ -1908,120 +2119,136 @@ namespace Fanush.Migrations
                         new
                         {
                             AbsenceReportId = 2,
+                            ApprovedDate = new DateTime(2024, 7, 14, 9, 0, 0, 0, DateTimeKind.Unspecified),
                             Approver = "Jane Smith",
+                            DaysAbsent = 0.5m,
                             EmployeeId = 2,
-                            EndDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HalfDayType = "Morning",
                             IsHalfDay = true,
                             IsPaid = false,
                             Reason = "Personal Leave",
-                            StartDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Pending"
-                        },
-                        new
-                        {
-                            AbsenceReportId = 3,
-                            ApprovedDate = new DateTime(2024, 8, 14, 14, 30, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Emily Brown",
-                            EmployeeId = 3,
-                            EndDate = new DateTime(2024, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsHalfDay = false,
-                            IsPaid = true,
-                            Reason = "Vacation",
-                            StartDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            StartDate = new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
+                            AbsenceReportId = 3,
+                            ApprovedDate = new DateTime(2024, 8, 6, 14, 15, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
+                            DaysAbsent = 3.0m,
+                            EmployeeId = 3,
+                            EndDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
+                            IsHalfDay = false,
+                            IsPaid = false,
+                            Reason = "Family Emergency",
+                            StartDate = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Pending"
+                        },
+                        new
+                        {
                             AbsenceReportId = 4,
-                            ApprovedDate = new DateTime(2024, 8, 19, 9, 0, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Chris Evans",
+                            ApprovedDate = new DateTime(2024, 7, 22, 11, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
+                            DaysAbsent = 2.0m,
                             EmployeeId = 4,
-                            EndDate = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HalfDayType = "Afternoon",
-                            IsHalfDay = true,
+                            EndDate = new DateTime(2024, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
+                            IsHalfDay = false,
                             IsPaid = true,
-                            Reason = "Medical Appointment",
-                            StartDate = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Reason = "Sick Leave",
+                            StartDate = new DateTime(2024, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             AbsenceReportId = 5,
-                            Approver = "Anna Taylor",
+                            ApprovedDate = new DateTime(2024, 8, 10, 12, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
+                            DaysAbsent = 0.5m,
                             EmployeeId = 5,
-                            EndDate = new DateTime(2024, 8, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsHalfDay = false,
+                            EndDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "Afternoon",
+                            IsHalfDay = true,
                             IsPaid = false,
-                            Reason = "Family Emergency",
-                            StartDate = new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Pending"
+                            Reason = "Doctor's Appointment",
+                            StartDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Approved"
                         },
                         new
                         {
                             AbsenceReportId = 6,
-                            ApprovedDate = new DateTime(2024, 8, 24, 16, 0, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Robert Downey",
+                            ApprovedDate = new DateTime(2024, 7, 29, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
+                            DaysAbsent = 2.0m,
                             EmployeeId = 6,
-                            EndDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HalfDayType = "Morning",
-                            IsHalfDay = true,
+                            EndDate = new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
+                            IsHalfDay = false,
                             IsPaid = true,
-                            Reason = "Childcare",
-                            StartDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Reason = "Vacation",
+                            StartDate = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             AbsenceReportId = 7,
-                            ApprovedDate = new DateTime(2024, 8, 27, 11, 30, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Scarlett Johansson",
+                            ApprovedDate = new DateTime(2024, 8, 7, 15, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
+                            DaysAbsent = 2.0m,
                             EmployeeId = 7,
-                            EndDate = new DateTime(2024, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            HalfDayType = "Afternoon",
-                            IsHalfDay = true,
-                            IsPaid = false,
-                            Reason = "Study Leave",
-                            StartDate = new DateTime(2024, 8, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
+                            IsHalfDay = false,
+                            IsPaid = true,
+                            Reason = "Jury Duty",
+                            StartDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             AbsenceReportId = 8,
-                            ApprovedDate = new DateTime(2024, 8, 30, 15, 0, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Mark Ruffalo",
+                            ApprovedDate = new DateTime(2024, 8, 16, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
+                            DaysAbsent = 0.5m,
                             EmployeeId = 8,
-                            EndDate = new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsHalfDay = false,
-                            IsPaid = true,
-                            Reason = "Holiday",
-                            StartDate = new DateTime(2024, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Approved"
-                        },
-                        new
-                        {
-                            AbsenceReportId = 9,
-                            Approver = "Natalie Portman",
-                            EmployeeId = 9,
-                            EndDate = new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             HalfDayType = "Morning",
                             IsHalfDay = true,
                             IsPaid = false,
-                            Reason = "Sick Leave",
-                            StartDate = new DateTime(2024, 9, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Reason = "Bereavement Leave",
+                            StartDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Pending"
                         },
                         new
                         {
+                            AbsenceReportId = 9,
+                            ApprovedDate = new DateTime(2024, 7, 27, 13, 30, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
+                            DaysAbsent = 2.0m,
+                            EmployeeId = 9,
+                            EndDate = new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
+                            IsHalfDay = false,
+                            IsPaid = false,
+                            Reason = "Travel",
+                            StartDate = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Approved"
+                        },
+                        new
+                        {
                             AbsenceReportId = 10,
-                            ApprovedDate = new DateTime(2024, 9, 9, 10, 15, 0, 0, DateTimeKind.Unspecified),
-                            Approver = "Chris Hemsworth",
+                            ApprovedDate = new DateTime(2024, 8, 9, 10, 45, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
+                            DaysAbsent = 2.0m,
                             EmployeeId = 10,
-                            EndDate = new DateTime(2024, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            HalfDayType = "None",
                             IsHalfDay = false,
                             IsPaid = true,
-                            Reason = "Workshop Attendance",
-                            StartDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Reason = "Training",
+                            StartDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         });
                 });
@@ -2324,6 +2551,9 @@ namespace Fanush.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<decimal>("NumberOfDays")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -2350,16 +2580,17 @@ namespace Fanush.Migrations
                         new
                         {
                             LeaveId = 1,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6581),
+                            ApprovalComments = "Take care",
+                            ApprovalDate = new DateTime(2024, 7, 31, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             Approver = "Jane Smith",
                             EmployeeId = 1,
-                            EndDate = new DateTime(2024, 8, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Annual",
-                            LeaveType = "Vacation",
-                            Reason = "Annual vacation",
+                            LeaveCategory = "Sick Leave",
+                            LeaveType = "Sick Leave",
+                            NumberOfDays = 3.0m,
+                            Reason = "Fever and cold",
                             RequestedBy = "John Doe",
                             StartDate = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
@@ -2367,145 +2598,163 @@ namespace Fanush.Migrations
                         new
                         {
                             LeaveId = 2,
+                            ApprovalComments = "Enjoy your time",
+                            ApprovalDate = new DateTime(2024, 7, 10, 14, 30, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
                             EmployeeId = 2,
-                            EndDate = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            IsActive = true,
-                            IsPaidLeave = false,
-                            LeaveCategory = "Medical",
-                            LeaveType = "Sick",
-                            Reason = "Medical reasons",
-                            RequestedBy = "Alice Johnson",
-                            StartDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Pending"
-                        },
-                        new
-                        {
-                            LeaveId = 3,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6600),
-                            Approver = "Michael Brown",
-                            EmployeeId = 3,
-                            EndDate = new DateTime(2024, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Maternity",
-                            LeaveType = "Maternity",
-                            Reason = "Childbirth",
-                            RequestedBy = "Emily Davis",
-                            StartDate = new DateTime(2024, 7, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaveCategory = "Vacation Leave",
+                            LeaveType = "Vacation",
+                            NumberOfDays = 6.0m,
+                            Reason = "Family vacation",
+                            RequestedBy = "Jane Smith",
+                            StartDate = new DateTime(2024, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
+                            LeaveId = 3,
+                            ApprovalComments = "Pending approval",
+                            ApprovalDate = new DateTime(2024, 8, 20, 9, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
+                            EmployeeId = 3,
+                            EndDate = new DateTime(2024, 12, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsActive = false,
+                            IsPaidLeave = true,
+                            LeaveCategory = "Maternity Leave",
+                            LeaveType = "Maternity Leave",
+                            NumberOfDays = 9.0m,
+                            Reason = "Maternity",
+                            RequestedBy = "Emily Clark",
+                            StartDate = new DateTime(2024, 9, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Pending"
+                        },
+                        new
+                        {
                             LeaveId = 4,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6604),
-                            Approver = "Sarah Johnson",
+                            ApprovalComments = "Condolences",
+                            ApprovalDate = new DateTime(2024, 8, 8, 16, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
                             EmployeeId = 4,
-                            EndDate = new DateTime(2024, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Personal",
-                            LeaveType = "Personal",
-                            Reason = "Personal matters",
-                            RequestedBy = "David Wilson",
-                            StartDate = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaveCategory = "Bereavement Leave",
+                            LeaveType = "Bereavement Leave",
+                            NumberOfDays = 6.0m,
+                            Reason = "Loss of family member",
+                            RequestedBy = "Michael Brown",
+                            StartDate = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 5,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6607),
-                            Approver = "Robert Brown",
+                            ApprovalComments = "Get well soon",
+                            ApprovalDate = new DateTime(2024, 7, 24, 10, 15, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
                             EmployeeId = 5,
-                            EndDate = new DateTime(2024, 10, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            IsPaidLeave = false,
-                            LeaveCategory = "Unpaid",
-                            LeaveType = "Unpaid",
-                            Reason = "Extended leave",
-                            RequestedBy = "Jessica Lee",
-                            StartDate = new DateTime(2024, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsPaidLeave = true,
+                            LeaveCategory = "Sick Leave",
+                            LeaveType = "Sick Leave",
+                            NumberOfDays = 2.0m,
+                            Reason = "Migraine",
+                            RequestedBy = "Sarah Johnson",
+                            StartDate = new DateTime(2024, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 6,
+                            ApprovalComments = "Safe travels",
+                            ApprovalDate = new DateTime(2024, 8, 15, 11, 30, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
                             EmployeeId = 6,
-                            EndDate = new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Annual",
+                            LeaveCategory = "Vacation Leave",
                             LeaveType = "Vacation",
-                            Reason = "No coverage available",
-                            RequestedBy = "Mark Taylor",
-                            StartDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Denied"
+                            NumberOfDays = 6.0m,
+                            Reason = "Holiday trip",
+                            RequestedBy = "David Williams",
+                            StartDate = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 7,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6613),
-                            Approver = "Olivia White",
+                            ApprovalComments = "Take rest",
+                            ApprovalDate = new DateTime(2024, 7, 29, 14, 45, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
                             EmployeeId = 7,
-                            EndDate = new DateTime(2024, 8, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Medical",
-                            LeaveType = "Sick",
-                            Reason = "Flu",
-                            RequestedBy = "Anna Scott",
-                            StartDate = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaveCategory = "Sick Leave",
+                            LeaveType = "Sick Leave",
+                            NumberOfDays = 2.0m,
+                            Reason = "Back pain",
+                            RequestedBy = "James White",
+                            StartDate = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 8,
+                            ApprovalComments = "Congrats!",
+                            ApprovalDate = new DateTime(2024, 9, 3, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
                             EmployeeId = 8,
-                            EndDate = new DateTime(2024, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Personal",
-                            LeaveType = "Personal",
-                            Reason = "Family event",
-                            RequestedBy = "John Martin",
-                            StartDate = new DateTime(2024, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Status = "Pending"
+                            LeaveCategory = "Paternity Leave",
+                            LeaveType = "Paternity Leave",
+                            NumberOfDays = 15.0m,
+                            Reason = "Newborn care",
+                            RequestedBy = "Robert Green",
+                            StartDate = new DateTime(2024, 9, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 9,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6619),
-                            Approver = "James Miller",
+                            ApprovalComments = "Take care",
+                            ApprovalDate = new DateTime(2024, 8, 1, 9, 30, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "Jane Smith",
                             EmployeeId = 9,
-                            EndDate = new DateTime(2025, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             IsPaidLeave = true,
-                            LeaveCategory = "Maternity",
-                            LeaveType = "Maternity",
-                            Reason = "Childbirth",
-                            RequestedBy = "Laura Clark",
-                            StartDate = new DateTime(2024, 10, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaveCategory = "Sick Leave",
+                            LeaveType = "Sick Leave",
+                            NumberOfDays = 3.0m,
+                            Reason = "Flu",
+                            RequestedBy = "William Black",
+                            StartDate = new DateTime(2024, 8, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         },
                         new
                         {
                             LeaveId = 10,
-                            ApprovalComments = "Approved",
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6622),
-                            Approver = "Daniel Moore",
+                            ApprovalComments = "Enjoy your time off",
+                            ApprovalDate = new DateTime(2024, 8, 20, 12, 15, 0, 0, DateTimeKind.Unspecified),
+                            Approver = "John Doe",
                             EmployeeId = 10,
-                            EndDate = new DateTime(2024, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EndDate = new DateTime(2024, 8, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
-                            IsPaidLeave = false,
-                            LeaveCategory = "Unpaid",
-                            LeaveType = "Unpaid",
-                            Reason = "Personal reasons",
-                            RequestedBy = "Sophia Walker",
-                            StartDate = new DateTime(2024, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            IsPaidLeave = true,
+                            LeaveCategory = "Vacation Leave",
+                            LeaveType = "Vacation",
+                            NumberOfDays = 6.0m,
+                            Reason = "Beach holiday",
+                            RequestedBy = "Jessica King",
+                            StartDate = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Status = "Approved"
                         });
                 });
@@ -2548,8 +2797,8 @@ namespace Fanush.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Hours")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Hours")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -2583,19 +2832,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 1,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6666),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(68),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Jane Smith",
                             AttachmentUrl = "http://example.com/attachment1",
                             CreatedBy = "John Doe",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(81),
                             Date = new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "IT",
                             EmployeeId = 1,
-                            Hours = 4.5,
+                            Hours = 4.5m,
                             IsActive = true,
                             LastModifiedBy = "John Doe",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6669),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(82),
                             OvertimeType = "Voluntary",
                             Project = "Project A",
                             Reason = "Project deadline"
@@ -2605,14 +2854,14 @@ namespace Fanush.Migrations
                             OvertimeId = 2,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Alice Johnson",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6674),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(87),
                             Date = new DateTime(2024, 8, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Finance",
                             EmployeeId = 2,
-                            Hours = 3.0,
+                            Hours = 3.0m,
                             IsActive = true,
                             LastModifiedBy = "Alice Johnson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6675),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(87),
                             OvertimeType = "Mandatory",
                             Project = "System Upgrade",
                             Reason = "System update"
@@ -2620,19 +2869,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 3,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6678),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(90),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Michael Brown",
                             AttachmentUrl = "http://example.com/attachment2",
                             CreatedBy = "Emily Davis",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6679),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(91),
                             Date = new DateTime(2024, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Support",
                             EmployeeId = 3,
-                            Hours = 2.0,
+                            Hours = 2.0m,
                             IsActive = true,
                             LastModifiedBy = "Emily Davis",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6680),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(92),
                             OvertimeType = "Voluntary",
                             Project = "Customer A",
                             Reason = "Customer support"
@@ -2640,19 +2889,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 4,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6683),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(102),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Sarah Johnson",
                             AttachmentUrl = "http://example.com/attachment3",
                             CreatedBy = "David Wilson",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6684),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(104),
                             Date = new DateTime(2024, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Marketing",
                             EmployeeId = 4,
-                            Hours = 5.0,
+                            Hours = 5.0m,
                             IsActive = true,
                             LastModifiedBy = "David Wilson",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6685),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(105),
                             OvertimeType = "Mandatory",
                             Project = "Launch X",
                             Reason = "Product launch"
@@ -2662,14 +2911,14 @@ namespace Fanush.Migrations
                             OvertimeId = 5,
                             ApprovalStatus = "Rejected",
                             CreatedBy = "Jessica Lee",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(107),
                             Date = new DateTime(2024, 8, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "HR",
                             EmployeeId = 5,
-                            Hours = 6.0,
+                            Hours = 6.0m,
                             IsActive = true,
                             LastModifiedBy = "Jessica Lee",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6688),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(108),
                             OvertimeType = "Voluntary",
                             Project = "Training Session",
                             Reason = "Training preparation"
@@ -2677,19 +2926,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 6,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6691),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(110),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Robert Brown",
                             AttachmentUrl = "http://example.com/attachment4",
                             CreatedBy = "Mark Taylor",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6692),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(111),
                             Date = new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Sales",
                             EmployeeId = 6,
-                            Hours = 4.0,
+                            Hours = 4.0m,
                             IsActive = true,
                             LastModifiedBy = "Mark Taylor",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6693),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(112),
                             OvertimeType = "Voluntary",
                             Project = "Meeting Y",
                             Reason = "Client meeting"
@@ -2699,14 +2948,14 @@ namespace Fanush.Migrations
                             OvertimeId = 7,
                             ApprovalStatus = "Pending",
                             CreatedBy = "Anna Scott",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(115),
                             Date = new DateTime(2024, 8, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Audit",
                             EmployeeId = 7,
-                            Hours = 2.5,
+                            Hours = 2.5m,
                             IsActive = true,
                             LastModifiedBy = "Anna Scott",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6696),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(115),
                             OvertimeType = "Mandatory",
                             Project = "Audit Z",
                             Reason = "Audit preparation"
@@ -2714,19 +2963,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 8,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6699),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(119),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Olivia White",
                             AttachmentUrl = "http://example.com/attachment5",
                             CreatedBy = "John Martin",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6700),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(120),
                             Date = new DateTime(2024, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Operations",
                             EmployeeId = 8,
-                            Hours = 3.5,
+                            Hours = 3.5m,
                             IsActive = true,
                             LastModifiedBy = "John Martin",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6701),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(121),
                             OvertimeType = "Voluntary",
                             Project = "Task A",
                             Reason = "Additional tasks"
@@ -2734,19 +2983,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 9,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6704),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(160),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "James Miller",
                             AttachmentUrl = "http://example.com/attachment6",
                             CreatedBy = "Laura Clark",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(161),
                             Date = new DateTime(2024, 8, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Emergency",
                             EmployeeId = 9,
-                            Hours = 5.0,
+                            Hours = 5.0m,
                             IsActive = true,
                             LastModifiedBy = "Laura Clark",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6705),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(161),
                             OvertimeType = "Mandatory",
                             Project = "Response X",
                             Reason = "Emergency response"
@@ -2754,19 +3003,19 @@ namespace Fanush.Migrations
                         new
                         {
                             OvertimeId = 10,
-                            ApprovalDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6708),
+                            ApprovalDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(164),
                             ApprovalStatus = "Approved",
                             ApprovedBy = "Daniel Moore",
                             AttachmentUrl = "http://example.com/attachment7",
                             CreatedBy = "Sophia Walker",
-                            CreatedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6709),
+                            CreatedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(165),
                             Date = new DateTime(2024, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Department = "Customer Service",
                             EmployeeId = 10,
-                            Hours = 4.5,
+                            Hours = 4.5m,
                             IsActive = true,
                             LastModifiedBy = "Sophia Walker",
-                            LastModifiedDate = new DateTime(2024, 8, 18, 20, 30, 5, 259, DateTimeKind.Local).AddTicks(6710),
+                            LastModifiedDate = new DateTime(2024, 8, 21, 12, 41, 50, 889, DateTimeKind.Local).AddTicks(165),
                             OvertimeType = "Voluntary",
                             Project = "Support B",
                             Reason = "Extra support"
@@ -3144,6 +3393,9 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
@@ -3186,10 +3438,6 @@ namespace Fanush.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProfileImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Religion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -3214,301 +3462,301 @@ namespace Fanush.Migrations
                         {
                             EmployeeId = 1,
                             BloodGroup = "O+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6193),
-                            DateOfBirth = new DateTime(1985, 5, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2010, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9587),
+                            DateOfBirth = new DateTime(1990, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2020, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 1,
-                            Email = "john.doe@example.com",
-                            EmergencyContactNumber = "9876543210",
-                            FathersName = "James Doe",
-                            FirstName = "John",
+                            Email = "amit.roy@example.com",
+                            EmergencyContactNumber = "01823456789",
+                            FathersName = "Shankar Roy",
+                            FirstName = "Amit",
                             Gender = "Male",
+                            ImagePath = "/images/amitroy.jpg",
                             IsActive = true,
                             JobTitleId = 1,
-                            LastName = "Doe",
-                            MaritalStatus = "Married",
-                            MothersName = "Anna Doe",
-                            NationalId = "1234567890123",
-                            Nationality = "American",
-                            PassportNumber = "A12345678",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "1234567890",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/john_doe.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6194)
+                            LastName = "Roy",
+                            MaritalStatus = "Single",
+                            MothersName = "Mina Roy",
+                            NationalId = "123456789012",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "A1234567",
+                            PermanentAddress = "456 River Road, Chattogram",
+                            PhoneNumber = "01712345678",
+                            PresentAddress = "123 Lake Road, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9588)
                         },
                         new
                         {
                             EmployeeId = 2,
                             BloodGroup = "A+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6202),
-                            DateOfBirth = new DateTime(1990, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2015, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9595),
+                            DateOfBirth = new DateTime(1985, 11, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2019, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 2,
-                            Email = "jane.smith@example.com",
-                            EmergencyContactNumber = "1234567890",
-                            FathersName = "Robert Smith",
-                            FirstName = "Jane",
+                            Email = "rina.chakraborty@example.com",
+                            EmergencyContactNumber = "01834567890",
+                            FathersName = "Kumar Chakraborty",
+                            FirstName = "Rina",
                             Gender = "Female",
+                            ImagePath = "/images/rinachakraborty.jpg",
                             IsActive = true,
                             JobTitleId = 2,
-                            LastName = "Smith",
-                            MaritalStatus = "Single",
-                            MothersName = "Laura Smith",
-                            NationalId = "9876543210987",
-                            Nationality = "Canadian",
-                            PassportNumber = "B23456789",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "9876543210",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/jane_smith.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6203)
+                            LastName = "Chakraborty",
+                            MaritalStatus = "Married",
+                            MothersName = "Soma Chakraborty",
+                            NationalId = "234567890123",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "B2345678",
+                            PermanentAddress = "1012 Beach Road, Sylhet",
+                            PhoneNumber = "01787654321",
+                            PresentAddress = "789 Hill Street, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9596)
                         },
                         new
                         {
                             EmployeeId = 3,
                             BloodGroup = "B+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6210),
-                            DateOfBirth = new DateTime(1982, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2008, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9602),
+                            DateOfBirth = new DateTime(1988, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2018, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 3,
-                            Email = "michael.johnson@example.com",
-                            EmergencyContactNumber = "6666666666",
-                            FathersName = "David Johnson",
-                            FirstName = "Michael",
+                            Email = "sanjay.ghosh@example.com",
+                            EmergencyContactNumber = "01845678901",
+                            FathersName = "Suresh Ghosh",
+                            FirstName = "Sanjay",
                             Gender = "Male",
+                            ImagePath = "/images/sanjayghosh.jpg",
                             IsActive = true,
                             JobTitleId = 3,
-                            LastName = "Johnson",
-                            MaritalStatus = "Married",
-                            MothersName = "Emily Johnson",
-                            NationalId = "5555555555555",
-                            Nationality = "British",
-                            PassportNumber = "C34567890",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "5555555555",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/michael_johnson.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6211)
+                            LastName = "Ghosh",
+                            MaritalStatus = "Single",
+                            MothersName = "Anita Ghosh",
+                            NationalId = "345678901234",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "C3456789",
+                            PermanentAddress = "456 Blue Lane, Bogura",
+                            PhoneNumber = "01798765432",
+                            PresentAddress = "123 Green Lane, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9602)
                         },
                         new
                         {
                             EmployeeId = 4,
-                            BloodGroup = "AB-",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6217),
-                            DateOfBirth = new DateTime(1993, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2019, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BloodGroup = "AB+",
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9608),
+                            DateOfBirth = new DateTime(1992, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2021, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 4,
-                            Email = "emily.brown@example.com",
-                            EmergencyContactNumber = "3333333333",
-                            FathersName = "William Brown",
-                            FirstName = "Emily",
+                            Email = "mina.das@example.com",
+                            EmergencyContactNumber = "01856789012",
+                            FathersName = "Ramesh Das",
+                            FirstName = "Mina",
                             Gender = "Female",
+                            ImagePath = "/images/minadas.jpg",
                             IsActive = true,
                             JobTitleId = 4,
-                            LastName = "Brown",
-                            MaritalStatus = "Single",
-                            MothersName = "Elizabeth Brown",
-                            NationalId = "4444444444444",
-                            Nationality = "Australian",
-                            PassportNumber = "D45678901",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "4444444444",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/emily_brown.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6218)
+                            LastName = "Das",
+                            MaritalStatus = "Divorced",
+                            MothersName = "Gita Das",
+                            NationalId = "456789012345",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "D4567890",
+                            PermanentAddress = "654 Park Avenue, Khulna",
+                            PhoneNumber = "01745678901",
+                            PresentAddress = "321 Market Street, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9608)
                         },
                         new
                         {
                             EmployeeId = 5,
                             BloodGroup = "O-",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241),
-                            DateOfBirth = new DateTime(1978, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2012, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9615),
+                            DateOfBirth = new DateTime(1987, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2022, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 5,
-                            Email = "david.wilson@example.com",
-                            EmergencyContactNumber = "8888888888",
-                            FathersName = "Thomas Wilson",
-                            FirstName = "David",
+                            Email = "arif.hossain@example.com",
+                            EmergencyContactNumber = "01867890123",
+                            FathersName = "Mohammad Hossain",
+                            FirstName = "Arif",
                             Gender = "Male",
+                            ImagePath = "/images/arifhossain.jpg",
                             IsActive = true,
                             JobTitleId = 5,
-                            LastName = "Wilson",
+                            LastName = "Hossain",
                             MaritalStatus = "Married",
-                            MothersName = "Sophia Wilson",
-                            NationalId = "7777777777777",
-                            Nationality = "New Zealander",
-                            PassportNumber = "E56789012",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "7777777777",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/david_wilson.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6241)
+                            MothersName = "Fatema Hossain",
+                            NationalId = "567890123456",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "E5678901",
+                            PermanentAddress = "1012 Central Road, Rajshahi",
+                            PhoneNumber = "01712349876",
+                            PresentAddress = "789 Hill Top, Dhaka",
+                            Religion = "Muslim",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9615)
                         },
                         new
                         {
                             EmployeeId = 6,
-                            BloodGroup = "A-",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6248),
-                            DateOfBirth = new DateTime(1989, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2016, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BloodGroup = "AB-",
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9620),
+                            DateOfBirth = new DateTime(1995, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 6,
-                            Email = "sophia.martinez@example.com",
-                            EmergencyContactNumber = "9999999999",
-                            FathersName = "Carlos Martinez",
-                            FirstName = "Sophia",
+                            Email = "jaya.mukherjee@example.com",
+                            EmergencyContactNumber = "01878901234",
+                            FathersName = "Dipak Mukherjee",
+                            FirstName = "Jaya",
                             Gender = "Female",
+                            ImagePath = "/images/jayamukherjee.jpg",
                             IsActive = true,
                             JobTitleId = 6,
-                            LastName = "Martinez",
+                            LastName = "Mukherjee",
                             MaritalStatus = "Single",
-                            MothersName = "Maria Martinez",
-                            NationalId = "2222222222222",
-                            Nationality = "Spanish",
-                            PassportNumber = "F67890123",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "2222222222",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/sophia_martinez.jpg",
-                            Religion = "Catholic",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6249)
+                            MothersName = "Kakoli Mukherjee",
+                            NationalId = "678901234567",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "F6789012",
+                            PermanentAddress = "789 Maple Avenue, Moulvibazar",
+                            PhoneNumber = "01734567890",
+                            PresentAddress = "456 Oak Street, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9621)
                         },
                         new
                         {
                             EmployeeId = 7,
                             BloodGroup = "B-",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6255),
-                            DateOfBirth = new DateTime(1980, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2005, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9626),
+                            DateOfBirth = new DateTime(1989, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2020, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 7,
-                            Email = "daniel.taylor@example.com",
-                            EmergencyContactNumber = "1111111111",
-                            FathersName = "Henry Taylor",
-                            FirstName = "Daniel",
+                            Email = "rafig.khan@example.com",
+                            EmergencyContactNumber = "01889012345",
+                            FathersName = "Aziz Khan",
+                            FirstName = "Rafiq",
                             Gender = "Male",
+                            ImagePath = "/images/rafiqukhan.jpg",
                             IsActive = true,
                             JobTitleId = 7,
-                            LastName = "Taylor",
-                            MaritalStatus = "Married",
-                            MothersName = "Alice Taylor",
-                            NationalId = "6666666666666",
-                            Nationality = "South African",
-                            PassportNumber = "G78901234",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "6666666666",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/daniel_taylor.jpg",
-                            Religion = "Jewish",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6256)
+                            LastName = "Khan",
+                            MaritalStatus = "Widowed",
+                            MothersName = "Amina Khan",
+                            NationalId = "789012345678",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "G7890123",
+                            PermanentAddress = "202 Cedar Road, Barishal",
+                            PhoneNumber = "01765432109",
+                            PresentAddress = "101 Pine Lane, Dhaka",
+                            Religion = "Muslim",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9638)
                         },
                         new
                         {
                             EmployeeId = 8,
-                            BloodGroup = "AB+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6262),
-                            DateOfBirth = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2020, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BloodGroup = "A-",
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9646),
+                            DateOfBirth = new DateTime(1991, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2019, 12, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 8,
-                            Email = "olivia.anderson@example.com",
-                            EmergencyContactNumber = "7777777777",
-                            FathersName = "George Anderson",
-                            FirstName = "Olivia",
+                            Email = "sonali.saha@example.com",
+                            EmergencyContactNumber = "01890123456",
+                            FathersName = "Babul Saha",
+                            FirstName = "Sonali",
                             Gender = "Female",
+                            ImagePath = "/images/sonalisaha.jpg",
                             IsActive = true,
                             JobTitleId = 8,
-                            LastName = "Anderson",
-                            MaritalStatus = "Single",
-                            MothersName = "Eleanor Anderson",
-                            NationalId = "9999999999999",
-                            Nationality = "American",
-                            PassportNumber = "H89012345",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "9999999999",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/olivia_anderson.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6263)
+                            LastName = "Saha",
+                            MaritalStatus = "Married",
+                            MothersName = "Rina Saha",
+                            NationalId = "890123456789",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "H8901234",
+                            PermanentAddress = "345 Pine Avenue, Sylhet",
+                            PhoneNumber = "01723456789",
+                            PresentAddress = "234 Maple Street, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9647)
                         },
                         new
                         {
                             EmployeeId = 9,
                             BloodGroup = "O+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6269),
-                            DateOfBirth = new DateTime(1987, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2018, 9, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9652),
+                            DateOfBirth = new DateTime(1984, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2018, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 9,
-                            Email = "ethan.thomas@example.com",
-                            EmergencyContactNumber = "5555555555",
-                            FathersName = "Samuel Thomas",
-                            FirstName = "Ethan",
+                            Email = "imran.ahmed@example.com",
+                            EmergencyContactNumber = "01891234567",
+                            FathersName = "Mohammad Ahmed",
+                            FirstName = "Imran",
                             Gender = "Male",
+                            ImagePath = "/images/imranahmed.jpg",
                             IsActive = true,
                             JobTitleId = 9,
-                            LastName = "Thomas",
-                            MaritalStatus = "Married",
-                            MothersName = "Lily Thomas",
-                            NationalId = "3333333333333",
-                            Nationality = "Indian",
-                            PassportNumber = "I90123456",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "3333333333",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/ethan_thomas.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6270)
+                            LastName = "Ahmed",
+                            MaritalStatus = "Single",
+                            MothersName = "Nasima Ahmed",
+                            NationalId = "901234567890",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "I9012345",
+                            PermanentAddress = "678 Elm Street, Rangpur",
+                            PhoneNumber = "01756789012",
+                            PresentAddress = "567 Birch Lane, Dhaka",
+                            Religion = "Muslim",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9653)
                         },
                         new
                         {
                             EmployeeId = 10,
-                            BloodGroup = "A+",
-                            CreatedBy = "Admin",
-                            CreatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6277),
-                            DateOfBirth = new DateTime(1991, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DateOfJoining = new DateTime(2013, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BloodGroup = "AB+",
+                            CreatedBy = "admin",
+                            CreatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9658),
+                            DateOfBirth = new DateTime(1993, 10, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfJoining = new DateTime(2022, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DepartmentId = 10,
-                            Email = "ava.white@example.com",
-                            EmergencyContactNumber = "4444444444",
-                            FathersName = "Frank White",
-                            FirstName = "Ava",
+                            Email = "anita.bhattacharya@example.com",
+                            EmergencyContactNumber = "01893456789",
+                            FathersName = "Pranab Bhattacharya",
+                            FirstName = "Anita",
                             Gender = "Female",
+                            ImagePath = "/images/anitabhattacharya.jpg",
                             IsActive = true,
                             JobTitleId = 10,
-                            LastName = "White",
-                            MaritalStatus = "Single",
-                            MothersName = "Grace White",
-                            NationalId = "8888888888888",
-                            Nationality = "Canadian",
-                            PassportNumber = "J01234567",
-                            PermanentAddress = "abc",
-                            PhoneNumber = "8888888888",
-                            PresentAddress = "abc",
-                            ProfileImagePath = "/images/profiles/ava_white.jpg",
-                            Religion = "Christian",
-                            UpdatedBy = "Admin",
-                            UpdatedOn = new DateTime(2024, 8, 18, 14, 30, 5, 259, DateTimeKind.Utc).AddTicks(6278)
+                            LastName = "Bhattacharya",
+                            MaritalStatus = "Married",
+                            MothersName = "Chitra Bhattacharya",
+                            NationalId = "012345678901",
+                            Nationality = "Bangladeshi",
+                            PassportNumber = "J0123456",
+                            PermanentAddress = "123 Oak Road, Comilla",
+                            PhoneNumber = "01767890123",
+                            PresentAddress = "890 Walnut Street, Dhaka",
+                            Religion = "Hindu",
+                            UpdatedBy = "admin",
+                            UpdatedOn = new DateTime(2024, 8, 21, 6, 41, 50, 888, DateTimeKind.Utc).AddTicks(9659)
                         });
                 });
 
@@ -3520,10 +3768,7 @@ namespace Fanush.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImportExportId"));
 
-                    b.Property<string>("FileName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FilePath")
+                    b.Property<string>("DataPath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ImportExportDate")
@@ -3543,90 +3788,80 @@ namespace Fanush.Migrations
                         new
                         {
                             ImportExportId = 1,
-                            FileName = "employees.xlsx",
-                            FilePath = "/uploads/employees.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/imports/employee_data_2023.csv",
+                            ImportExportDate = new DateTime(2023, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Import"
                         },
                         new
                         {
                             ImportExportId = 2,
-                            FileName = "employees_export.xlsx",
-                            FilePath = "/exports/employees_export.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/exports/employee_data_2023.xlsx",
+                            ImportExportDate = new DateTime(2023, 7, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Export"
                         },
                         new
                         {
                             ImportExportId = 3,
-                            FileName = "employees_backup.xlsx",
-                            FilePath = "/backups/employees_backup.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/imports/employee_data_2023_part2.csv",
+                            ImportExportDate = new DateTime(2023, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Import"
                         },
                         new
                         {
                             ImportExportId = 4,
-                            FileName = "employees_archive.xlsx",
-                            FilePath = "/archives/employees_archive.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/exports/employee_data_backup_2023.csv",
+                            ImportExportDate = new DateTime(2023, 9, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Export"
                         },
                         new
                         {
                             ImportExportId = 5,
-                            FileName = "employees_data.xlsx",
-                            FilePath = "/uploads/employees_data.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/imports/employee_data_new_records.csv",
+                            ImportExportDate = new DateTime(2023, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Import"
                         },
                         new
                         {
                             ImportExportId = 6,
-                            FileName = "employees_info.xlsx",
-                            FilePath = "/exports/employees_info.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/exports/employee_data_summary_2023.xlsx",
+                            ImportExportDate = new DateTime(2023, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Export"
                         },
                         new
                         {
                             ImportExportId = 7,
-                            FileName = "employees_sheet.xlsx",
-                            FilePath = "/uploads/employees_sheet.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/imports/employee_attendance_data_2023.csv",
+                            ImportExportDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Import"
                         },
                         new
                         {
                             ImportExportId = 8,
-                            FileName = "employees_export_info.xlsx",
-                            FilePath = "/exports/employees_export_info.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/exports/employee_performance_data_2023.xlsx",
+                            ImportExportDate = new DateTime(2024, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Export"
                         },
                         new
                         {
                             ImportExportId = 9,
-                            FileName = "employees_data_sheet.xlsx",
-                            FilePath = "/uploads/employees_data_sheet.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/imports/employee_salary_data_2023.csv",
+                            ImportExportDate = new DateTime(2024, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Import"
                         },
                         new
                         {
                             ImportExportId = 10,
-                            FileName = "employees_info_backup.xlsx",
-                            FilePath = "/exports/employees_info_backup.xlsx",
-                            ImportExportDate = new DateTime(2022, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DataPath = "/data/exports/employee_data_full_2023.xlsx",
+                            ImportExportDate = new DateTime(2024, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsActive = true,
                             Type = "Export"
                         });
@@ -3822,6 +4057,150 @@ namespace Fanush.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Fanush.Entities.PayrollManagement.PayrollCalculation", b =>
+                {
+                    b.HasOne("Fanush.Models.EmployeeManagement.Employee", "Employee")
+                        .WithMany("PayrollCalculations")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Fanush.Entities.PerformenceManagement.DevelopmentPlan", b =>
                 {
                     b.HasOne("Fanush.Models.EmployeeManagement.Employee", "Employee")
@@ -3980,6 +4359,57 @@ namespace Fanush.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("Fanush.Entities.Administrator.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("Fanush.Entities.Administrator.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fanush.Entities.Administrator.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("Fanush.Entities.Administrator.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Fanush.Entities.RecruitmentManagement.Applicant", b =>
                 {
                     b.Navigation("Educations");
@@ -4009,6 +4439,8 @@ namespace Fanush.Migrations
                     b.Navigation("Leaves");
 
                     b.Navigation("Overtimes");
+
+                    b.Navigation("PayrollCalculations");
 
                     b.Navigation("PayrollIntegrations");
 

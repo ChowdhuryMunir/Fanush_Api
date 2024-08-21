@@ -23,6 +23,11 @@ namespace Fanush.DAL.Repositories.TimeAndAttendanceRepositories
             return await _context.Set<Overtime>().FindAsync(id);
         }
 
+        public async Task<List<Overtime>> GetOvertimeByEmployeeIdAsync(int employeeId)
+        {
+            return await _context.Overtimes.Where(o => o.EmployeeId == employeeId).ToListAsync();
+        }
+
         public async Task<object> Post(Overtime entity)
         {
             _context.Overtimes.Add(entity);

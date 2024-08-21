@@ -87,7 +87,6 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             existingEmployee.MothersName = entity.MothersName;
             existingEmployee.MaritalStatus = entity.MaritalStatus;
             existingEmployee.Religion = entity.Religion;
-            existingEmployee.ProfileImagePath = entity.ProfileImagePath;
             existingEmployee.CreatedBy = entity.CreatedBy;
             existingEmployee.CreatedOn = entity.CreatedOn;
             existingEmployee.UpdatedBy = entity.UpdatedBy;
