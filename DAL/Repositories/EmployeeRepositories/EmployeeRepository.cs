@@ -153,6 +153,26 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             return await CountAttendance(today, today.AddDays(1).AddTicks(-1));
         }
 
+        public async Task<int> CountTodayAbsentEmployees()
+        {
+            var today = DateTime.UtcNow.Date;
+
+            // Get all employee IDs
+            var allEmployeeIds = await _context.Employees.Select(e => e.EmployeeId).ToListAsync();
+
+            // Get employee IDs who have clocked in today
+            var clockedInEmployeeIds = await _context.ClockInOuts
+                .Where(c => c.Timestamp.Date == today && c.Action.ToLower() == "clockin")
+                .Select(c => c.EmployeeId)
+                .Distinct()
+                .ToListAsync();
+
+            // Employees who are absent today
+            var absentEmployeeIds = allEmployeeIds.Except(clockedInEmployeeIds).Count();
+
+            return absentEmployeeIds;
+        }
+
         public async Task<int> CountWeeklyAttendance()
         {
             var today = DateTime.Today;

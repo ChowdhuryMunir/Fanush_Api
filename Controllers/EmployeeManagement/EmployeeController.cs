@@ -104,6 +104,13 @@ namespace Fanush.Controllers.EmployeeController
             return Ok(count);
         }
 
+        [HttpGet("absent-today")]
+        public async Task<ActionResult<int>> GetTodayAbsentCount()
+        {
+            var absentCount = await _repository.CountTodayAbsentEmployees();
+            return Ok(absentCount);
+        }
+
         [HttpGet("attendance/weekly")]
         public async Task<ActionResult<int>> CountWeeklyAttendance()
         {

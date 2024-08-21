@@ -13,5 +13,6 @@ namespace Fanush.DAL.Interfaces.EmployeeInterface
         Task<int> CountWeeklyAttendance();
         Task<int> CountMonthlyAttendance();
         Task<int> CountEmployeesOnLeave();
+        Task<int> CountTodayAbsentEmployees();
     }
 }
