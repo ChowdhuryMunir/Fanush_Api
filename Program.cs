@@ -22,6 +22,7 @@ using Microsoft.Extensions.FileProviders;
 using Fanush.DAL.Interfaces.PayrollInterface;
 using Fanush.Repositories.PayrollManagement;
 using System.IO;
+using FastReport.Data;
 
 var directoryPaths = new[]
 {
@@ -139,6 +140,11 @@ builder.Services.AddAuthorization(options =>
 {
     options.FallbackPolicy = options.DefaultPolicy;
 });
+//Fast report
+FastReport.Utils.RegisteredObjects.AddConnection(typeof(MsSqlDataConnection));
+builder.Services.AddFastReport();
+
+
 
 var app = builder.Build();
 

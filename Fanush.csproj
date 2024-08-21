@@ -7,10 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FastReport.Compat" Version="2024.2.0" />
+    <PackageReference Include="FastReport.Data.MsSql" Version="2024.2.0" />
+    <PackageReference Include="FastReport.OpenSource" Version="2024.2.0" />
+    <PackageReference Include="FastReport.OpenSource.Export.PdfSimple" Version="2024.2.0" />
+    <PackageReference Include="FastReport.OpenSource.Web" Version="2024.2.0" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Negotiate" Version="8.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.6" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.6">

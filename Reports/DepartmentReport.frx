@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="08/21/2024 16:18:47" ReportInfo.Modified="08/21/2024 16:27:13" ReportInfo.CreatorVersion="2024.2.0.0">
+  <Dictionary>
+    <MsSqlDataConnection Name="Connection" ConnectionString="rijcmlqJUrEa/KIcQqhhcfnlqC6PC6b70ltOmTeLWh2vhAF0ivYvQZbcY/A8qTXhAWsZJeFGEPA9xrXyYOG3aFk4+m5VFFCTJn5mRSy5Vf3FvSHtHKHqZkBoAesjtrW4aIVG+at2NSqKzrp2di6A9lr6kehDKjAjhIHnjoHdjn68OTdNYQVtVwc7s8ZQBgN4viDev7VTjlaea6mC0DxBS/mue0k3Q==">
+      <TableDataSource Name="Departments" DataType="System.Int32" Enabled="true" TableName="Departments">
+        <Column Name="DepartmentId" DataType="System.Int32"/>
+        <Column Name="DepartmentName" DataType="System.String"/>
+        <Column Name="IsActive" DataType="System.Boolean" BindableControl="CheckBox"/>
+      </TableDataSource>
+    </MsSqlDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Fill="LinearGradient" Fill.StartColor="PaleTurquoise" Fill.EndColor="White" Fill.Angle="0" Fill.Focus="1" Fill.Contrast="1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8">
+      <TextObject Name="Text1" Left="292.95" Top="9.45" Width="132.3" Height="18.9" Text="Department Report" Font="Arial, 10pt"/>
+      <TextObject Name="Text7" Left="604.8" Top="9.45" Width="94.5" Height="18.9" Text="[Date]" Font="Arial, 10pt"/>
+    </ReportTitleBand>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="28.35">
+      <TextObject Name="Text3" Left="9.45" Width="94.5" Height="18.9" Text="DepartmentId" Font="Arial, 10pt"/>
+      <TextObject Name="Text5" Left="207.9" Width="94.5" Height="18.9" Text="DepartmentName" Font="Arial, 10pt"/>
+      <TextObject Name="Text6" Left="453.6" Width="18.9" Height="18.9" Text="IsActive" Font="Arial, 10pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="74.15" Width="718.2" Height="160.65" DataSource="Departments">
+      <TextObject Name="Text2" Left="9.45" Top="9.45" Width="94.5" Height="18.9" Text="[Departments.DepartmentId]" Font="Arial, 10pt"/>
+      <TextObject Name="Text4" Left="207.9" Top="9.45" Width="94.5" Height="18.9" Text="[Departments.DepartmentName]" Font="Arial, 10pt"/>
+      <CheckBoxObject Name="CheckBox1" Left="453.6" Top="9.45" Width="18.9" Height="18.9" DataColumn="Departments.IsActive"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="238.8" Width="718.2" Height="47.25">
+      <TextObject Name="Text8" Left="652.05" Top="9.45" Width="94.5" Height="18.9" Text="[Page]" Font="Arial, 10pt"/>
+    </PageFooterBand>
+  </ReportPage>
+</Report>
