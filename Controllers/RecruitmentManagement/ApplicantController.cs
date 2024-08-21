@@ -39,7 +39,7 @@ namespace Fanush.Controllers.RecruitmentManagement
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] Applicant applicant)
+        public async Task<ActionResult> Post([FromForm] Applicant applicant)
         {
             var createdApplicant = await _repository.Post(applicant);
             return CreatedAtAction(nameof(Get), new { id = applicant.ApplicantId }, createdApplicant);

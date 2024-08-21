@@ -201,7 +201,13 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
 
         private async Task<string> UploadImageAsync(IFormFile imageFile)
         {
+            // Ensure wwwroot/Files folder exists
             string uploadsFolder = Path.Combine(_environment.WebRootPath, "Images");
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
             string uniqueFileName = Guid.NewGuid().ToString() + "_" + imageFile.FileName;
             string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -209,9 +215,13 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             {
                 await imageFile.CopyToAsync(fileStream);
             }
-            var imgUrl = "http://localhost:5041/" + "Images/" + uniqueFileName;
 
-            return imgUrl;
+            // Construct the URL for the uploaded file
+            var resumeUrl = Path.Combine("/Files", uniqueFileName);
+
+            return resumeUrl;
         }
     }
 }
+
+
