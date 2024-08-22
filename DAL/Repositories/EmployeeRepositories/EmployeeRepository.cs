@@ -217,9 +217,9 @@ namespace Fanush.DAL.Repositories.EmployeeRepositories
             }
 
             // Construct the URL for the uploaded file
-            var resumeUrl = Path.Combine("/Files", uniqueFileName);
+            var imagePath = Path.Combine("/Images", uniqueFileName);
 
-            return resumeUrl;
+            return imagePath;
         }
     }
 }
