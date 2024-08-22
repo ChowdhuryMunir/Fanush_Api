@@ -46,7 +46,7 @@ namespace Fanush.Controllers.RecruitmentManagement
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] Applicant applicant)
+        public async Task<ActionResult> Put(int id, [FromForm] Applicant applicant)
         {
             if (id != applicant.ApplicantId)
             {
