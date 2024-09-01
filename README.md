@@ -96,7 +96,7 @@
 ### Prerequisites
 - [.NET Core 8](https://dotnet.microsoft.com/download/dotnet/8.0) for API development.
 - [Visual Studio](https://visualstudio.microsoft.com/) for development.
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or a compatible database system.
+- [MSSQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or a compatible database system.
 
 ### Installation
 1. **Clone the Repository**
@@ -148,8 +148,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contributors
 
 - **Munir Chowdhury** - [MunirChowdhurySaif](https://github.com/chowdhuryMunir)
-- **[Tausif Imtiaz]** - [TausifImtiaz](https://github.com/TausifImtiaz)
-- **[Nazmul Haque]** - [NazmulHaque](https://github.com/nazmulhqm)
+- **Tausif Imtiaz** - [TausifImtiaz](https://github.com/TausifImtiaz)
+- **Nazmul Haque** - [NazmulHaque](https://github.com/nazmulhqm)
 
 ## Contact
 
