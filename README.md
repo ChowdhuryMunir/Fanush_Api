@@ -1,139 +1,155 @@
 # Fanush API
 
-Fanush is a robust API built with ASP.NET Core 8 designed to facilitate Human Resource Management and Payroll Systems. It provides comprehensive functionalities for managing employee data, payroll processing, and various HR operations.
+**Fanush API** is a comprehensive API designed for a modern **Human Resource Management and Payroll System**. Developed using .NET Core 8, this API provides extensive functionalities for HR management, payroll processing, and employee engagement. It features robust security, scalable architecture, and integrates various HR functionalities into a unified system.
 
 ## Features
 
-- **Employee Management:** Add, update, delete, and retrieve employee records.
-- **Payroll Processing:** Calculate and manage employee salaries, deductions, and benefits.
-- **Attendance Tracking:** Record and monitor employee attendance and working hours.
-- **Leave Management:** Handle leave requests and track leave balances.
-- **Reporting:** Generate detailed reports on employee performance, payroll, and attendance.
+### Employee Management
+- **Employee Profiles**: Create, edit, and manage detailed profiles including contact details and demographics.
+- **Job & Organization Structure**: Define job titles, departments, and visualize organizational charts.
+- **Access Control & Security**: Secure login and role-based access control.
+- **Employee Lifecycle Management**: Handle onboarding, transfers, promotions, terminations, and re-joining.
+- **Data Import/Export**: Import and export employee data in CSV and XLSX formats.
 
-## Getting Started
+### Recruitment Management
+- **Job Postings**: Create and manage job postings with detailed descriptions.
+- **Applicant Tracking System (ATS)**: Manage applications, including resume uploads and communication tools.
+- **Interview Scheduling & Management**: Schedule interviews, track progress, and send offer letters.
+- **Background Checks (Optional)**: Integrate background check services.
 
-To set up and run the Fanush API locally, follow these steps:
+### Time and Attendance
+- **Clock In/Out**: Clock in/out functionality via web, mobile app, or time clock integration.
+- **Leave Management**: Manage leave types with customizable approval workflows.
+- **Overtime Tracking & Management**: Track and manage overtime hours.
+- **Absence Reporting & Analysis**: Generate reports and analyze absence trends.
+- **Payroll Integration**: Integrate with payroll systems.
+- **Learning and Development Integration**: Include training time in attendance records.
 
-### Prerequisites
+### Performance Management
+- **Goal Setting & Tracking**: Set and monitor individual and team goals.
+- **Performance Reviews**: Conduct performance reviews with feedback tools and self-evaluations.
+- **Development Plans & Progress Tracking**: Create and track development plans.
+- **Performance Reports & Analytics**: Generate performance reports with data visualization.
 
-Ensure you have the following installed:
+### Payroll Management
+- **Payroll Integration or Calculation**: Integrate with payroll providers or use standalone calculation features.
+- **Salary & Benefits Administration**: Manage salaries, benefits, and generate electronic pay stubs.
+- **Payment Options**: Offer electronic pay stubs and multiple payment methods.
+- **Tax Filing & Reporting (Optional)**: Integrate with tax filing services or provide reporting functionalities.
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or any compatible database
-- [Postman](https://www.postman.com/downloads/) (optional, for API testing)
+### Benefits Administration
+- **Enrollment & Management**: Manage employee enrollment in benefits.
+- **Provider Integrations**: Integrate with benefits providers.
+- **Account Management**: Handle FSAs and DCAPs.
+- **Communication & Education**: Communicate benefits information and educate employees.
 
-### Installation
+### Learning and Development
+- **LMS Integration or Training Management**: Integrate with LMS or manage training features.
+- **Learning Paths & Assignments**: Create learning paths and assign courses.
+- **Skill Gap Analysis & Training Needs**: Identify skill gaps and design targeted training.
+- **Training Completion & Certification Tracking**: Track training completions and certifications.
+- **Learning Content Delivery**: Deliver learning content in various formats.
 
-1. **Clone the repository:**
+### Employee Self Service
+- **Personal Information & Pay Stubs**: Access personal information and view pay stubs.
+- **Leave & Time Off Requests**: Request leave and time off.
+- **Profile Updates**: Update personal details.
+- **Training Materials & Progress**: Access training materials and track progress.
+- **Feedback & Complaints**: Submit feedback or complaints electronically.
 
-   ```bash
-   git clone https://github.com/ChowdhuryMunir/Fanush_.git
-   ```
-
-2. **Navigate to the project directory:**
-
-   ```bash
-   cd Fanush_
-   ```
-
-3. **Install dependencies:**
-
-   The project dependencies are managed via NuGet. Restore them using:
-
-   ```bash
-   dotnet restore
-   ```
-
-4. **Configure the database connection:**
-
-   Update the `appsettings.json` file with your database connection string:
-
-   ```json
-   "ConnectionStrings": {
-     "DefaultConnection": "Server=your_server;Database=your_database;User Id=your_user;Password=your_password;"
-   }
-   ```
-
-5. **Apply database migrations:**
-
-   ```bash
-   dotnet ef database update
-   ```
-
-6. **Run the API:**
-
-   ```bash
-   dotnet run
-   ```
-
-   The API will be available at `http://localhost:5000` (or the port specified in `launchSettings.json`).
+### Additional Features
+- **Employee Engagement**: Enhance engagement through internal communication tools and recognition programs.
+- **Compliance Management**: Automated compliance checks and updates.
+- **Integration with Third-party Services**: Integrate with job boards, financial systems, and productivity tools.
+- **Customizable Dashboards**: Dashboards for HR managers and employees.
+- **Mobile Accessibility**: Mobile device access to all features.
 
 ## API Endpoints
 
-### Employee Management
+### Employee Endpoints
+- **GET /api/employees**: List all employees.
+- **GET /api/employees/{id}**: Get details of a specific employee.
+- **POST /api/employees**: Create a new employee record.
+- **PUT /api/employees/{id}**: Update an existing employee.
+- **DELETE /api/employees/{id}**: Delete an employee.
 
-- **GET** `/api/employees` - Retrieve a list of employees.
-- **POST** `/api/employees` - Add a new employee.
-- **GET** `/api/employees/{id}` - Retrieve a specific employee by ID.
-- **PUT** `/api/employees/{id}` - Update an employee's details.
-- **DELETE** `/api/employees/{id}` - Delete an employee.
+### Department Endpoints
+- **GET /api/departments**: List all departments.
+- **GET /api/departments/{id}**: Get details of a specific department.
+- **POST /api/departments**: Create a new department.
+- **PUT /api/departments/{id}**: Update an existing department.
+- **DELETE /api/departments/{id}**: Delete a department.
 
-### Payroll Processing
+### Payroll Endpoints
+- **GET /api/payrolls**: List all payroll records.
+- **GET /api/payrolls/{id}**: Get details of a specific payroll record.
+- **POST /api/payrolls**: Create a new payroll record.
+- **PUT /api/payrolls/{id}**: Update an existing payroll record.
+- **DELETE /api/payrolls/{id}**: Delete a payroll record.
 
-- **POST** `/api/payrolls/calculate` - Calculate payroll for employees.
-- **GET** `/api/payrolls/{id}` - Retrieve payroll details for a specific employee.
+### Authentication Endpoints
+- **POST /api/auth/login**: Authenticate a user and obtain a JWT token.
+- **POST /api/auth/register**: Register a new user.
 
-### Attendance Tracking
+## Installation and Setup
 
-- **POST** `/api/attendance` - Record attendance.
-- **GET** `/api/attendance/{employeeId}` - Retrieve attendance records for an employee.
+### Prerequisites
+- [.NET Core 8](https://dotnet.microsoft.com/download/dotnet/8.0) for API development.
+- [Visual Studio](https://visualstudio.microsoft.com/) for development.
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads) or a compatible database system.
 
-### Leave Management
+### Installation
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/ChowdhuryMunir/Fanush_Api.git
+   cd Fanush_Api
+   ```
 
-- **POST** `/api/leaves` - Request leave.
-- **GET** `/api/leaves/{employeeId}` - Retrieve leave records for an employee.
+2. **Install Dependencies**
+   - Restore the project dependencies using:
+     ```bash
+     dotnet restore
+     ```
 
-### Reporting
+3. **Update Configuration**
+   - Update the database connection settings in the `appsettings.json` file.
 
-- **GET** `/api/reports/employee-performance` - Generate performance reports.
-- **GET** `/api/reports/payroll-summary` - Generate payroll summary reports.
+4. **Apply Migrations**
+   - Apply any pending migrations using:
+     ```bash
+     dotnet ef database update
+     ```
+
+5. **Run the Application**
+   - Build and run the application using Visual Studio or the command line:
+     ```bash
+     dotnet run
+     ```
+   - The API will be available at `http://localhost:5000`.
 
 ## Usage
 
-You can use tools like [Postman](https://www.postman.com/downloads/) to interact with the API endpoints. Below is an example of how to use the API:
-
-```http
-# Example POST request to add a new employee
-POST /api/employees
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "position": "Software Developer",
-  "salary": 60000
-}
-```
+- **Access the API**: Use tools like Postman or cURL to interact with the API endpoints.
+- **Authentication**: Obtain a JWT token using the `/api/auth/login` endpoint and include it in the Authorization header for protected endpoints.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps to contribute:
-
+Contributions are welcome! To contribute:
 1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature/your-feature`).
+2. Create a new branch (`git checkout -b feature/your-feature`).
 3. Commit your changes (`git commit -m 'Add new feature'`).
 4. Push the branch (`git push origin feature/your-feature`).
 5. Open a pull request with a description of your changes.
 
-For detailed guidelines, please refer to our [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## License
 
-This project is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contributors
+
+- **Munir Chowdhury** - [MunirchowdhurySaif](https://github.com/chowdhuryMunir)
+- **[]** - [Add other contributors' names and GitHub profiles here]
 
 ## Contact
 
-For questions or feedback, please contact [Munir Chowdhury](mailto:munir.idb@gmail.com).
-
----
-
-Feel free to modify or expand this template based on additional features or specific setup instructions for your project.
+For questions or feedback, please contact [Munir Chowdhury](https://github.com/chowdhuryMunir).
