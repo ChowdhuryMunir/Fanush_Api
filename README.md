@@ -147,8 +147,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contributors
 
-- **Munir Chowdhury** - [MunirchowdhurySaif](https://github.com/chowdhuryMunir)
-- **[]** - [Add other contributors' names and GitHub profiles here]
+- **Munir Chowdhury** - [MunirChowdhurySaif](https://github.com/chowdhuryMunir)
+- **[Tausif Imtiaz]** - [TausifImtiaz](https://github.com/TausifImtiaz)
+- **[Nazmul Haque]** - [NazmulHaque](https://github.com/nazmulhqm)
 
 ## Contact
 
