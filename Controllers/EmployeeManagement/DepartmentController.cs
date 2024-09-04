@@ -49,7 +49,7 @@ namespace Fanush.Controllers.EmployeeManagement
         //}
 
         [HttpPost, Route("InsertDept")]
-        public async Task<ActionResult> Post([FromForm] Department  department)
+        public async Task<ActionResult> Post([FromBody] Department  department)
         {
             var createdDepartment = await _repository.Post(department);
             return CreatedAtAction(nameof(Get), new { id = department.DepartmentId }, createdDepartment);
