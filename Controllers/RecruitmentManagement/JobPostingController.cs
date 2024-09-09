@@ -38,14 +38,14 @@ namespace Fanush.Controllers.RecruitmentManagement
             return Ok(jobPosting);
         }
 
-        [HttpPost]
+        [HttpPost, Route("InsertJobPosting")]
         public async Task<ActionResult> Post([FromBody] JobPosting jobPosting)
         {
             var createdJobPosting = await _repository.Post(jobPosting);
             return CreatedAtAction(nameof(Get), new { id = jobPosting.JobPostingId }, createdJobPosting);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut,Route("UpdateJobPosting/{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] JobPosting jobPosting)
         {
             if (id != jobPosting.JobPostingId)
@@ -56,7 +56,7 @@ namespace Fanush.Controllers.RecruitmentManagement
             return Ok(updatedJobPosting);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete, Route("DeleteJobPosting/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             var deletedJobPosting = await _repository.Delete(id);
